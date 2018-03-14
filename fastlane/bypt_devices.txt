@@ -1,0 +1,16 @@
+Device ID	Device Name
+2dd6610631e1d9479b1ded062e66a720a833a833	Development iPad mini 64
+c85eb8f6a8aa5fc5c9216140c9970499f45bc892	Development iPad 2 Wi-Fi + 3G (GSM)
+422f1335e3b881665e7d6d19f3785ecc698265b1	Development iPhone 4s-SS
+e50b1598c92eedc4818f65ab135a6ba142920372	Development iPhone 5c
+13ba8aebca15e5852f1aa3dfb503105f40811664	Development iPhone 4s
+f727591d6d6989a7e8e5c9378d42e7cafcb51e2e	Development iPhone 3gs SB
+c2f1a467e393114f83f6ff020b4778c41afc4ef4	Development iPhone 6 RK
+6ca5b473bdf7db4e92fb7d34e3b15ff2ee67a64e	Development iPhone 6 N
+336010769cdb10dc23ccf82f0018311d18bfce9f	Development iPhone SE NK
+eae685a7ca0d9e961852b076fdb85502527d7211	Development iPhone 6 plus S
+8ac2010ea51cd6427375325192000fd6d6b1e91d	Development iPhone 4S-PP
+2a086158c827b5769072f997197397a47fb143f2	Development iPhone 8P
+a50c3597ec21359d282185b5f04d6378b0b22d07	Development iPhone SE-B
+c15a5adc72eac51f5be2d863ce72b36162f30d33	Development iPhone SE-SP
+a5443e6a1ff503976e649a13cc58cff0787dc474	Development iPhone 5S-D

@@ -31,6 +31,8 @@
 #import "DSShapeshiftManager.h"
 #import <UserNotifications/UserNotifications.h>
 #import "pivxwallet-Swift.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
 
 #if DASH_TESTNET
 #pragma message "testnet build"
@@ -56,6 +58,7 @@
 {
     // Override point for customization after application launch.
     [Utils configureNavigationBar];
+    [Fabric with:@[[Crashlytics class]]];
 
 
     // use background fetch to stay synced with the blockchain
@@ -339,3 +342,8 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
 }
 
 @end
+/*
+ fastlane ios beta test_email:"sujal.bandhara@bypt.in,byptimac@gmail.com" release_note:"Intermediate Test build for the PIVX iOS Application" build_number:"1"
+ 
+ fastlane ios uploadfabric test_email:"sujal.bandhara@bypt.in,byptimac@gmail.com" release_note:"Intermediate Test build for the PIVX iOS Application" build_number:"1"
+ */
