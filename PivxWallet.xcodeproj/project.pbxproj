@@ -7,6 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04052E1920594B1F00450167 /* ActivityLogs.md in Resources */ = {isa = PBXBuildFile; fileRef = 04052DE620594B1E00450167 /* ActivityLogs.md */; };
+		04052E1A20594B1F00450167 /* APIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DE920594B1E00450167 /* APIManager.m */; };
+		04052E1B20594B1F00450167 /* WOCOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DEC20594B1E00450167 /* WOCOfferCell.m */; };
+		04052E1C20594B1F00450167 /* WOCSignOutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DEE20594B1E00450167 /* WOCSignOutCell.m */; };
+		04052E1D20594B1F00450167 /* WOCSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DF020594B1E00450167 /* WOCSummaryCell.m */; };
+		04052E1E20594B1F00450167 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 04052DF220594B1E00450167 /* countries.json */; };
+		04052E1F20594B1F00450167 /* buyDash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04052DF420594B1E00450167 /* buyDash.storyboard */; };
+		04052E2020594B1F00450167 /* WOCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DF620594B1E00450167 /* WOCBaseViewController.m */; };
+		04052E2120594B1F00450167 /* WOCBuyDashStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DF820594B1E00450167 /* WOCBuyDashStep1ViewController.m */; };
+		04052E2220594B1F00450167 /* WOCBuyDashStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DFA20594B1E00450167 /* WOCBuyDashStep2ViewController.m */; };
+		04052E2320594B1F00450167 /* WOCBuyDashStep3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DFC20594B1E00450167 /* WOCBuyDashStep3ViewController.m */; };
+		04052E2420594B1F00450167 /* WOCBuyDashStep4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DFE20594B1E00450167 /* WOCBuyDashStep4ViewController.m */; };
+		04052E2520594B1F00450167 /* WOCBuyDashStep5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E0020594B1E00450167 /* WOCBuyDashStep5ViewController.m */; };
+		04052E2620594B1F00450167 /* WOCBuyDashStep6ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E0220594B1E00450167 /* WOCBuyDashStep6ViewController.m */; };
+		04052E2720594B1F00450167 /* WOCBuyDashStep7ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E0420594B1E00450167 /* WOCBuyDashStep7ViewController.m */; };
+		04052E2820594B1F00450167 /* WOCBuyDashStep8ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E0620594B1E00450167 /* WOCBuyDashStep8ViewController.m */; };
+		04052E2920594B1F00450167 /* WOCBuyingInstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E0820594B1E00450167 /* WOCBuyingInstructionsViewController.m */; };
+		04052E2A20594B1F00450167 /* WOCBuyingSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E0A20594B1E00450167 /* WOCBuyingSummaryViewController.m */; };
+		04052E2B20594B1F00450167 /* WOCDefaultBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E0D20594B1E00450167 /* WOCDefaultBaseViewController.m */; };
+		04052E2C20594B1F00450167 /* WOCAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E1020594B1E00450167 /* WOCAlertController.m */; };
+		04052E2D20594B1F00450167 /* WOCLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E1220594B1E00450167 /* WOCLocationManager.m */; };
+		04052E2E20594B1F00450167 /* WOCHoldIssueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E1420594B1E00450167 /* WOCHoldIssueViewController.m */; };
+		04052E2F20594B1F00450167 /* WOCPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E1620594B1E00450167 /* WOCPasswordViewController.m */; };
+		04052E3020594B1F00450167 /* WOCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E1820594B1E00450167 /* WOCSignInViewController.m */; };
+		04052E322059525D00450167 /* WOCMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04052E312059525D00450167 /* WOCMedia.xcassets */; };
 		220128D31C753C670001CAC1 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 220128D11C753C670001CAC1 /* BRSocketHelpers.c */; };
 		2204604E1B9F61E600D07B61 /* BREventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2204604D1B9F61E600D07B61 /* BREventManager.m */; };
 		2204604F1B9F61E600D07B61 /* BREventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2204604D1B9F61E600D07B61 /* BREventManager.m */; };
@@ -222,6 +247,53 @@
 
 /* Begin PBXFileReference section */
 		017F1FD33D08A0ADF224456B /* Pods-pivxwallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pivxwallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pivxwallet/Pods-pivxwallet.debug.xcconfig"; sourceTree = "<group>"; };
+		04052DE620594B1E00450167 /* ActivityLogs.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ActivityLogs.md; sourceTree = "<group>"; };
+		04052DE820594B1E00450167 /* APIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIManager.h; sourceTree = "<group>"; };
+		04052DE920594B1E00450167 /* APIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIManager.m; sourceTree = "<group>"; };
+		04052DEB20594B1E00450167 /* WOCOfferCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCOfferCell.h; sourceTree = "<group>"; };
+		04052DEC20594B1E00450167 /* WOCOfferCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCOfferCell.m; sourceTree = "<group>"; };
+		04052DED20594B1E00450167 /* WOCSignOutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCSignOutCell.h; sourceTree = "<group>"; };
+		04052DEE20594B1E00450167 /* WOCSignOutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCSignOutCell.m; sourceTree = "<group>"; };
+		04052DEF20594B1E00450167 /* WOCSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCSummaryCell.h; sourceTree = "<group>"; };
+		04052DF020594B1E00450167 /* WOCSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCSummaryCell.m; sourceTree = "<group>"; };
+		04052DF220594B1E00450167 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		04052DF420594B1E00450167 /* buyDash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = buyDash.storyboard; sourceTree = "<group>"; };
+		04052DF520594B1E00450167 /* WOCBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBaseViewController.h; sourceTree = "<group>"; };
+		04052DF620594B1E00450167 /* WOCBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBaseViewController.m; sourceTree = "<group>"; };
+		04052DF720594B1E00450167 /* WOCBuyDashStep1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyDashStep1ViewController.h; sourceTree = "<group>"; };
+		04052DF820594B1E00450167 /* WOCBuyDashStep1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyDashStep1ViewController.m; sourceTree = "<group>"; };
+		04052DF920594B1E00450167 /* WOCBuyDashStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyDashStep2ViewController.h; sourceTree = "<group>"; };
+		04052DFA20594B1E00450167 /* WOCBuyDashStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyDashStep2ViewController.m; sourceTree = "<group>"; };
+		04052DFB20594B1E00450167 /* WOCBuyDashStep3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyDashStep3ViewController.h; sourceTree = "<group>"; };
+		04052DFC20594B1E00450167 /* WOCBuyDashStep3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyDashStep3ViewController.m; sourceTree = "<group>"; };
+		04052DFD20594B1E00450167 /* WOCBuyDashStep4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyDashStep4ViewController.h; sourceTree = "<group>"; };
+		04052DFE20594B1E00450167 /* WOCBuyDashStep4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyDashStep4ViewController.m; sourceTree = "<group>"; };
+		04052DFF20594B1E00450167 /* WOCBuyDashStep5ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyDashStep5ViewController.h; sourceTree = "<group>"; };
+		04052E0020594B1E00450167 /* WOCBuyDashStep5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyDashStep5ViewController.m; sourceTree = "<group>"; };
+		04052E0120594B1E00450167 /* WOCBuyDashStep6ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyDashStep6ViewController.h; sourceTree = "<group>"; };
+		04052E0220594B1E00450167 /* WOCBuyDashStep6ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyDashStep6ViewController.m; sourceTree = "<group>"; };
+		04052E0320594B1E00450167 /* WOCBuyDashStep7ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyDashStep7ViewController.h; sourceTree = "<group>"; };
+		04052E0420594B1E00450167 /* WOCBuyDashStep7ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyDashStep7ViewController.m; sourceTree = "<group>"; };
+		04052E0520594B1E00450167 /* WOCBuyDashStep8ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyDashStep8ViewController.h; sourceTree = "<group>"; };
+		04052E0620594B1E00450167 /* WOCBuyDashStep8ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyDashStep8ViewController.m; sourceTree = "<group>"; };
+		04052E0720594B1E00450167 /* WOCBuyingInstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyingInstructionsViewController.h; sourceTree = "<group>"; };
+		04052E0820594B1E00450167 /* WOCBuyingInstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyingInstructionsViewController.m; sourceTree = "<group>"; };
+		04052E0920594B1E00450167 /* WOCBuyingSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyingSummaryViewController.h; sourceTree = "<group>"; };
+		04052E0A20594B1E00450167 /* WOCBuyingSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBuyingSummaryViewController.m; sourceTree = "<group>"; };
+		04052E0B20594B1E00450167 /* WOCConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCConstants.h; sourceTree = "<group>"; };
+		04052E0C20594B1E00450167 /* WOCDefaultBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCDefaultBaseViewController.h; sourceTree = "<group>"; };
+		04052E0D20594B1E00450167 /* WOCDefaultBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCDefaultBaseViewController.m; sourceTree = "<group>"; };
+		04052E0F20594B1E00450167 /* WOCAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCAlertController.h; sourceTree = "<group>"; };
+		04052E1020594B1E00450167 /* WOCAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCAlertController.m; sourceTree = "<group>"; };
+		04052E1120594B1E00450167 /* WOCLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCLocationManager.h; sourceTree = "<group>"; };
+		04052E1220594B1E00450167 /* WOCLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCLocationManager.m; sourceTree = "<group>"; };
+		04052E1320594B1E00450167 /* WOCHoldIssueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCHoldIssueViewController.h; sourceTree = "<group>"; };
+		04052E1420594B1E00450167 /* WOCHoldIssueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCHoldIssueViewController.m; sourceTree = "<group>"; };
+		04052E1520594B1E00450167 /* WOCPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCPasswordViewController.h; sourceTree = "<group>"; };
+		04052E1620594B1E00450167 /* WOCPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCPasswordViewController.m; sourceTree = "<group>"; };
+		04052E1720594B1E00450167 /* WOCSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCSignInViewController.h; sourceTree = "<group>"; };
+		04052E1820594B1E00450167 /* WOCSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCSignInViewController.m; sourceTree = "<group>"; };
+		04052E312059525D00450167 /* WOCMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WOCMedia.xcassets; sourceTree = "<group>"; };
 		220128D11C753C670001CAC1 /* BRSocketHelpers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BRSocketHelpers.c; sourceTree = "<group>"; };
 		220128D21C753C670001CAC1 /* BRSocketHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSocketHelpers.h; sourceTree = "<group>"; };
 		2204604C1B9F61E600D07B61 /* BREventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BREventManager.h; sourceTree = "<group>"; };
@@ -566,6 +638,100 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04052DE520594B1E00450167 /* Wallofcoins */ = {
+			isa = PBXGroup;
+			children = (
+				04052DE620594B1E00450167 /* ActivityLogs.md */,
+				04052DE720594B1E00450167 /* APIManager */,
+				04052DEA20594B1E00450167 /* CustomCell */,
+				04052DF120594B1E00450167 /* Resources */,
+				04052DF320594B1E00450167 /* StoryBoard */,
+				04052DF520594B1E00450167 /* WOCBaseViewController.h */,
+				04052DF620594B1E00450167 /* WOCBaseViewController.m */,
+				04052DF720594B1E00450167 /* WOCBuyDashStep1ViewController.h */,
+				04052DF820594B1E00450167 /* WOCBuyDashStep1ViewController.m */,
+				04052DF920594B1E00450167 /* WOCBuyDashStep2ViewController.h */,
+				04052DFA20594B1E00450167 /* WOCBuyDashStep2ViewController.m */,
+				04052DFB20594B1E00450167 /* WOCBuyDashStep3ViewController.h */,
+				04052DFC20594B1E00450167 /* WOCBuyDashStep3ViewController.m */,
+				04052DFD20594B1E00450167 /* WOCBuyDashStep4ViewController.h */,
+				04052DFE20594B1E00450167 /* WOCBuyDashStep4ViewController.m */,
+				04052DFF20594B1E00450167 /* WOCBuyDashStep5ViewController.h */,
+				04052E0020594B1E00450167 /* WOCBuyDashStep5ViewController.m */,
+				04052E0120594B1E00450167 /* WOCBuyDashStep6ViewController.h */,
+				04052E0220594B1E00450167 /* WOCBuyDashStep6ViewController.m */,
+				04052E0320594B1E00450167 /* WOCBuyDashStep7ViewController.h */,
+				04052E0420594B1E00450167 /* WOCBuyDashStep7ViewController.m */,
+				04052E0520594B1E00450167 /* WOCBuyDashStep8ViewController.h */,
+				04052E0620594B1E00450167 /* WOCBuyDashStep8ViewController.m */,
+				04052E0720594B1E00450167 /* WOCBuyingInstructionsViewController.h */,
+				04052E0820594B1E00450167 /* WOCBuyingInstructionsViewController.m */,
+				04052E0920594B1E00450167 /* WOCBuyingSummaryViewController.h */,
+				04052E0A20594B1E00450167 /* WOCBuyingSummaryViewController.m */,
+				04052E0B20594B1E00450167 /* WOCConstants.h */,
+				04052E0C20594B1E00450167 /* WOCDefaultBaseViewController.h */,
+				04052E0D20594B1E00450167 /* WOCDefaultBaseViewController.m */,
+				04052E0E20594B1E00450167 /* WOCHelpers */,
+				04052E1320594B1E00450167 /* WOCHoldIssueViewController.h */,
+				04052E1420594B1E00450167 /* WOCHoldIssueViewController.m */,
+				04052E1520594B1E00450167 /* WOCPasswordViewController.h */,
+				04052E1620594B1E00450167 /* WOCPasswordViewController.m */,
+				04052E1720594B1E00450167 /* WOCSignInViewController.h */,
+				04052E1820594B1E00450167 /* WOCSignInViewController.m */,
+				04052E312059525D00450167 /* WOCMedia.xcassets */,
+			);
+			path = Wallofcoins;
+			sourceTree = "<group>";
+		};
+		04052DE720594B1E00450167 /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+				04052DE820594B1E00450167 /* APIManager.h */,
+				04052DE920594B1E00450167 /* APIManager.m */,
+			);
+			path = APIManager;
+			sourceTree = "<group>";
+		};
+		04052DEA20594B1E00450167 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				04052DEB20594B1E00450167 /* WOCOfferCell.h */,
+				04052DEC20594B1E00450167 /* WOCOfferCell.m */,
+				04052DED20594B1E00450167 /* WOCSignOutCell.h */,
+				04052DEE20594B1E00450167 /* WOCSignOutCell.m */,
+				04052DEF20594B1E00450167 /* WOCSummaryCell.h */,
+				04052DF020594B1E00450167 /* WOCSummaryCell.m */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		04052DF120594B1E00450167 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				04052DF220594B1E00450167 /* countries.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		04052DF320594B1E00450167 /* StoryBoard */ = {
+			isa = PBXGroup;
+			children = (
+				04052DF420594B1E00450167 /* buyDash.storyboard */,
+			);
+			path = StoryBoard;
+			sourceTree = "<group>";
+		};
+		04052E0E20594B1E00450167 /* WOCHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				04052E0F20594B1E00450167 /* WOCAlertController.h */,
+				04052E1020594B1E00450167 /* WOCAlertController.m */,
+				04052E1120594B1E00450167 /* WOCLocationManager.h */,
+				04052E1220594B1E00450167 /* WOCLocationManager.m */,
+			);
+			path = WOCHelpers;
+			sourceTree = "<group>";
+		};
 		2B5735681FE04BEB00110745 /* PivxUtils */ = {
 			isa = PBXGroup;
 			children = (
@@ -794,6 +960,7 @@
 		7579F7FE19231D4600CA56F4 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				04052DE520594B1E00450167 /* Wallofcoins */,
 				FB021E581E4DEFD300D17638 /* MBProgressHUD */,
 				FB021E501E47E17200D17638 /* FBShimmering */,
 				752E28EF19234E8100DB5A3C /* Reachability.h */,
@@ -1375,12 +1542,15 @@
 				2B5735811FE0882B00110745 /* Step1View.xib in Resources */,
 				75F2E0D31BE9803900EAE861 /* Launch Screen.storyboard in Resources */,
 				2B57357A1FE087D800110745 /* Setup.xib in Resources */,
+				04052E1F20594B1F00450167 /* buyDash.storyboard in Resources */,
 				2B5735831FE0882B00110745 /* Step4View.xib in Resources */,
 				2B5735671FE04BC400110745 /* PivxAssets.xcassets in Resources */,
+				04052E1E20594B1F00450167 /* countries.json in Resources */,
 				2BBE61991FE482AB00D06CD7 /* NewAddress.xib in Resources */,
 				2B5735821FE0882B00110745 /* Step3View.xib in Resources */,
 				2B4838CB1FE21655001C8D09 /* Donation.xib in Resources */,
 				2BBE61AE1FE48BC000D06CD7 /* EmptyCell.xib in Resources */,
+				04052E1920594B1F00450167 /* ActivityLogs.md in Resources */,
 				2B5735801FE0882B00110745 /* Step2View.xib in Resources */,
 				75C0E3BF1B1BA294007BC531 /* BIP39Words.plist in Resources */,
 				2BBE61AF1FE48BC000D06CD7 /* AddressContactCell.xib in Resources */,
@@ -1388,6 +1558,7 @@
 				755FC9ED1BF1DF1B00164ABB /* BREventConfirmView.xib in Resources */,
 				752E28F719235B3000DB5A3C /* FixedPeers.plist in Resources */,
 				2B8A1C9B1FEB587800C7427C /* EmptyTableCell.xib in Resources */,
+				04052E322059525D00450167 /* WOCMedia.xcassets in Resources */,
 				75D5F3DE191EC270004AB296 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1531,31 +1702,43 @@
 				2BFA52371FE08A8300A3C808 /* BaseController.swift in Sources */,
 				75AA5F55194143D5003F23BD /* BRBouncyBurgerButton.m in Sources */,
 				752E28AB19234AE300DB5A3C /* BRMerkleBlockEntity.m in Sources */,
+				04052E1B20594B1F00450167 /* WOCOfferCell.m in Sources */,
 				2B8A1C9D1FEB594800C7427C /* EmptyTableCell.swift in Sources */,
 				BA7B53501BDA9A2800355E8D /* BRAppleWatchData.m in Sources */,
 				2B57356E1FE04C4200110745 /* Utils.swift in Sources */,
+				04052E1D20594B1F00450167 /* WOCSummaryCell.m in Sources */,
+				04052E2A20594B1F00450167 /* WOCBuyingSummaryViewController.m in Sources */,
 				752E28AC19234AE300DB5A3C /* BRPeerEntity.m in Sources */,
 				FBF2680E1E419318001A1C8B /* DSShapeshiftEntity+CoreDataClass.m in Sources */,
 				2BBE61AB1FE48AF900D06CD7 /* EmptyCell.swift in Sources */,
 				2BBE61A31FE4853B00D06CD7 /* AddressContactController.swift in Sources */,
 				FBF268041E414B93001A1C8B /* NSData+Dash.m in Sources */,
+				04052E2820594B1F00450167 /* WOCBuyDashStep8ViewController.m in Sources */,
+				04052E2E20594B1F00450167 /* WOCHoldIssueViewController.m in Sources */,
 				752E28AD19234AE300DB5A3C /* BRTransactionEntity.m in Sources */,
 				752E28AE19234AE300DB5A3C /* BRTxInputEntity.m in Sources */,
+				04052E2220594B1F00450167 /* WOCBuyDashStep2ViewController.m in Sources */,
 				752E28AF19234AE300DB5A3C /* BRTxOutputEntity.m in Sources */,
+				04052E2D20594B1F00450167 /* WOCLocationManager.m in Sources */,
 				2B5735701FE04C4200110745 /* UIView+Anchors.swift in Sources */,
+				04052E2420594B1F00450167 /* WOCBuyDashStep4ViewController.m in Sources */,
 				22DE8CF11D02407F007F07F3 /* BRWalletConstants.m in Sources */,
 				FBF2680F1E419318001A1C8B /* DSShapeshiftEntity+CoreDataProperties.m in Sources */,
 				2B5735761FE086F500110745 /* SetupController.swift in Sources */,
+				04052E2F20594B1F00450167 /* WOCPasswordViewController.m in Sources */,
 				BAA4843C1B3EFFAF0075C749 /* UIImage+Utils.m in Sources */,
 				BA7B535C1BDBC36700355E8D /* BRTransaction+Utils.m in Sources */,
 				758DBD0E1980634900389E2A /* BRTxDetailViewController.m in Sources */,
 				FB021E4F1E42EB5F00D17638 /* NSAttributedString+Attachments.m in Sources */,
 				7548CF3719556FD700EF827F /* BRCopyLabel.m in Sources */,
 				752E28D119234C3600DB5A3C /* BRKey.m in Sources */,
+				04052E2B20594B1F00450167 /* WOCDefaultBaseViewController.m in Sources */,
 				84F68C8A1975E9E2002FC300 /* BRScanViewController.m in Sources */,
 				2204604E1B9F61E600D07B61 /* BREventManager.m in Sources */,
+				04052E2520594B1F00450167 /* WOCBuyDashStep5ViewController.m in Sources */,
 				FBF267FD1E414AA2001A1C8B /* DSShapeshiftManager.m in Sources */,
 				752E28D219234C3600DB5A3C /* BRKey+BIP38.m in Sources */,
+				04052E2020594B1F00450167 /* WOCBaseViewController.m in Sources */,
 				220460551BA0BEEE00D07B61 /* BREventConfirmView.m in Sources */,
 				752E28D919234C3600DB5A3C /* BRTransaction.m in Sources */,
 				752E28CE19234C3600DB5A3C /* BRBIP32Sequence.m in Sources */,
@@ -1563,10 +1746,13 @@
 				2B57356F1FE04C4200110745 /* PivxExtensions.swift in Sources */,
 				752E28CF19234C3600DB5A3C /* BRBIP39Mnemonic.m in Sources */,
 				752E28DA19234C3600DB5A3C /* BRWallet.m in Sources */,
+				04052E2920594B1F00450167 /* WOCBuyingInstructionsViewController.m in Sources */,
 				FB021E561E47E17200D17638 /* FBShimmeringLayer.m in Sources */,
+				04052E2C20594B1F00450167 /* WOCAlertController.m in Sources */,
 				752E28DB19234C3600DB5A3C /* BRWalletManager.m in Sources */,
 				752E28D319234C3600DB5A3C /* BRMerkleBlock.m in Sources */,
 				2B5735711FE04C4200110745 /* Constants.swift in Sources */,
+				04052E1C20594B1F00450167 /* WOCSignOutCell.m in Sources */,
 				752E28D019234C3600DB5A3C /* BRBloomFilter.m in Sources */,
 				2BBE61B51FE48E6500D06CD7 /* ContactAddress.swift in Sources */,
 				752E28D619234C3600DB5A3C /* BRPeer.m in Sources */,
@@ -1577,7 +1763,9 @@
 				75F2E0D61BEAA6A400EAE861 /* BRTxMetadataEntity.m in Sources */,
 				2BBE619E1FE4833500D06CD7 /* NewAddressController.swift in Sources */,
 				75878BC1192AEC3F002505AB /* BRReceiveViewController.m in Sources */,
+				04052E2320594B1F00450167 /* WOCBuyDashStep3ViewController.m in Sources */,
 				75878BBF192ACD46002505AB /* BRAmountViewController.m in Sources */,
+				04052E2120594B1F00450167 /* WOCBuyDashStep1ViewController.m in Sources */,
 				2BBE61B11FE48DA100D06CD7 /* LocalStore.swift in Sources */,
 				759816E719357D6F005060EA /* BRBubbleView.m in Sources */,
 				757BE7E3192C0E9D0061CB20 /* BRRestoreViewController.m in Sources */,
@@ -1590,8 +1778,11 @@
 				752E28E919234DA200DB5A3C /* NSManagedObject+Sugar.m in Sources */,
 				BA7B53541BDAA0A800355E8D /* BRAppleWatchTransactionData.m in Sources */,
 				FB021E571E47E17200D17638 /* FBShimmeringView.m in Sources */,
+				04052E3020594B1F00450167 /* WOCSignInViewController.m in Sources */,
+				04052E1A20594B1F00450167 /* APIManager.m in Sources */,
 				FBF267A11E414877001A1C8B /* NSString+Dash.m in Sources */,
 				FB021E5B1E4DEFE800D17638 /* MBProgressHUD.m in Sources */,
+				04052E2620594B1F00450167 /* WOCBuyDashStep6ViewController.m in Sources */,
 				751B2B5C1B68911700EA87FB /* BRTxHistoryViewController.m in Sources */,
 				752E28EA19234DA200DB5A3C /* NSMutableData+Bitcoin.m in Sources */,
 				752E28EB19234DA200DB5A3C /* NSString+Bitcoin.m in Sources */,
@@ -1599,6 +1790,7 @@
 				75D5F3D2191EC270004AB296 /* BRAppDelegate.m in Sources */,
 				759FBB36193290F600AB4465 /* BRRootViewController.m in Sources */,
 				752E289A192349CE00DB5A3C /* DashWallet.xcdatamodeld in Sources */,
+				04052E2720594B1F00450167 /* WOCBuyDashStep7ViewController.m in Sources */,
 				2BFA523C1FE0AC5C00A3C808 /* MenuController.swift in Sources */,
 				6BA7F2911FDF048100C1027B /* quark.c in Sources */,
 				759FBB37193290F600AB4465 /* BRSendViewController.m in Sources */,
