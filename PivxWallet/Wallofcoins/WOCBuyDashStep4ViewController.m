@@ -58,19 +58,19 @@
                     }
                 }
                 else {
-                    [[WOCAlertController sharedInstance] alertshowWithTitle:@"Dash" message:@"zipCode or bankId is empty." viewController:self.navigationController.visibleViewController];
+                    [[WOCAlertController sharedInstance] alertshowWithTitle:ALERT_TITLE message:@"zipCode or bankId is empty." viewController:self.navigationController.visibleViewController];
                 }
             }
             else {
-                [[WOCAlertController sharedInstance] alertshowWithTitle:@"Dash" message:@"Amount must be less than $100000." viewController:self.navigationController.visibleViewController];
+                [[WOCAlertController sharedInstance] alertshowWithTitle:ALERT_TITLE message:@"Amount must be less than $100000." viewController:self.navigationController.visibleViewController];
             }
         }
         else {
-            [[WOCAlertController sharedInstance] alertshowWithTitle:@"Dash" message:@"Amount must be more than $5." viewController:self.navigationController.visibleViewController];
+            [[WOCAlertController sharedInstance] alertshowWithTitle:ALERT_TITLE message:@"Amount must be more than $5." viewController:self.navigationController.visibleViewController];
         }
     }
     else {
-        [[WOCAlertController sharedInstance] alertshowWithTitle:@"Dash" message:@"Enter amount." viewController:self.navigationController.visibleViewController];
+        [[WOCAlertController sharedInstance] alertshowWithTitle:ALERT_TITLE message:@"Enter amount." viewController:self.navigationController.visibleViewController];
     }
 }
 
@@ -86,7 +86,7 @@
                              //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
                              API_BODY_CRYPTO_AMOUNT: @"0",
                              API_BODY_USD_AMOUNT: amount,
-                             API_BODY_CRYPTO: @"DASH",
+                             API_BODY_CRYPTO: CRYPTO_CURRENTCY,
                              API_BODY_CRYPTO_ADDRESS:cryptoAddress,
                              API_BODY_JSON_PARAMETER: @"YES"
                              };

@@ -193,7 +193,7 @@
         [cell.lblDollar setHidden:true];
     }
     
-    NSString *dashAmount = [NSString stringWithFormat:@"Đ %@",setVal([[offerDict valueForKey:@"amount"] valueForKey:@"DASH"])];
+    NSString *dashAmount = [NSString stringWithFormat:@"Đ %@",setVal([[offerDict valueForKey:@"amount"] valueForKey:CRYPTO_CURRENTCY])];
     NSString *bits = [NSString stringWithFormat:@"(đ %@)",setVal([[offerDict valueForKey:@"amount"] valueForKey:@"dots"])];
     NSString *dollarAmount = [NSString stringWithFormat:@"Pay $%@",setVal([[offerDict valueForKey:@"deposit"] valueForKey:@"amount"])];
     NSString *bankName = [NSString stringWithFormat:@"%@",setVal([offerDict valueForKey:@"bankName"])];
@@ -206,7 +206,7 @@
     uint64_t amount;
     amount = [manager amountForDashString:dashAmount];
     
-    uint64_t dshAmt = [[[offerDict valueForKey:@"amount"] valueForKey:@"DASH"] longLongValue];
+    uint64_t dshAmt = [[[offerDict valueForKey:@"amount"] valueForKey:CRYPTO_CURRENTCY] longLongValue];
     uint64_t bitsAmt = [[[offerDict valueForKey:@"amount"] valueForKey:@"bits"] longLongValue];
     
     cell.lblDashTitle.text = dashAmount;

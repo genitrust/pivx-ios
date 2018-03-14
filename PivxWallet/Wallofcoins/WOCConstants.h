@@ -86,8 +86,9 @@
 #define API_RESPONSE_Holds_Status @"status"
 
 #pragma mark - OTHER
+#define CRYPTO_CURRENTCY @"DASH"
 #define STORYBOARD_DASH @"buyDash"
-#define ALERT_TITLE @"Dash"
+#define ALERT_TITLE @"Pivx Wallet"
 
 #define setVal(value) (![value isEqual:[NSNull null]])?value:@""
 
