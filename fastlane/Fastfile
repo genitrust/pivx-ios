@@ -6,7 +6,7 @@ fastlane_version "2.43.0"
 
 default_platform :ios
 
-ENV["iOS_APP_NAME"] = 'PivxWallet'
+ENV["iOS_APP_NAME"] = 'pivxwallet'
 ENV["USER_NAME"] = 'Sujal Bandhara'
 ENV["USER_EMAIL"] = 'sujal.bandhara@bypt.in'
 ENV["USER_EMAIL2"] = 'jaydeep.patel@bypt.in'
