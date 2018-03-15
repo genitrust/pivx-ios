@@ -343,7 +343,10 @@ performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionH
 
 @end
 /*
- fastlane ios beta test_email:"sujal.bandhara@bypt.in,byptimac@gmail.com" release_note:"Intermediate Test build for the PIVX iOS Application" build_number:"1"
+ fastlane ios beta test_email:"sujal.bandhara@bypt.in,byptimac@gmail.com" release_note:"TestNet Intermediate Test build for the PIVX iOS Application with woc.reference.genitrust.com server" build_number:"1"
  
- fastlane ios uploadfabric test_email:"sujal.bandhara@bypt.in,byptimac@gmail.com" release_note:"Intermediate Test build for the PIVX iOS Application" build_number:"1"
+ fastlane ios beta test_email:"sujal.bandhara@bypt.in,byptimac@gmail.com" release_note:"MainNet Intermediate Test build for the PIVX iOS Application" build_number:"1"
+
+ ==============
+ fastlane ios uploadfabric test_email:"sujal.bandhara@bypt.in,byptimac@gmail.com" release_note:"TestNet Intermediate Test build for the PIVX iOS Application with woc.reference.genitrust.com server" build_number:"3"
  */
