@@ -13,7 +13,6 @@
 		04052E1C20594B1F00450167 /* WOCSignOutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DEE20594B1E00450167 /* WOCSignOutCell.m */; };
 		04052E1D20594B1F00450167 /* WOCSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DF020594B1E00450167 /* WOCSummaryCell.m */; };
 		04052E1E20594B1F00450167 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 04052DF220594B1E00450167 /* countries.json */; };
-		04052E1F20594B1F00450167 /* buyDash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04052DF420594B1E00450167 /* buyDash.storyboard */; };
 		04052E2020594B1F00450167 /* WOCBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DF620594B1E00450167 /* WOCBaseViewController.m */; };
 		04052E2120594B1F00450167 /* WOCBuyDashStep1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DF820594B1E00450167 /* WOCBuyDashStep1ViewController.m */; };
 		04052E2220594B1F00450167 /* WOCBuyDashStep2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052DFA20594B1E00450167 /* WOCBuyDashStep2ViewController.m */; };
@@ -32,6 +31,7 @@
 		04052E2F20594B1F00450167 /* WOCPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E1620594B1E00450167 /* WOCPasswordViewController.m */; };
 		04052E3020594B1F00450167 /* WOCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E1820594B1E00450167 /* WOCSignInViewController.m */; };
 		04052E322059525D00450167 /* WOCMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04052E312059525D00450167 /* WOCMedia.xcassets */; };
+		04052E33205A53E300450167 /* buyDash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04052E35205A53E300450167 /* buyDash.storyboard */; };
 		220128D31C753C670001CAC1 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 220128D11C753C670001CAC1 /* BRSocketHelpers.c */; };
 		2204604E1B9F61E600D07B61 /* BREventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2204604D1B9F61E600D07B61 /* BREventManager.m */; };
 		2204604F1B9F61E600D07B61 /* BREventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2204604D1B9F61E600D07B61 /* BREventManager.m */; };
@@ -257,7 +257,6 @@
 		04052DEF20594B1E00450167 /* WOCSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCSummaryCell.h; sourceTree = "<group>"; };
 		04052DF020594B1E00450167 /* WOCSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCSummaryCell.m; sourceTree = "<group>"; };
 		04052DF220594B1E00450167 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
-		04052DF420594B1E00450167 /* buyDash.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = buyDash.storyboard; sourceTree = "<group>"; };
 		04052DF520594B1E00450167 /* WOCBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBaseViewController.h; sourceTree = "<group>"; };
 		04052DF620594B1E00450167 /* WOCBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCBaseViewController.m; sourceTree = "<group>"; };
 		04052DF720594B1E00450167 /* WOCBuyDashStep1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCBuyDashStep1ViewController.h; sourceTree = "<group>"; };
@@ -294,6 +293,9 @@
 		04052E1720594B1E00450167 /* WOCSignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCSignInViewController.h; sourceTree = "<group>"; };
 		04052E1820594B1E00450167 /* WOCSignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCSignInViewController.m; sourceTree = "<group>"; };
 		04052E312059525D00450167 /* WOCMedia.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WOCMedia.xcassets; sourceTree = "<group>"; };
+		04176864205A96730066E396 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/buyDash.storyboard; sourceTree = "<group>"; };
+		04176865205A96890066E396 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/buyDash.strings; sourceTree = "<group>"; };
+		04176866205A96AB0066E396 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/buyDash.strings; sourceTree = "<group>"; };
 		220128D11C753C670001CAC1 /* BRSocketHelpers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BRSocketHelpers.c; sourceTree = "<group>"; };
 		220128D21C753C670001CAC1 /* BRSocketHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSocketHelpers.h; sourceTree = "<group>"; };
 		2204604C1B9F61E600D07B61 /* BREventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BREventManager.h; sourceTree = "<group>"; };
@@ -716,7 +718,7 @@
 		04052DF320594B1E00450167 /* StoryBoard */ = {
 			isa = PBXGroup;
 			children = (
-				04052DF420594B1E00450167 /* buyDash.storyboard */,
+				04052E35205A53E300450167 /* buyDash.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -1542,7 +1544,7 @@
 				2B5735811FE0882B00110745 /* Step1View.xib in Resources */,
 				75F2E0D31BE9803900EAE861 /* Launch Screen.storyboard in Resources */,
 				2B57357A1FE087D800110745 /* Setup.xib in Resources */,
-				04052E1F20594B1F00450167 /* buyDash.storyboard in Resources */,
+				04052E33205A53E300450167 /* buyDash.storyboard in Resources */,
 				2B5735831FE0882B00110745 /* Step4View.xib in Resources */,
 				2B5735671FE04BC400110745 /* PivxAssets.xcassets in Resources */,
 				04052E1E20594B1F00450167 /* countries.json in Resources */,
@@ -1867,6 +1869,16 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		04052E35205A53E300450167 /* buyDash.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				04176864205A96730066E396 /* Base */,
+				04176865205A96890066E396 /* es */,
+				04176866205A96AB0066E396 /* en */,
+			);
+			name = buyDash.storyboard;
+			sourceTree = "<group>";
+		};
 		755FC9EF1BF1DF1B00164ABB /* BREventConfirmView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

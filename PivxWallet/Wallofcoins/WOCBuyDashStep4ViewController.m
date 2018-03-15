@@ -29,8 +29,7 @@
     [super viewDidLoad];
     
     [self setShadow:self.btnGetOffers];
-    
-    self.txtDash.text = @"to acquire Dash (Đ) (1,000,000 đots = 1 ĐASH)";
+    self.txtDash.text = [NSString stringWithFormat:@"to acquire %@ (%@) (1,000,000 %@ = 1 %@)",WOC_CURRENTCY,WOC_CURRENTCY_SYMBOL,WOC_CURRENTCY_MINOR_SPECIAL,WOC_CURRENTCY_SPECIAL];
     self.txtDash.delegate = self;
     self.txtDollar.delegate = self;
     [self.txtDash setUserInteractionEnabled:NO];
@@ -91,7 +90,7 @@
                              API_BODY_JSON_PARAMETER: @"YES"
                              };
     
-    //Receive Dash Address...
+    //Receive Crypto Currency Address...
     NSString *latitude = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_LOCATION_LATITUDE];
     NSString *longitude = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_LOCATION_LONGITUDE];
     

@@ -45,14 +45,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaF-kc-VOk" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="g03-gD-VKY">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g03-gD-VKY">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1j1-Sk-Tc5">
                                         <rect key="frame" x="0.0" y="20" width="155" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="BZs-Dv-J9R" eventType="touchUpInside" id="imi-OQ-rYZ"/>
                                         </connections>
@@ -78,12 +78,12 @@
                                         <rect key="frame" x="45.5" y="8" width="323" height="64.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                        <color key="textColor" red="0.21176470589999999" green="0.4823529412" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.33333333333333331" green="0.27843137254901962" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JMG-98-Lub">
                                         <rect key="frame" x="10.5" y="79.5" width="393" height="40.5"/>
-                                        <color key="backgroundColor" red="0.21176470589999999" green="0.4823529412" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                         <state key="normal" title="FIND MY LOCATION">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -127,9 +127,7 @@
                                                 <rect key="frame" x="10" y="104.5" width="364" height="38"/>
                                                 <color key="backgroundColor" red="0.98823529409999999" green="0.76470588240000004" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                <state key="normal" title="ORDER LISTING">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
+                                                <state key="normal" title="ORDER HISTORY"/>
                                                 <connections>
                                                     <action selector="onOrderListClick:" destination="BZs-Dv-J9R" eventType="touchUpInside" id="egG-KK-abk"/>
                                                 </connections>
@@ -212,14 +210,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOS-CU-p0R" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="F2i-p2-icd">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F2i-p2-icd">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AFV-mT-M3h">
                                         <rect key="frame" x="0.0" y="20" width="155" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="7Hl-XP-CEu" eventType="touchUpInside" id="kHf-xe-TYY"/>
                                         </connections>
@@ -245,7 +243,7 @@
                                         <rect key="frame" x="35.5" y="8" width="343" height="64.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                        <color key="textColor" red="0.21176470589999999" green="0.4823529412" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.33333333333333331" green="0.27843137254901962" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip Code" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="ryz-jw-eF2">
@@ -263,7 +261,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F4M-WM-4Q8">
                                         <rect key="frame" x="10.5" y="124.5" width="393" height="40.5"/>
-                                        <color key="backgroundColor" red="0.21176470589999999" green="0.4823529412" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                         <state key="normal" title="NEXT">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -327,14 +325,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="92S-qI-s1r" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="0Kv-Qf-gDc">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Kv-Qf-gDc">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K6n-eW-fgy">
                                         <rect key="frame" x="0.0" y="20" width="155" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="mKY-uE-PMF" eventType="touchUpInside" id="LqH-JJ-hmv"/>
                                         </connections>
@@ -483,14 +481,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Pw-3Z-nsg" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="8a9-tB-Mbv">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8a9-tB-Mbv">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hN0-fy-MAX">
                                         <rect key="frame" x="0.0" y="20" width="155" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="UM8-OT-Ead" eventType="touchUpInside" id="AIE-xo-TOS"/>
                                         </connections>
@@ -516,7 +514,7 @@
                                         <rect key="frame" x="19.5" y="5" width="375" height="74.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.21176470589999999" green="0.4823529412" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HnD-od-cii">
@@ -705,14 +703,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgp-nw-nGP" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="CcZ-KO-Iek">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CcZ-KO-Iek">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jhB-SU-om6">
                                         <rect key="frame" x="0.0" y="20" width="259" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash With Cash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="LL8-yH-U1T" eventType="touchUpInside" id="B1N-1d-MbW"/>
                                         </connections>
@@ -758,7 +756,7 @@
                                         <rect key="frame" x="10.5" y="110" width="393" height="45"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                         <state key="normal" title="[Do Not send me email]">
-                                            <color key="titleColor" red="0.21176470589999999" green="0.4823529412" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="doNotSendMeEmailClicked:" destination="LL8-yH-U1T" eventType="touchUpInside" id="2IZ-JI-TnA"/>
@@ -834,14 +832,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3lo-gT-ZcP" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="cSg-bU-4wn">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cSg-bU-4wn">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LM2-Cb-096">
                                         <rect key="frame" x="0.0" y="20" width="259" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash With Cash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="K66-Y9-kRH" eventType="touchUpInside" id="EMr-HN-sVT"/>
                                         </connections>
@@ -989,14 +987,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rkg-Az-F6q" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="ntT-Xe-Bft">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ntT-Xe-Bft">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4v7-85-jhe">
                                         <rect key="frame" x="0.0" y="20" width="155" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" title="Buy PIVX" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="7MS-bV-LaT" eventType="touchUpInside" id="G7M-6a-B4x"/>
                                         </connections>
@@ -1107,14 +1105,14 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="587-09-V4q" userLabel="topView">
                                 <rect key="frame" x="0.0" y="20" width="414" height="70"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="0Hf-uX-r6D">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Hf-uX-r6D">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCh-kF-hYi">
                                         <rect key="frame" x="0.0" y="20" width="155.5" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="SIk-RQ-6HJ" eventType="touchUpInside" id="MzR-gS-hu9"/>
                                         </connections>
@@ -1161,7 +1159,7 @@
                                                                 <rect key="frame" x="60" y="48.5" width="316" height="25"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <state key="normal" title="Show on Map Nearby">
-                                                                    <color key="titleColor" red="0.21176470589999999" green="0.4823529412" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="titleColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <connections>
                                                                     <action selector="showMapClicked:" destination="SIk-RQ-6HJ" eventType="touchUpInside" id="HXT-o1-jCB"/>
@@ -1292,9 +1290,9 @@
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <string key="text">You must deposit cash at the above Payment Center. Additional fees may apply. Paying in another method other than cash may delay your order.
 
-Do not throw away or misplace your receipt. A receipt is required before you will receive Dash!
+Do not throw away or misplace your receipt. A receipt is required before you will receive PIVX!
 For your convenience, we are texting you these payment instructions.
-When you are finished making the payment, you must press Deposit Finished to receive your Dash.</string>
+When you are finished making the payment, you must press Deposit Finished to receive your PIVX.</string>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15.5"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -1484,14 +1482,14 @@ Help is also available on the website.</string>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idW-l0-BGc" userLabel="topView">
                                 <rect key="frame" x="0.0" y="20" width="414" height="70"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="daQ-d3-t0r">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="daQ-d3-t0r">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEz-yb-2bl">
                                         <rect key="frame" x="0.0" y="20" width="155.5" height="40"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="dX6-gs-QNJ" eventType="touchUpInside" id="rF3-iy-4jq"/>
                                         </connections>
@@ -1520,7 +1518,7 @@ Help is also available on the website.</string>
                                                 <rect key="frame" x="12" y="15" width="390" height="42"/>
                                                 <color key="backgroundColor" red="0.98823529409999999" green="0.76470588240000004" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                                <state key="normal" title="BUY MORE DASH!"/>
+                                                <state key="normal" title="BUY MORE PIVX!"/>
                                                 <connections>
                                                     <action selector="buyMoreDashClicked:" destination="dX6-gs-QNJ" eventType="touchUpInside" id="nw8-hu-KSB"/>
                                                 </connections>
@@ -1639,7 +1637,7 @@ Help is also available on the website.</string>
                                                                         <constraint firstItem="hp4-EJ-INd" firstAttribute="leading" secondItem="bxi-VY-sz2" secondAttribute="leading" id="rHG-6V-WAz"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Dash: 0.00434814 (434.81 dots)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTS-8Q-zff">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total PIVX: 0.00434814 (434.81 dots)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mTS-8Q-zff">
                                                                     <rect key="frame" x="5" y="202" width="379" height="25"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1758,7 +1756,7 @@ Help is also available on the website.</string>
                                                                         <constraint firstItem="TB7-nm-oIA" firstAttribute="leading" secondItem="4sN-bO-v0e" secondAttribute="leading" constant="2" id="kMu-iD-6fC"/>
                                                                     </constraints>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Dash: 0.00434814 (434.81 dots)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxg-77-GKN">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total PIVX: 0.00434814 (434.81 dots)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fxg-77-GKN">
                                                                     <rect key="frame" x="5" y="137" width="379" height="25"/>
                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -1975,7 +1973,7 @@ Help is also available on the website.</string>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eI0-JA-96o" userLabel="topView">
                                 <rect key="frame" x="0.0" y="20" width="414" height="70"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="u1z-XF-i5O">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u1z-XF-i5O">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                     </imageView>
                                 </subviews>
@@ -2006,9 +2004,7 @@ Help is also available on the website.</string>
                                                 <rect key="frame" x="12" y="104.5" width="390" height="39"/>
                                                 <color key="backgroundColor" red="0.98823529409999999" green="0.76470588240000004" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                                <state key="normal" title="WALLOFCOINS SIGN IN">
-                                                    <color key="titleColor" red="0.0" green="0.47843137254901957" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
+                                                <state key="normal" title="WALLOFCOINS SIGN IN"/>
                                                 <connections>
                                                     <action selector="signInBtnClicked:" destination="lly-KY-UDc" eventType="touchUpInside" id="M7T-2b-Fhd"/>
                                                 </connections>
@@ -2066,14 +2062,14 @@ Help is also available on the website.</string>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oEG-eA-qoi" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="nKn-Gy-ofW">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nKn-Gy-ofW">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHx-Hd-uZh">
                                         <rect key="frame" x="0.0" y="20" width="155" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="1Te-OB-Qe8" eventType="touchUpInside" id="jwx-K1-dRP"/>
                                         </connections>
@@ -2099,7 +2095,7 @@ Help is also available on the website.</string>
                                         <rect key="frame" x="35.5" y="8" width="343" height="64.5"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                        <color key="textColor" red="0.21176470589999999" green="0.4823529412" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Payment Center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAR-DE-N53">
@@ -2123,7 +2119,7 @@ Help is also available on the website.</string>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWv-RW-Hmf">
                                         <rect key="frame" x="10.5" y="124.5" width="393" height="40.5"/>
-                                        <color key="backgroundColor" red="0.21176470589999999" green="0.4823529412" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.33333333333333331" green="0.27843137254901962" blue="0.42352941176470588" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                         <state key="normal" title="NEXT">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2190,14 +2186,14 @@ Help is also available on the website.</string>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NX6-4y-AHb" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="4ZS-Ch-b2B">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4ZS-Ch-b2B">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nT1-NJ-dzz">
                                         <rect key="frame" x="0.0" y="20" width="155" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="Uay-Pv-htB" eventType="touchUpInside" id="Bsl-w4-eZC"/>
                                         </connections>
@@ -2390,14 +2386,14 @@ Help is also available on the website.</string>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1QK-Lz-Cqn" userLabel="topView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab-bar-dash" translatesAutoresizingMaskIntoConstraints="NO" id="3Ne-qj-28h">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Ne-qj-28h">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Au-RN-gTl">
                                         <rect key="frame" x="0.0" y="20" width="155" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <inset key="imageEdgeInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Buy Dash" image="ic_arrow_back_white"/>
+                                        <state key="normal" image="ic_arrow_back_white"/>
                                         <connections>
                                             <action selector="backBtnClicked:" destination="GKx-NV-b5B" eventType="touchUpInside" id="xwI-CX-nyZ"/>
                                         </connections>
@@ -2437,7 +2433,7 @@ Help is also available on the website.</string>
                                                                     <rect key="frame" x="0.0" y="0.0" width="331" height="43"/>
                                                                     <color key="backgroundColor" red="0.9882352941176471" green="0.76470588235294112" blue="0.25490196078431371" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <state key="normal" title="SIGN IN: +12397776832">
-                                                                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="titleColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </state>
                                                                 </button>
                                                             </subviews>
@@ -2478,7 +2474,7 @@ Help is also available on the website.</string>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.98823529409999999" green="0.76470588240000004" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="WALLOFCOINS SIGN UP">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="signUpClick:" destination="GKx-NV-b5B" eventType="touchUpInside" id="G5C-VC-tw3"/>
@@ -2495,7 +2491,7 @@ Help is also available on the website.</string>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <color key="backgroundColor" red="0.98823529409999999" green="0.76470588240000004" blue="0.25490196079999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Existing WallofCoins Account Sign In:">
-                                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="existingAccoutClick:" destination="GKx-NV-b5B" eventType="touchUpInside" id="ovc-SH-fk5"/>
@@ -2552,7 +2548,7 @@ Help is also available on the website.</string>
         <image name="dropdown_icon" width="30" height="30"/>
         <image name="ic_account_balance_black" width="24" height="24"/>
         <image name="ic_arrow_back_white" width="24" height="24"/>
-        <image name="tab-bar-dash" width="621" height="107"/>
         <image name="x" width="20" height="16"/>
     </resources>
+    <color key="tintColor" red="0.33333333329999998" green="0.2784313725" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

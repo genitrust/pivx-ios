@@ -21,8 +21,7 @@
 //#define IS_PRODUCTION TRUE // IF MAINNET SET DASH_TESTNET = 0
 #define IS_PRODUCTION FALSE  //  IF TESTNET SET DASH_TESTNET = 1
 
-#define BASE_URL_DEVELOPMENT @"http://dev.aosenenko.dev.geni.to:8004"
-//#define BASE_URL_DEVELOPMENT @"https://woc.reference.genitrust.com"
+#define BASE_URL_DEVELOPMENT @"https://wallofcoins.com"
 #define BASE_URL_PRODUCTION @"https://wallofcoins.com"
 
 #define API_DATE_FORMAT @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
@@ -65,7 +64,7 @@
 #define API_BODY_CODE @"code"
 #define API_BODY_NAME @"name"
 #define API_BODY_PHONE_NUMBER @"phone"
-#define API_BODY_DEVICE_NAME_IOS @"Dash Wallet (iOS)"
+#define API_BODY_DEVICE_NAME_IOS [NSString stringWithFormat:@"%@ Wallet (iOS)",WOC_CURRENTCY]
 #define API_BODY_EMAIL @"email"
 #define API_BODY_JSON_PARAMETER @"JSONPara"
 #define API_BODY_VERIFICATION_CODE @"verificationCode"
@@ -86,10 +85,20 @@
 #define API_RESPONSE_Holds_Status @"status"
 
 #pragma mark - OTHER
-#define CRYPTO_CURRENTCY @"DASH"
 #define STORYBOARD_DASH @"buyDash"
-#define ALERT_TITLE @"Pivx Wallet"
 
-#define setVal(value) (![value isEqual:[NSNull null]])?value:@""
+#define WOC_CURRENTCY @"PIVX"
+#define WOC_CURRENTCY_SPECIAL @"ⱣIVX"
+#define WOC_CURRENTCY_MINOR_SPECIAL @"μⱣiv"
+#define WOC_CURRENTCY_SYMBOL @"Ᵽ"
+#define WOC_CURRENTCY_SYMBOL_MINOR @"μ"
+#define CRYPTO_CURRENTCY_SMALL @"uPiv" // @"dots"
+
+#define CRYPTO_CURRENTCY WOC_CURRENTCY
+//#define CRYPTO_CURRENTCY @"DASH"
+
+#define ALERT_TITLE [NSString stringWithFormat:@"%@ Wallet",WOC_CURRENTCY]
+
+#define setVal(value) (value == nil)?@"":(![value isEqual:[NSNull null]])?value:@""
 
 #endif /* WOCUserDefaultsConstants_h */

@@ -240,7 +240,7 @@
     [numFormatter setGroupingSeparator:@","];
     [numFormatter setGroupingSize:3];
     NSString *stringNum = [numFormatter stringFromNumber:num];
-    self.lblInstructions.text = [NSString stringWithFormat:@"You are ordering: %@ Dash (%@ dots)",totalDash, stringNum];
+    self.lblInstructions.text = [NSString stringWithFormat:@"You are ordering: %@ %@ (%@ %@)",totalDash,WOC_CURRENTCY_SPECIAL, stringNum,WOC_CURRENTCY_SYMBOL_MINOR];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = API_DATE_FORMAT;
