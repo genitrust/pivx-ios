@@ -363,63 +363,66 @@
 // MARK: - API
 
 - (void)createHold:(NSString*)offerId phoneNo:(NSString*)phone {
-    MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     
-    NSString *token = [self.defaults valueForKey:USER_DEFAULTS_AUTH_TOKEN];
-    NSString *deviceCode = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
-    NSDictionary *params ;
-    
-    if (token != nil && [token isEqualToString:@"(null)"] == FALSE) {
-        params = @{
-                   //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
-                   API_BODY_OFFER: [NSString stringWithFormat:@"%@==",offerId],
-                   //API_BODY_DEVICE_NAME: API_BODY_DEVICE_NAME_IOS,
-                   //API_BODY_DEVICE_CODE: deviceCode,
-                   API_BODY_JSON_PARAMETER:@"YES"
-                   };
-    }
-    else {
-        params = @{
-                   //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
-                   API_BODY_OFFER: [NSString stringWithFormat:@"%@==",offerId],
-                   API_BODY_PHONE_NUMBER: phone,
-                   API_BODY_DEVICE_NAME: API_BODY_DEVICE_NAME_IOS,
-                   API_BODY_DEVICE_CODE: deviceCode,
-                   API_BODY_JSON_PARAMETER:@"YES"
-                   };
-    }
-    
-    [[APIManager sharedInstance] createHold:params response:^(id responseDict, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [hud hideAnimated:YES];
-        });
+    dispatch_async(dispatch_get_main_queue(), ^{
+        MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
         
-        if (error == nil) {
-            NSDictionary *responseDictionary = [[NSDictionary alloc] initWithDictionary:(NSDictionary*)responseDict];
-            if ([responseDictionary valueForKey:API_RESPONSE_TOKEN] != nil && [[responseDictionary valueForKey:API_RESPONSE_TOKEN] isEqualToString:@"(null)"] == FALSE)
-            {
-                [self.defaults setValue:[NSString stringWithFormat:@"%@",[responseDictionary valueForKey:API_RESPONSE_TOKEN]] forKey:USER_DEFAULTS_AUTH_TOKEN];
-                [self.defaults setValue:phone forKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-                [self.defaults setValue:[NSString stringWithFormat:@"%@",[responseDictionary valueForKey:API_BODY_DEVICE_ID]] forKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
-                [self.defaults synchronize];
+        NSString *token = [self.defaults valueForKey:USER_DEFAULTS_AUTH_TOKEN];
+        NSString *deviceCode = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
+        NSDictionary *params ;
+        
+        if (token != nil && [token isEqualToString:@"(null)"] == FALSE) {
+            params = @{
+                       //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
+                       API_BODY_OFFER: [NSString stringWithFormat:@"%@==",offerId],
+                       //API_BODY_DEVICE_NAME: API_BODY_DEVICE_NAME_IOS,
+                       //API_BODY_DEVICE_CODE: deviceCode,
+                       API_BODY_JSON_PARAMETER:@"YES"
+                       };
+        }
+        else {
+            params = @{
+                       //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
+                       API_BODY_OFFER: [NSString stringWithFormat:@"%@==",offerId],
+                       API_BODY_PHONE_NUMBER: phone,
+                       API_BODY_DEVICE_NAME: API_BODY_DEVICE_NAME_IOS,
+                       API_BODY_DEVICE_CODE: deviceCode,
+                       API_BODY_JSON_PARAMETER:@"YES"
+                       };
+        }
+        
+        [[APIManager sharedInstance] createHold:params response:^(id responseDict, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES];
+            });
+            
+            if (error == nil) {
+                NSDictionary *responseDictionary = [[NSDictionary alloc] initWithDictionary:(NSDictionary*)responseDict];
+                if ([responseDictionary valueForKey:API_RESPONSE_TOKEN] != nil && [[responseDictionary valueForKey:API_RESPONSE_TOKEN] isEqualToString:@"(null)"] == FALSE)
+                {
+                    [self.defaults setValue:[NSString stringWithFormat:@"%@",[responseDictionary valueForKey:API_RESPONSE_TOKEN]] forKey:USER_DEFAULTS_AUTH_TOKEN];
+                    [self.defaults setValue:phone forKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+                    [self.defaults setValue:[NSString stringWithFormat:@"%@",[responseDictionary valueForKey:API_BODY_DEVICE_ID]] forKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+                    [self.defaults synchronize];
+                }
+                
+                NSString *holdId = [NSString stringWithFormat:@"%@",[responseDictionary valueForKey:API_RESPONSE_ID]];
+                self.holdId = holdId;
+                
+                NSString *purchaseCode = [NSString stringWithFormat:@"%@",[responseDictionary valueForKey:API_RESPONSE_PURCHASE_CODE]];
+                self.purchaseCode = purchaseCode;
+                
+                [self captureHold:purchaseCode holdId:holdId];
             }
-            
-            NSString *holdId = [NSString stringWithFormat:@"%@",[responseDictionary valueForKey:API_RESPONSE_ID]];
-            self.holdId = holdId;
-
-            NSString *purchaseCode = [NSString stringWithFormat:@"%@",[responseDictionary valueForKey:API_RESPONSE_PURCHASE_CODE]];
-            self.purchaseCode = purchaseCode;
-            
-            [self captureHold:purchaseCode holdId:holdId];
-        }
-        else if (error.code == 403 ) {
-            //[[WOCAlertController sharedInstance] alertshowWithError:error viewController:self.navigationController.visibleViewController];
-            [self getHold];
-        }
-        else if (error.code == 500 ) {
-            [self pushToBuyingSummary];
-        }
-    }];
+            else if (error.code == 403 ) {
+                //[[WOCAlertController sharedInstance] alertshowWithError:error viewController:self.navigationController.visibleViewController];
+                [self getHold];
+            }
+            else if (error.code == 500 ) {
+                [self pushToBuyingSummary];
+            }
+        }];
+    });
 }
 
 - (void)getHold {
