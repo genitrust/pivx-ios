@@ -24,7 +24,7 @@
 #define BASE_URL_DEVELOPMENT @"https://wallofcoins.com"
 #define BASE_URL_PRODUCTION @"https://wallofcoins.com"
 
-#define API_DATE_FORMAT @"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+#define API_DATE_FORMAT @"yyyy-MM-dd'T'HH:mm:ss.SSSZZZZ"
 #define LOCAL_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
 
 #pragma mark - USER DEFAULT KEYS

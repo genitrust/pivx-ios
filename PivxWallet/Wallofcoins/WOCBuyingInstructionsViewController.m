@@ -244,17 +244,17 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = API_DATE_FORMAT;
-    formatter.timeZone = [NSTimeZone localTimeZone];
+    //formatter.timeZone = [NSTimeZone localTimeZone];
     NSDate *local = [formatter dateFromString:depositDue];
     NSLog(@"local: %@",local);
     
     formatter.dateFormat = LOCAL_DATE_FORMAT;
-    formatter.timeZone = [NSTimeZone localTimeZone];
+    //formatter.timeZone = [NSTimeZone localTimeZone];
     NSString *localTime = [formatter stringFromDate:local];
     NSLog(@"localTime: %@",localTime);
     self.dueTime = localTime;
     
-    formatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+    //formatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     NSString *currentTime = [formatter stringFromDate:[NSDate date]];
     NSLog(@"currentTime UTC : %@",currentTime);
     
@@ -295,7 +295,7 @@
     if (self.minutes > 0) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = LOCAL_DATE_FORMAT;
-        formatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
+        //formatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
         NSString *currentTime = [formatter stringFromDate:[NSDate date]];
         NSMutableAttributedString *timeString = [self dateDiffrenceBetweenTwoDates:currentTime endDate:self.dueTime];
         NSMutableAttributedString *dueString = [[NSMutableAttributedString alloc] initWithString:@"Deposit Due: "];
