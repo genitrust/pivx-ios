@@ -234,7 +234,7 @@
     self.lblAccountNo.text = [NSString stringWithFormat:@"Account #: %@",accountNo];
     self.lblCashDeposit.text = [NSString stringWithFormat:@"Cash to Deposit: $%.02f",depositAmount];
     
-    NSNumber *num = [NSNumber numberWithDouble:([totalDash doubleValue] * 1000000)];
+    NSNumber *num = [NSNumber numberWithDouble:([totalDash doubleValue] * 1000)];
     NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
     [numFormatter setUsesGroupingSeparator:YES];
     [numFormatter setGroupingSeparator:@","];

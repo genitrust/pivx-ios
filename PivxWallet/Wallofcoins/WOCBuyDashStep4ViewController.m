@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     [self setShadow:self.btnGetOffers];
-    self.txtDash.text = [NSString stringWithFormat:@"to acquire %@ (%@) (1,000,000 %@ = 1 %@)",WOC_CURRENTCY,WOC_CURRENTCY_SYMBOL,WOC_CURRENTCY_MINOR_SPECIAL,WOC_CURRENTCY_SPECIAL];
+    self.txtDash.text = [NSString stringWithFormat:@"to acquire %@ (%@) (1,000 %@ = 1 %@)",WOC_CURRENTCY,WOC_CURRENTCY_SYMBOL,WOC_CURRENTCY_MINOR_SPECIAL,WOC_CURRENTCY_SPECIAL];
     self.txtDash.delegate = self;
     self.txtDollar.delegate = self;
     [self.txtDash setUserInteractionEnabled:NO];
@@ -49,11 +49,11 @@
             
             if ([dollarString intValue] <100000) {
                 if ((self.zipCode != nil && [self.zipCode length] > 0) || (self.bankId != nil && [self.bankId length] > 0)) {
-                    if ([self.zipCode length] > 0) {
-                        [self sendUserData:dollarString zipCode:self.zipCode bankId:@""];
-                    }
-                    else if ([self.bankId length] > 0) {
+                    if ([self.bankId length] > 0) {
                         [self sendUserData:dollarString zipCode:@"" bankId:self.bankId];
+                    }
+                    else if ([self.zipCode length] > 0) {
+                        [self sendUserData:dollarString zipCode:self.zipCode bankId:@""];
                     }
                 }
                 else {
@@ -117,16 +117,19 @@
         [dict setObject:bankId forKey:API_BODY_BANK];
         params = (NSDictionary*)dict;
     }
-   
-    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:params];
-    NSString *countryCodeFromLatLong = [self.defaults objectForKey:API_BODY_COUNTRY_CODE];
     
-    if (countryCodeFromLatLong == nil) {
-        NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
-        [dict setObject:countryCode.lowercaseString forKey:API_BODY_COUNTRY];
-    }
-    else {
-        [dict setObject:countryCodeFromLatLong.lowercaseString forKey:API_BODY_COUNTRY];
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:params];
+    
+    if (bankId == nil || bankId.length == 0) {
+        NSString *countryCodeFromLatLong = [self.defaults objectForKey:API_BODY_COUNTRY_CODE];
+        
+        if (countryCodeFromLatLong == nil) {
+            NSString *countryCode = [[NSLocale currentLocale] objectForKey: NSLocaleCountryCode];
+            [dict setObject:countryCode.lowercaseString forKey:API_BODY_COUNTRY];
+        }
+        else {
+            [dict setObject:countryCodeFromLatLong.lowercaseString forKey:API_BODY_COUNTRY];
+        }
     }
     
     //[dict setObject:@"us" forKey:API_BODY_COUNTRY];

@@ -16,7 +16,7 @@
 #endif
 #define Str(str) (str != [NSNull null])?str:@""
 
-#define WALLOFCOINS_PUBLISHER_ID "52"
+#define WALLOFCOINS_PUBLISHER_ID "46"
 
 //#define IS_PRODUCTION TRUE // IF MAINNET SET DASH_TESTNET = 0
 #define IS_PRODUCTION FALSE  //  IF TESTNET SET DASH_TESTNET = 1
@@ -87,14 +87,14 @@
 #pragma mark - OTHER
 #define STORYBOARD_DASH @"buyDash"
 
-#define WOC_CURRENTCY @"PIVX"
-#define WOC_CURRENTCY_SPECIAL @"ⱣIVX"
-#define WOC_CURRENTCY_MINOR_SPECIAL @"μⱣiv"
+#define WOC_CURRENTCY @"PIV"
+#define WOC_CURRENTCY_SPECIAL @"ⱣIV"
+#define WOC_CURRENTCY_MINOR_SPECIAL @"mⱣiv"
 #define WOC_CURRENTCY_SYMBOL @"Ᵽ"
-#define WOC_CURRENTCY_SYMBOL_MINOR @"μ"
-#define CRYPTO_CURRENTCY_SMALL @"uPiv" // @"dots"
+#define WOC_CURRENTCY_SYMBOL_MINOR @"mⱣiv"
 
-#define CRYPTO_CURRENTCY WOC_CURRENTCY
+#define CRYPTO_CURRENTCY_SMALL @"uPiv" // @"dots"
+#define CRYPTO_CURRENTCY @"PIVX"
 //#define CRYPTO_CURRENTCY @"DASH"
 
 #define ALERT_TITLE [NSString stringWithFormat:@"%@ Wallet",WOC_CURRENTCY]

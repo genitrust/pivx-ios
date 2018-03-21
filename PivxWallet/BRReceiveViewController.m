@@ -520,13 +520,15 @@ presentingController:(UIViewController *)presenting sourceController:(UIViewCont
     [sender setEnabled:NO];
     
     [self dismissViewControllerAnimated:NO completion:^{
-        NSString *token = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_AUTH_TOKEN];
-        if (token != nil && [token isEqualToString:@"(null)"] == FALSE) {
-            [self getOrders];
-        }
-        else {
-            [self pushToStep1];
-        }
+        [self pushToStep1];
+        
+//        NSString *token = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_AUTH_TOKEN];
+//        if (token != nil && [token isEqualToString:@"(null)"] == FALSE) {
+//            [self getOrders];
+//        }
+//        else {
+//            [self pushToStep1];
+//        }
         [sender setEnabled:YES];
     }];
 }

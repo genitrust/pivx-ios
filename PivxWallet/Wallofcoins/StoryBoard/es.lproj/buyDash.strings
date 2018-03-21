@@ -5,17 +5,17 @@
 /* Class = "UITextView"; text = "Wall of Coins will verify your payment. This usually takes up to 10 minutes. To expedite your order, take a picture of your receipt and click here to email your receipt to Wall of Coins."; ObjectID = "1GD-KR-ElS"; */
 "1GD-KR-ElS.text" = "Wall of Coins will verify your payment. This usually takes up to 10 minutes. To expedite your order, take a picture of your receipt and click here to email your receipt to Wall of Coins.";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "1j1-Sk-Tc5"; */
-"1j1-Sk-Tc5.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "1j1-Sk-Tc5"; */
+"1j1-Sk-Tc5.normalTitle" = "Buy PIV";
 
 /* Class = "UILabel"; text = "Pick-up State: FL"; ObjectID = "1zG-E7-N1S"; */
 "1zG-E7-N1S.text" = "Pick-up State: FL";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "2Au-RN-gTl"; */
-"2Au-RN-gTl.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "2Au-RN-gTl"; */
+"2Au-RN-gTl.normalTitle" = "Buy PIV";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "4v7-85-jhe"; */
-"4v7-85-jhe.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "4v7-85-jhe"; */
+"4v7-85-jhe.normalTitle" = "Buy PIV";
 
 /* Class = "UILabel"; text = "Last Name: Alberto"; ObjectID = "6rg-MG-qMF"; */
 "6rg-MG-qMF.text" = "Last Name: Alberto";
@@ -32,8 +32,8 @@
 /* Class = "UIButton"; normalTitle = "CONFIRM PURCHASE CODE"; ObjectID = "9Mt-YR-Bwm"; */
 "9Mt-YR-Bwm.normalTitle" = "CONFIRM PURCHASE CODE";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "AFV-mT-M3h"; */
-"AFV-mT-M3h.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "AFV-mT-M3h"; */
+"AFV-mT-M3h.normalTitle" = "Buy PIV";
 
 /* Class = "UILabel"; text = "Deposit Due: "; ObjectID = "AP4-v9-CAe"; */
 "AP4-v9-CAe.text" = "Deposit Due: ";
@@ -44,8 +44,8 @@
 /* Class = "UILabel"; text = "Location's phone #: 3342702340"; ObjectID = "E3J-Db-1OW"; */
 "E3J-Db-1OW.text" = "Location's phone #: 3342702340";
 
-/* Class = "UILabel"; text = "You must deposit cash at the above Payment Center. Additional fees may apply. Paying in another method other than cash may delay your order.\n\nDo not throw away or misplace your receipt. A receipt is required before you will receive PIVX!\nFor your convenience, we are texting you these payment instructions.\nWhen you are finished making the payment, you must press Deposit Finished to receive your PIVX."; ObjectID = "EJp-yv-Az2"; */
-"EJp-yv-Az2.text" = "You must deposit cash at the above Payment Center. Additional fees may apply. Paying in another method other than cash may delay your order.\n\nDo not throw away or misplace your receipt. A receipt is required before you will receive PIVX!\nFor your convenience, we are texting you these payment instructions.\nWhen you are finished making the payment, you must press Deposit Finished to receive your PIVX.";
+/* Class = "UILabel"; text = "You must deposit cash at the above Payment Center. Additional fees may apply. Paying in another method other than cash may delay your order.\n\nDo not throw away or misplace your receipt. A receipt is required before you will receive PIV!\nFor your convenience, we are texting you these payment instructions.\nWhen you are finished making the payment, you must press Deposit Finished to receive your PIV."; ObjectID = "EJp-yv-Az2"; */
+"EJp-yv-Az2.text" = "You must deposit cash at the above Payment Center. Additional fees may apply. Paying in another method other than cash may delay your order.\n\nDo not throw away or misplace your receipt. A receipt is required before you will receive PIV!\nFor your convenience, we are texting you these payment instructions.\nWhen you are finished making the payment, you must press Deposit Finished to receive your PIV.";
 
 /* Class = "UILabel"; text = "First Name: Paul"; ObjectID = "ETa-8C-ZDv"; */
 "ETa-8C-ZDv.text" = "First Name: Paul";
@@ -74,8 +74,8 @@
 /* Class = "UIButton"; normalTitle = "FORGOT PASSWORD"; ObjectID = "Je6-fi-O7S"; */
 "Je6-fi-O7S.normalTitle" = "FORGOT PASSWORD";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "K6n-eW-fgy"; */
-"K6n-eW-fgy.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "K6n-eW-fgy"; */
+"K6n-eW-fgy.normalTitle" = "Buy PIV";
 
 /* Class = "UILabel"; text = "Your wallet is signed into Wall of Coins using your mobile number #phoneNumber"; ObjectID = "KVz-eg-Dss"; */
 "KVz-eg-Dss.text" = "Your wallet is signed into Wall of Coins using your mobile number #phoneNumber";
@@ -86,8 +86,8 @@
 /* Class = "UITextField"; placeholder = "Select Payment Center"; ObjectID = "LAR-DE-N53"; */
 "LAR-DE-N53.placeholder" = "Select Payment Center";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX With Cash"; ObjectID = "LM2-Cb-096"; */
-"LM2-Cb-096.normalTitle" = "Buy PIVX With Cash";
+/* Class = "UIButton"; normalTitle = "Buy PIV With Cash"; ObjectID = "LM2-Cb-096"; */
+"LM2-Cb-096.normalTitle" = "Buy PIV With Cash";
 
 /* Class = "UILabel"; text = "Below are offers for $5.03. You must click the ORDER button before you receive instructions to pay at the Cash Payment center."; ObjectID = "Lyl-eJ-WEn"; */
 "Lyl-eJ-WEn.text" = "Below are offers for $5.03. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.";
@@ -161,8 +161,8 @@
 /* Class = "UIButton"; normalTitle = "WALLOFCOINS.COM"; ObjectID = "YGj-Gd-0Mc"; */
 "YGj-Gd-0Mc.normalTitle" = "WALLOFCOINS.COM";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "ZHx-Hd-uZh"; */
-"ZHx-Hd-uZh.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "ZHx-Hd-uZh"; */
+"ZHx-Hd-uZh.normalTitle" = "Buy PIV";
 
 /* Class = "UILabel"; text = "Account #: "; ObjectID = "ZKf-Ho-Ioz"; */
 "ZKf-Ho-Ioz.text" = "Account #: ";
@@ -176,8 +176,8 @@
 /* Class = "UILabel"; text = "Wall of Coins will verify your payment. This usually takes up to 10 minutes. To expedite your order, take a picture of your receipt and click here to email your receipt to Wall of Coins."; ObjectID = "asE-Y9-ygt"; */
 "asE-Y9-ygt.text" = "Wall of Coins will verify your payment. This usually takes up to 10 minutes. To expedite your order, take a picture of your receipt and click here to email your receipt to Wall of Coins.";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "cEz-yb-2bl"; */
-"cEz-yb-2bl.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "cEz-yb-2bl"; */
+"cEz-yb-2bl.normalTitle" = "Buy PIV";
 
 /* Class = "UILabel"; text = "You are ordering: "; ObjectID = "cuE-2C-XZU"; */
 "cuE-2C-XZU.text" = "You are ordering: ";
@@ -203,8 +203,8 @@
 /* Class = "UILabel"; text = "Your wallet is signed into Wall of Coins using your mobile number +12397777777"; ObjectID = "feb-xX-zZP"; */
 "feb-xX-zZP.text" = "Your wallet is signed into Wall of Coins using your mobile number +12397777777";
 
-/* Class = "UILabel"; text = "Total PIVX: 0.00434814 (434.81 dots)"; ObjectID = "fxg-77-GKN"; */
-"fxg-77-GKN.text" = "Total PIVX: 0.00434814 (434.81 dots)";
+/* Class = "UILabel"; text = "Total PIV: 0.00434814 (434.81 dots)"; ObjectID = "fxg-77-GKN"; */
+"fxg-77-GKN.text" = "Total PIV: 0.00434814 (434.81 dots)";
 
 /* Class = "UILabel"; text = "Call (866) 841-2646 for help. \nHelp is also available on the website."; ObjectID = "g5y-JV-UgM"; */
 "g5y-JV-UgM.text" = "Call (866) 841-2646 for help. \nHelp is also available on the website.";
@@ -212,8 +212,8 @@
 /* Class = "UILabel"; text = "You already have an open hold or a pending order with Wall of Coins. Before you can create a new order, you must finish these orders."; ObjectID = "gkb-ze-Xhk"; */
 "gkb-ze-Xhk.text" = "You already have an open hold or a pending order with Wall of Coins. Before you can create a new order, you must finish these orders.";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "hN0-fy-MAX"; */
-"hN0-fy-MAX.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "hN0-fy-MAX"; */
+"hN0-fy-MAX.normalTitle" = "Buy PIV";
 
 /* Class = "UILabel"; text = "Status: Waiting Deposit Verification"; ObjectID = "hp4-EJ-INd"; */
 "hp4-EJ-INd.text" = "Status: Waiting Deposit Verification";
@@ -224,29 +224,29 @@
 /* Class = "UILabel"; text = "Your wallet is signed into Wall of Coins using your mobile number"; ObjectID = "imh-jL-JKc"; */
 "imh-jL-JKc.text" = "Your wallet is signed into Wall of Coins using your mobile number";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX With Cash"; ObjectID = "jhB-SU-om6"; */
-"jhB-SU-om6.normalTitle" = "Buy PIVX With Cash";
+/* Class = "UIButton"; normalTitle = "Buy PIV With Cash"; ObjectID = "jhB-SU-om6"; */
+"jhB-SU-om6.normalTitle" = "Buy PIV With Cash";
 
 /* Class = "UIButton"; normalTitle = "Show on Map Nearby"; ObjectID = "krM-lP-mGi"; */
 "krM-lP-mGi.normalTitle" = "Show on Map Nearby";
 
-/* Class = "UIButton"; normalTitle = "BUY MORE PIVX!"; ObjectID = "kyi-2f-nQu"; */
-"kyi-2f-nQu.normalTitle" = "BUY MORE PIVX!";
+/* Class = "UIButton"; normalTitle = "BUY MORE PIV!"; ObjectID = "kyi-2f-nQu"; */
+"kyi-2f-nQu.normalTitle" = "BUY MORE PIV!";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "lCh-kF-hYi"; */
-"lCh-kF-hYi.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "lCh-kF-hYi"; */
+"lCh-kF-hYi.normalTitle" = "Buy PIV";
 
 /* Class = "UILabel"; text = "Subject to local availability"; ObjectID = "mJ7-qW-1nh"; */
 "mJ7-qW-1nh.text" = "Subject to local availability";
 
-/* Class = "UILabel"; text = "Total PIVX: 0.00434814 (434.81 dots)"; ObjectID = "mTS-8Q-zff"; */
-"mTS-8Q-zff.text" = "Total PIVX: 0.00434814 (434.81 dots)";
+/* Class = "UILabel"; text = "Total PIV: 0.00434814 (434.81 dots)"; ObjectID = "mTS-8Q-zff"; */
+"mTS-8Q-zff.text" = "Total PIV: 0.00434814 (434.81 dots)";
 
 /* Class = "UILabel"; text = "United States (+1)"; ObjectID = "mdT-G1-Fih"; */
 "mdT-G1-Fih.text" = "United States (+1)";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "nT1-NJ-dzz"; */
-"nT1-NJ-dzz.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "nT1-NJ-dzz"; */
+"nT1-NJ-dzz.normalTitle" = "Buy PIV";
 
 /* Class = "UIButton"; normalTitle = "WALLOFCOINS SIGN IN"; ObjectID = "nal-nr-xnY"; */
 "nal-nr-xnY.normalTitle" = "WALLOFCOINS SIGN IN";

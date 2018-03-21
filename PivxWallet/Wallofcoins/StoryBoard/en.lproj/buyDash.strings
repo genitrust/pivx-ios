@@ -8,8 +8,8 @@
 /* Class = "UILabel"; text = "Pick-up State: FL"; ObjectID = "1zG-E7-N1S"; */
 "1zG-E7-N1S.text" = "Pick-up State: FL";
 
-/* Class = "UIButton"; normalTitle = "Buy PIVX"; ObjectID = "4v7-85-jhe"; */
-"4v7-85-jhe.normalTitle" = "Buy PIVX";
+/* Class = "UIButton"; normalTitle = "Buy PIV"; ObjectID = "4v7-85-jhe"; */
+"4v7-85-jhe.normalTitle" = "Buy PIV";
 
 /* Class = "UILabel"; text = "Last Name: Alberto"; ObjectID = "6rg-MG-qMF"; */
 "6rg-MG-qMF.text" = "Last Name: Alberto";
@@ -35,8 +35,8 @@
 /* Class = "UILabel"; text = "Location's phone #: 3342702340"; ObjectID = "E3J-Db-1OW"; */
 "E3J-Db-1OW.text" = "Location's phone #: 3342702340";
 
-/* Class = "UILabel"; text = "You must deposit cash at the above Payment Center. Additional fees may apply. Paying in another method other than cash may delay your order.\n\nDo not throw away or misplace your receipt. A receipt is required before you will receive PIVX!\nFor your convenience, we are texting you these payment instructions.\nWhen you are finished making the payment, you must press Deposit Finished to receive your PIVX."; ObjectID = "EJp-yv-Az2"; */
-"EJp-yv-Az2.text" = "You must deposit cash at the above Payment Center. Additional fees may apply. Paying in another method other than cash may delay your order.\n\nDo not throw away or misplace your receipt. A receipt is required before you will receive PIVX!\nFor your convenience, we are texting you these payment instructions.\nWhen you are finished making the payment, you must press Deposit Finished to receive your PIVX.";
+/* Class = "UILabel"; text = "You must deposit cash at the above Payment Center. Additional fees may apply. Paying in another method other than cash may delay your order.\n\nDo not throw away or misplace your receipt. A receipt is required before you will receive PIV!\nFor your convenience, we are texting you these payment instructions.\nWhen you are finished making the payment, you must press Deposit Finished to receive your PIV."; ObjectID = "EJp-yv-Az2"; */
+"EJp-yv-Az2.text" = "You must deposit cash at the above Payment Center. Additional fees may apply. Paying in another method other than cash may delay your order.\n\nDo not throw away or misplace your receipt. A receipt is required before you will receive PIV!\nFor your convenience, we are texting you these payment instructions.\nWhen you are finished making the payment, you must press Deposit Finished to receive your PIV.";
 
 /* Class = "UILabel"; text = "First Name: Paul"; ObjectID = "ETa-8C-ZDv"; */
 "ETa-8C-ZDv.text" = "First Name: Paul";
@@ -182,8 +182,8 @@
 /* Class = "UILabel"; text = "Your wallet is signed into Wall of Coins using your mobile number +12397777777"; ObjectID = "feb-xX-zZP"; */
 "feb-xX-zZP.text" = "Your wallet is signed into Wall of Coins using your mobile number +12397777777";
 
-/* Class = "UILabel"; text = "Total PIVX: 0.00434814 (434.81 dots)"; ObjectID = "fxg-77-GKN"; */
-"fxg-77-GKN.text" = "Total PIVX: 0.00434814 (434.81 dots)";
+/* Class = "UILabel"; text = "Total PIV: 0.00434814 (434.81 dots)"; ObjectID = "fxg-77-GKN"; */
+"fxg-77-GKN.text" = "Total PIV: 0.00434814 (434.81 dots)";
 
 /* Class = "UILabel"; text = "Call (866) 841-2646 for help. \nHelp is also available on the website."; ObjectID = "g5y-JV-UgM"; */
 "g5y-JV-UgM.text" = "Call (866) 841-2646 for help. \nHelp is also available on the website.";
@@ -203,14 +203,14 @@
 /* Class = "UIButton"; normalTitle = "Show on Map Nearby"; ObjectID = "krM-lP-mGi"; */
 "krM-lP-mGi.normalTitle" = "Show on Map Nearby";
 
-/* Class = "UIButton"; normalTitle = "BUY MORE PIVX!"; ObjectID = "kyi-2f-nQu"; */
-"kyi-2f-nQu.normalTitle" = "BUY MORE PIVX!";
+/* Class = "UIButton"; normalTitle = "BUY MORE PIV!"; ObjectID = "kyi-2f-nQu"; */
+"kyi-2f-nQu.normalTitle" = "BUY MORE PIV!";
 
 /* Class = "UILabel"; text = "Subject to local availability"; ObjectID = "mJ7-qW-1nh"; */
 "mJ7-qW-1nh.text" = "Subject to local availability";
 
-/* Class = "UILabel"; text = "Total PIVX: 0.00434814 (434.81 dots)"; ObjectID = "mTS-8Q-zff"; */
-"mTS-8Q-zff.text" = "Total PIVX: 0.00434814 (434.81 dots)";
+/* Class = "UILabel"; text = "Total PIV: 0.00434814 (434.81 dots)"; ObjectID = "mTS-8Q-zff"; */
+"mTS-8Q-zff.text" = "Total PIV: 0.00434814 (434.81 dots)";
 
 /* Class = "UILabel"; text = "United States (+1)"; ObjectID = "mdT-G1-Fih"; */
 "mdT-G1-Fih.text" = "United States (+1)";
