@@ -230,31 +230,37 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error == nil) {
                 
-                NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
-                if (orders.count > 0) {
-                    
-                    NSString *phoneNo = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-                    NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
-                    NSArray *wdArray = [orders filteredArrayUsingPredicate:wdvPredicate];
-                   
-                    if (wdArray.count > 0) {
-                        NSDictionary *orderDict = (NSDictionary*)[wdArray objectAtIndex:0];
-                        NSString *status = [NSString stringWithFormat:@"%@",[orderDict valueForKey:@"status"]];
-                        if ([status isEqualToString:@"WD"]) {
-                            WOCBuyingInstructionsViewController *myViewController = [self getViewController:@"WOCBuyingInstructionsViewController"];
+                if ([responseDict isKindOfClass:[NSArray class]])
+                {
+                    NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
+                    if (orders.count > 0) {
+                        
+                        NSString *phoneNo = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+                        NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
+                        NSArray *wdArray = [orders filteredArrayUsingPredicate:wdvPredicate];
+                        
+                        if (wdArray.count > 0) {
+                            NSDictionary *orderDict = (NSDictionary*)[wdArray objectAtIndex:0];
+                            NSString *status = [NSString stringWithFormat:@"%@",[orderDict valueForKey:@"status"]];
+                            if ([status isEqualToString:@"WD"]) {
+                                WOCBuyingInstructionsViewController *myViewController = [self getViewController:@"WOCBuyingInstructionsViewController"];
+                                myViewController.phoneNo = phoneNo;
+                                myViewController.isFromSend = YES;
+                                myViewController.isFromOffer = NO;
+                                myViewController.orderDict = orderDict;
+                                [self pushViewController:myViewController animated:YES];
+                            }
+                        }
+                        else {
+                            WOCBuyingSummaryViewController *myViewController = [self getViewController:@"WOCBuyingSummaryViewController"];
                             myViewController.phoneNo = phoneNo;
+                            myViewController.orders = orders;
                             myViewController.isFromSend = YES;
-                            myViewController.isFromOffer = NO;
-                            myViewController.orderDict = orderDict;
                             [self pushViewController:myViewController animated:YES];
                         }
                     }
                     else {
-                        WOCBuyingSummaryViewController *myViewController = [self getViewController:@"WOCBuyingSummaryViewController"];
-                        myViewController.phoneNo = phoneNo;
-                        myViewController.orders = orders;
-                        myViewController.isFromSend = YES;
-                        [self pushViewController:myViewController animated:YES];
+                        [self backToMainView];
                     }
                 }
                 else {

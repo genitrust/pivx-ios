@@ -111,27 +111,29 @@
 
         if (error == nil) {
             
-            NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
-            if (orders.count > 0) {
-                
-                NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
-                NSArray *wdArray = [orders filteredArrayUsingPredicate:wdvPredicate];
-                
-                if (wdArray.count > 0) {
-                    NSDictionary *orderDict = (NSDictionary*)[wdArray objectAtIndex:0];
-                    NSString *status = [NSString stringWithFormat:@"%@",[orderDict valueForKey:@"status"]];
-                    if ([status isEqualToString:@"WD"]) {
-                        WOCBuyingInstructionsViewController *myViewController = [self getViewController:@"WOCBuyingInstructionsViewController"];
-                        myViewController.phoneNo = phoneNo;
-                        myViewController.isFromSend = YES;
-                        myViewController.isFromOffer = NO;
-                        myViewController.orderDict = orderDict;
-                        [self pushViewController:myViewController animated:YES];
-                        return ;
+            if ([responseDict isKindOfClass:[NSArray class]])
+            {
+                NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
+                if (orders.count > 0) {
+                    
+                    NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
+                    NSArray *wdArray = [orders filteredArrayUsingPredicate:wdvPredicate];
+                    
+                    if (wdArray.count > 0) {
+                        NSDictionary *orderDict = (NSDictionary*)[wdArray objectAtIndex:0];
+                        NSString *status = [NSString stringWithFormat:@"%@",[orderDict valueForKey:@"status"]];
+                        if ([status isEqualToString:@"WD"]) {
+                            WOCBuyingInstructionsViewController *myViewController = [self getViewController:@"WOCBuyingInstructionsViewController"];
+                            myViewController.phoneNo = phoneNo;
+                            myViewController.isFromSend = YES;
+                            myViewController.isFromOffer = NO;
+                            myViewController.orderDict = orderDict;
+                            [self pushViewController:myViewController animated:YES];
+                            return ;
+                        }
                     }
                 }
             }
-            
             WOCBuyingInstructionsViewController *myViewController = [self getViewController:@"WOCBuyingInstructionsViewController"];
             myViewController.phoneNo = phoneNo;
             myViewController.isFromSend = NO;
@@ -196,8 +198,11 @@
         [cell.lblDollar setHidden:true];
     }
     
+    NSNumber *minorNumber = [NSNumber numberWithLongLong:[NSString stringWithFormat:@"%@",[offerDict[@"amount"][@"uPiv"] stringByReplacingOccurrencesOfString:@"," withString:@""]].longLongValue];
+    NSLog(@"%@",minorNumber);
+    NSLog(@"%.2f",minorNumber.longLongValue/1000.0);
     NSString *dashAmount = [NSString stringWithFormat:@"%@ %@",WOC_CURRENTCY_SYMBOL,setVal([[offerDict valueForKey:@"amount"] valueForKey:CRYPTO_CURRENTCY])];
-    NSString *bits = [NSString stringWithFormat:@"(%@ %@)",WOC_CURRENTCY_SYMBOL_MINOR,setVal([[offerDict valueForKey:@"amount"] valueForKey:CRYPTO_CURRENTCY_SMALL])];
+    NSString *bits = [NSString stringWithFormat:@"(%@ %.2f)",WOC_CURRENTCY_SYMBOL_MINOR,minorNumber.longLongValue/1000.0];
     NSString *dollarAmount = [NSString stringWithFormat:@"Pay $%@",setVal([[offerDict valueForKey:@"deposit"] valueForKey:@"amount"])];
     NSString *bankName = [NSString stringWithFormat:@"%@",setVal([offerDict valueForKey:@"bankName"])];
     NSString *bankAddress = [NSString stringWithFormat:@"%@",setVal([offerDict valueForKey:@"address"])];

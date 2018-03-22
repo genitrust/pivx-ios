@@ -430,39 +430,44 @@
         if (error == nil) {
             NSLog(@"Hold with Hold Id: %@.",responseDict);
             
-            NSArray *holdArray = (NSArray*)responseDict;
-            if (holdArray.count > 0) {
-                NSUInteger count = holdArray.count;
-                NSUInteger activeHodCount = 0;
-
-                for (int i = 0; i < holdArray.count; i++) {
-                    count -= count;
+            if ([responseDict isKindOfClass:[NSArray class]]) {
+                NSArray *holdArray = (NSArray*)responseDict;
+                if (holdArray.count > 0) {
+                    NSUInteger count = holdArray.count;
+                    NSUInteger activeHodCount = 0;
                     
-                    NSDictionary *holdDict = [holdArray objectAtIndex:i];
-                    NSString *holdId = [holdDict valueForKey:API_RESPONSE_ID];
-                    NSString *holdStatus = [holdDict valueForKey:API_RESPONSE_Holds_Status];
-                    if (holdStatus != nil) {
-                        if ([holdStatus isEqualToString:@"AC"]) {
+                    for (int i = 0; i < holdArray.count; i++) {
+                        count -= count;
+                        
+                        NSDictionary *holdDict = [holdArray objectAtIndex:i];
+                        NSString *holdId = [holdDict valueForKey:API_RESPONSE_ID];
+                        NSString *holdStatus = [holdDict valueForKey:API_RESPONSE_Holds_Status];
+                        if (holdStatus != nil) {
+                            if ([holdStatus isEqualToString:@"AC"]) {
+                                if (holdId) {
+                                    activeHodCount = activeHodCount + 1;
+                                    [self deleteHold:holdId count:count];
+                                }
+                            }
+                        }
+                        else {
                             if (holdId) {
                                 activeHodCount = activeHodCount + 1;
                                 [self deleteHold:holdId count:count];
                             }
                         }
                     }
-                    else {
-                        if (holdId) {
-                            activeHodCount = activeHodCount + 1;
-                            [self deleteHold:holdId count:count];
-                        }
+                    
+                    if (activeHodCount == 0 ) {
+                        [self getOrderList];
                     }
                 }
-                
-                if (activeHodCount == 0 ) {
+                else {
                     [self getOrderList];
                 }
             }
             else {
-               [self getOrderList];
+                [self getOrderList];
             }
         }
         else {
@@ -512,10 +517,13 @@
         });
         
         if (error == nil) {
-            NSArray *response = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
-            if (response.count > 0) {
-                if ([[response objectAtIndex:0] isKindOfClass:[NSDictionary class]]) {
-                    [self updateData:[response objectAtIndex:0]];
+            if ([responseDict isKindOfClass:[NSArray class]])
+            {
+                NSArray *response = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
+                if (response.count > 0) {
+                    if ([[response objectAtIndex:0] isKindOfClass:[NSDictionary class]]) {
+                        [self updateData:[response objectAtIndex:0]];
+                    }
                 }
             }
         }

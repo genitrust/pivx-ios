@@ -91,18 +91,21 @@
         
         if (error == nil) {
             NSDictionary *responseDictionary = [[NSDictionary alloc] initWithDictionary:(NSDictionary*)responseDict];
-            NSArray *availableAuthSource = (NSArray*)[responseDictionary valueForKey:@"availableAuthSources"];
-            if (availableAuthSource.count > 0) {
-                if ([[availableAuthSource objectAtIndex:0] isEqualToString:@"password"]) {
-                    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
-                    WOCPasswordViewController *myViewController = [storyboard instantiateViewControllerWithIdentifier:@"WOCPasswordViewController"];
-                    myViewController.phoneNo = phoneNo;
-                    myViewController.modalTransitionStyle = UIModalPresentationOverCurrentContext;
-                    [self.navigationController presentViewController:myViewController animated:YES completion:nil];
-                }
-                else if ([[availableAuthSource objectAtIndex:0] isEqualToString:@"device"]) {
-                    //[self login:phoneNo];
-                    [self createHoldAfterAuthorize:phoneNo];
+            
+            if ([[responseDictionary valueForKey:@"availableAuthSources"] isKindOfClass:[NSArray class]]) {
+                NSArray *availableAuthSource = (NSArray*)[responseDictionary valueForKey:@"availableAuthSources"];
+                if (availableAuthSource.count > 0) {
+                    if ([[availableAuthSource objectAtIndex:0] isEqualToString:@"password"]) {
+                        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
+                        WOCPasswordViewController *myViewController = [storyboard instantiateViewControllerWithIdentifier:@"WOCPasswordViewController"];
+                        myViewController.phoneNo = phoneNo;
+                        myViewController.modalTransitionStyle = UIModalPresentationOverCurrentContext;
+                        [self.navigationController presentViewController:myViewController animated:YES completion:nil];
+                    }
+                    else if ([[availableAuthSource objectAtIndex:0] isEqualToString:@"device"]) {
+                        //[self login:phoneNo];
+                        [self createHoldAfterAuthorize:phoneNo];
+                    }
                 }
             }
         }
@@ -367,55 +370,59 @@
     [[APIManager sharedInstance] getHold:^(id responseDict, NSError *error) {
         if (error == nil) {
             NSLog(@"Hold with Hold Id: %@.",responseDict);
-            
-            NSArray *holdArray = (NSArray*)responseDict;
-            if (holdArray.count > 0) {
-                NSUInteger count = holdArray.count;
-                NSUInteger activeHodCount = 0;
-                
-                for (int i = 0; i < holdArray.count; i++) {
-                    count -= count;
+            if ([responseDict isKindOfClass:[NSArray class]]) {
+                NSArray *holdArray = (NSArray*)responseDict;
+                if (holdArray.count > 0) {
+                    NSUInteger count = holdArray.count;
+                    NSUInteger activeHodCount = 0;
                     
-                    NSDictionary *holdDict = [holdArray objectAtIndex:i];
-                    NSString *holdId = [holdDict valueForKey:API_RESPONSE_ID];
-                    NSString *holdStatus = [holdDict valueForKey:API_RESPONSE_Holds_Status];
-                   
-                    if (holdStatus != nil) {
-                        if ([holdStatus isEqualToString:@"AC"]) {
+                    for (int i = 0; i < holdArray.count; i++) {
+                        count -= count;
+                        
+                        NSDictionary *holdDict = [holdArray objectAtIndex:i];
+                        NSString *holdId = [holdDict valueForKey:API_RESPONSE_ID];
+                        NSString *holdStatus = [holdDict valueForKey:API_RESPONSE_Holds_Status];
+                        
+                        if (holdStatus != nil) {
+                            if ([holdStatus isEqualToString:@"AC"]) {
+                                if (holdId) {
+                                    activeHodCount = activeHodCount + 1;
+                                    [self deleteHold:holdId count:count];
+                                }
+                            }
+                        }// Handle as per Old Response
+                        //                    else if ([holdDict valueForKey:API_RESPONSE_Holds] != nil) {
+                        //
+                        //                        if ([[holdDict valueForKey:API_RESPONSE_Holds] isKindOfClass:[NSArray class]]) {
+                        //                            NSArray *holdDetailArray = (NSArray *) [holdDict valueForKey:API_RESPONSE_Holds];
+                        //
+                        //                            if (holdDetailArray.count > 0) {
+                        //                                NSDictionary *holdSubDict = [holdDetailArray objectAtIndex:0];
+                        //                                NSString *holdStatus = [holdSubDict valueForKey:API_RESPONSE_Holds_Status];
+                        //
+                        //                                if ([holdStatus isEqualToString:@"AC"])  {
+                        //
+                        //                                    if (holdId) {
+                        //                                        [self deleteHold:holdId count:count];
+                        //                                    }
+                        //                                }
+                        //                            }
+                        //                        }
+                        //                    }
+                        else {
                             if (holdId) {
                                 activeHodCount = activeHodCount + 1;
                                 [self deleteHold:holdId count:count];
                             }
                         }
-                    }// Handle as per Old Response
-//                    else if ([holdDict valueForKey:API_RESPONSE_Holds] != nil) {
-//
-//                        if ([[holdDict valueForKey:API_RESPONSE_Holds] isKindOfClass:[NSArray class]]) {
-//                            NSArray *holdDetailArray = (NSArray *) [holdDict valueForKey:API_RESPONSE_Holds];
-//
-//                            if (holdDetailArray.count > 0) {
-//                                NSDictionary *holdSubDict = [holdDetailArray objectAtIndex:0];
-//                                NSString *holdStatus = [holdSubDict valueForKey:API_RESPONSE_Holds_Status];
-//
-//                                if ([holdStatus isEqualToString:@"AC"])  {
-//
-//                                    if (holdId) {
-//                                        [self deleteHold:holdId count:count];
-//                                    }
-//                                }
-//                            }
-//                        }
-//                    }
-                    else {
-                        if (holdId) {
-                            activeHodCount = activeHodCount + 1;
-                            [self deleteHold:holdId count:count];
-                        }
+                    }
+                    
+                    if (activeHodCount == 0 ) {
+                        [self resolvePandingOrderIssue];
                     }
                 }
-
-                if (activeHodCount == 0 ) {
-                     [self resolvePandingOrderIssue];
+                else {
+                    [self resolvePandingOrderIssue];
                 }
             }
             else {

@@ -177,19 +177,20 @@
         });
         
         if (error == nil) {
-            NSArray *response = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
-            self.orders = response;
-            
-            NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
-            NSArray *wdvArray = [self.orders filteredArrayUsingPredicate:wdvPredicate];
-            self.wdOrders = [[NSArray alloc] initWithArray:wdvArray];
-            
-            NSPredicate *otherPredicate = [NSPredicate predicateWithFormat:@"status == 'WDV' || status == 'RERR' || status == 'DERR' || status == 'RSD' || status == 'RMIT' || status == 'UCRV' || status == 'PAYP' || status == 'SENT' || status == 'ACAN'"];
-            NSArray *otherArray = [self.orders filteredArrayUsingPredicate:otherPredicate];
-            self.otherOrders = [[NSArray alloc] initWithArray:otherArray];
-            
-            NSLog(@"wdvArray count: %lu, otherArray count: %lu",(unsigned long)wdvArray.count,(unsigned long)otherArray.count);
-            
+            if ([responseDict isKindOfClass:[NSArray class]]) {
+                NSArray *response = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
+                self.orders = response;
+                
+                NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
+                NSArray *wdvArray = [self.orders filteredArrayUsingPredicate:wdvPredicate];
+                self.wdOrders = [[NSArray alloc] initWithArray:wdvArray];
+                
+                NSPredicate *otherPredicate = [NSPredicate predicateWithFormat:@"status == 'WDV' || status == 'RERR' || status == 'DERR' || status == 'RSD' || status == 'RMIT' || status == 'UCRV' || status == 'PAYP' || status == 'SENT' || status == 'ACAN'"];
+                NSArray *otherArray = [self.orders filteredArrayUsingPredicate:otherPredicate];
+                self.otherOrders = [[NSArray alloc] initWithArray:otherArray];
+                
+                NSLog(@"wdvArray count: %lu, otherArray count: %lu",(unsigned long)wdvArray.count,(unsigned long)otherArray.count);
+            }
             [self.tableView reloadData];
         }
         else {
