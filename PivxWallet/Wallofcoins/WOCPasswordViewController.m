@@ -19,8 +19,7 @@
 
 @implementation WOCPasswordViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7];
@@ -37,14 +36,12 @@
     [self.btnWOCLink setAttributedTitle:titleString forState:UIControlStateNormal];
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setShadow:(UIView *)view
-{
+- (void)setShadow:(UIView *)view {
     view.layer.shadowColor = [UIColor lightGrayColor].CGColor;
     view.layer.shadowOffset = CGSizeMake(0, 1);
     view.layer.shadowRadius = 1;
@@ -54,10 +51,8 @@
 
 // MARK: - API
 
-- (void)login:(NSString*)phoneNo password:(NSString*)password
-{
+- (void)login:(NSString*)phoneNo password:(NSString*)password {
     NSDictionary *params = @{
-                             //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
                              API_BODY_PASSWORD: password,
                              API_BODY_JSON_PARAMETER: @"YES"
                              };
@@ -71,16 +66,6 @@
             [self storeDeviceInfoLocally];
 
             [self getDeviceId:phoneNo];
-           /*
-           // Old Flow
-            dispatch_async(dispatch_get_main_queue(), ^{
-                 [self dismissViewControllerAnimated:YES completion:nil];
-                //move to step 8
-                [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_OBSERVER_NAME_BUY_DASH_STEP_8 object:phoneNo];
-            });
-            */
-            // New Flow
-            //[self registerDevice:phoneNo password:password];
         }
         else {
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -100,8 +85,7 @@
     }];
 }
 
-- (void)registerDevice:(NSString*)phoneNo
-{
+- (void)registerDevice:(NSString*)phoneNo {
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSString *deviceCode = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
@@ -131,8 +115,7 @@
     }];
 }
 
-- (void)getDeviceId:(NSString*)phoneNo
-{
+- (void)getDeviceId:(NSString*)phoneNo {
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [[APIManager sharedInstance] getDevice:^(id responseDict, NSError *error) {
@@ -168,14 +151,13 @@
     }];
 }
 
-- (void)authorize:(NSString*)phoneNo deviceId:(NSString*)deviceId
-{
+- (void)authorize:(NSString*)phoneNo deviceId:(NSString*)deviceId {
+    
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     NSString *deviceCode = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
     
     NSDictionary *params = @{
-                             //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
                              API_BODY_DEVICE_CODE: deviceCode,
                              API_BODY_DEVICE_ID: deviceId,
                              API_BODY_JSON_PARAMETER: @"YES"
@@ -204,34 +186,20 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                  [self registerDevice:phoneNo];
-//                if (error.userInfo != nil) {
-//                    if (error.userInfo[@"detail"] != nil) {
-//                        [[WOCAlertController sharedInstance] alertshowWithTitle:@"Error" message:error.userInfo[@"detail"]  viewController:self];
-//                    }
-//                    else {
-//                        [[WOCAlertController sharedInstance] alertshowWithTitle:@"Error" message:error.localizedDescription viewController:self];
-//                    }
-//                }
-//                else {
-//                    [[WOCAlertController sharedInstance] alertshowWithTitle:@"Error" message:error.localizedDescription viewController:self];
-//                }
             });
         }
     }];
 }
-
 // MARK: - IBAction
 
-- (IBAction)linkClicked:(id)sender
-{
+- (IBAction)linkClicked:(id)sender {
     NSURL *url = [NSURL URLWithString:@"https://wallofcoins.com/"];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }
 }
 
-- (IBAction)loginClicked:(id)sender
-{
+- (IBAction)loginClicked:(id)sender {
     NSString *password = [self.txtPassword.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if ([password length] > 0) {
         [self login:self.phoneNo password:password];
@@ -241,16 +209,14 @@
     }
 }
 
-- (IBAction)forgotPasswordClicked:(id)sender
-{
+- (IBAction)forgotPasswordClicked:(id)sender {
     NSURL *url = [NSURL URLWithString:@"https://wallofcoins.com/en/forgotPassword/"];
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
     }
 }
 
-- (IBAction)closeClicked:(id)sender
-{
+- (IBAction)closeClicked:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

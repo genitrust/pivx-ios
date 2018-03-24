@@ -74,7 +74,6 @@
 }
 
 // MARK: - API
-
 - (void)sendUserData:(NSString*)amount zipCode:(NSString*)zipCode bankId:(NSString*)bankId {
     
     BRWalletManager *manager = [BRWalletManager sharedInstance];
@@ -82,7 +81,6 @@
     NSLog(@"cryptoAddress = %@",cryptoAddress);
     
     NSDictionary *params = @{
-                             //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
                              API_BODY_CRYPTO_AMOUNT: @"0",
                              API_BODY_USD_AMOUNT: amount,
                              API_BODY_CRYPTO: CRYPTO_CURRENTCY,
@@ -131,7 +129,6 @@
             [dict setObject:countryCodeFromLatLong.lowercaseString forKey:API_BODY_COUNTRY];
         }
     }
-    
     //[dict setObject:@"us" forKey:API_BODY_COUNTRY];
 
     params = (NSDictionary*)dict;

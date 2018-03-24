@@ -96,28 +96,6 @@
                              }
                          }];
     }
-    
-    //    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
-    //    [geocoder geocodeAddressString:zipCode completionHandler:^(NSArray *placemarks, NSError *error) {
-    //
-    //        if(error != nil)
-    //        {
-    //            NSLog(@"error from geocoder is %@", [error localizedDescription]);
-    //        } else {
-    //            for(CLPlacemark *placemark in placemarks){
-    //                NSString *city1 = [placemark locality];
-    //                NSLog(@"city is %@",city1);
-    //                NSLog(@"======> country code is %@",[placemark ISOcountryCode]);
-    //                NSLog(@"country is %@",[placemark country]);
-    //                // you'll see a whole lotta stuff is available
-    //                // in the placemark object here...
-    //
-    //                [self.defaults setObject:[placemark ISOcountryCode].lowercaseString forKey:API_BODY_COUNTRY_CODE];
-    //                [self.defaults synchronize];
-    //                NSLog(@"%@",[placemark description]);
-    //            }
-    //        }
-    //    }];
 }
 
 @end

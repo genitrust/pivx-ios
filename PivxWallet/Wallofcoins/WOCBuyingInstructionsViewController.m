@@ -28,8 +28,7 @@
 
 @implementation WOCBuyingInstructionsViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setShadow:self.btnDepositFinished];
@@ -119,7 +118,6 @@
 
 - (void)back:(id)sender {
     [self pushToBuyingSummary];
-    //[self backToMainView];
 }
 
 - (void)pushToBuyingSummary {
@@ -244,17 +242,14 @@
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = API_DATE_FORMAT;
-    //formatter.timeZone = [NSTimeZone localTimeZone];
     NSDate *local = [formatter dateFromString:depositDue];
     NSLog(@"local: %@",local);
     
     formatter.dateFormat = LOCAL_DATE_FORMAT;
-    //formatter.timeZone = [NSTimeZone localTimeZone];
     NSString *localTime = [formatter stringFromDate:local];
     NSLog(@"localTime: %@",localTime);
     self.dueTime = localTime;
     
-    //formatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
     NSString *currentTime = [formatter stringFromDate:[NSDate date]];
     NSLog(@"currentTime UTC : %@",currentTime);
     
@@ -295,7 +290,6 @@
     if (self.minutes > 0) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         formatter.dateFormat = LOCAL_DATE_FORMAT;
-        //formatter.timeZone = [NSTimeZone timeZoneWithName:@"UTC"];
         NSString *currentTime = [formatter stringFromDate:[NSDate date]];
         NSMutableAttributedString *timeString = [self dateDiffrenceBetweenTwoDates:currentTime endDate:self.dueTime];
         NSMutableAttributedString *dueString = [[NSMutableAttributedString alloc] initWithString:@"Deposit Due: "];
@@ -373,16 +367,12 @@
         
         if (token != nil && [token isEqualToString:@"(null)"] == FALSE) {
             params = @{
-                       //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
                        API_BODY_OFFER: [NSString stringWithFormat:@"%@==",offerId],
-                       //API_BODY_DEVICE_NAME: API_BODY_DEVICE_NAME_IOS,
-                       //API_BODY_DEVICE_CODE: deviceCode,
                        API_BODY_JSON_PARAMETER:@"YES"
                        };
         }
         else {
             params = @{
-                       //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
                        API_BODY_OFFER: [NSString stringWithFormat:@"%@==",offerId],
                        API_BODY_PHONE_NUMBER: phone,
                        API_BODY_DEVICE_NAME: API_BODY_DEVICE_NAME_IOS,
@@ -415,7 +405,6 @@
                 [self captureHold:purchaseCode holdId:holdId];
             }
             else if (error.code == 403 ) {
-                //[[WOCAlertController sharedInstance] alertshowWithError:error viewController:self.navigationController.visibleViewController];
                 [self getHold];
             }
             else if (error.code == 500 ) {
@@ -477,18 +466,11 @@
 }
 
 - (void)deleteHold:(NSString*)holdId count:(NSUInteger)count {
-    //MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     
     NSDictionary *params = @{
-                             //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID
-                             };
+                            };
     
     [[APIManager sharedInstance] deleteHold:holdId response:^(id responseDict, NSError *error) {
-        /*
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [hud hideAnimated:YES];
-        });
-        */
         
         if (error == nil) {
             NSLog(@"Hold deleted.");
@@ -506,7 +488,6 @@
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     
     NSDictionary *params = @{
-                             //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
                              API_BODY_VERIFICATION_CODE: purchaseCode,
                              API_BODY_JSON_PARAMETER: @"YES"
                              };
@@ -569,6 +550,7 @@
 }
 
 - (void)cancelOrder {
+    
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     
     if (self.orderId != nil) {

@@ -60,8 +60,7 @@
         
         [self getOrders];
         
-        if (self.hideSuccessAlert == FALSE)
-        {
+        if (self.hideSuccessAlert == FALSE) {
             [self displayAlert];
         }
     }
@@ -168,8 +167,7 @@
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     
     NSDictionary *params = @{
-                             //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID
-                             };
+                            };
     
     [[APIManager sharedInstance] getOrders:nil response:^(id responseDict, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{

@@ -44,8 +44,8 @@
     [self signOutWOC];
 }
 
--(NSString*)getDeviceIDFromPhoneNumber:(NSString*)phoneNo
-{
+-(NSString*)getDeviceIDFromPhoneNumber:(NSString*)phoneNo {
+    
     if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] != nil) {
         
         if ([[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] isKindOfClass:[NSDictionary class]]) {
@@ -68,16 +68,15 @@
     return nil;
 }
 
--(void)refereshToken
-{
+-(void)refereshToken {
+    
     if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] != nil) {
         
         if ([[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] isKindOfClass:[NSDictionary class]]) {
             NSMutableDictionary *deviceInfoDict = [NSMutableDictionary dictionaryWithDictionary:[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO]];
             
             NSString *phoneNo = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-            if (phoneNo != nil)
-            {
+            if (phoneNo != nil) {
                 if (deviceInfoDict[phoneNo] != nil) {
                     
                     NSString *deviceId = deviceInfoDict[phoneNo];
@@ -109,14 +108,12 @@
     NSString *token = [self.defaults valueForKey:USER_DEFAULTS_AUTH_TOKEN];
     
     NSDictionary *params = @{
-                             //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
                              API_BODY_DEVICE_CODE: deviceCode
                              };
     
     if (deviceId != nil && [deviceId isEqualToString:@"(null)"] == FALSE) {
         
         params = @{
-                   //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID,
                    API_BODY_DEVICE_CODE: deviceCode,
                    API_BODY_DEVICE_ID: deviceId,
                    API_BODY_JSON_PARAMETER: @"YES"
@@ -164,8 +161,7 @@
         MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
         
         NSDictionary *params = @{
-                                 //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID
-                                 };
+                                };
         
         [[APIManager sharedInstance] signOut:nil phone:phoneNumber response:^(id responseDict, NSError *error) {
             
@@ -200,32 +196,18 @@
         [navController.navigationBar setTintColor:[UIColor whiteColor]];
         BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
         appDelegate.window.rootViewController = navController;
-        
        
     });
-    
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
-//    UINavigationController *navController = (UINavigationController*) [storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"];
-//    BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
-//    appDelegate.window.rootViewController = navController;
-//    [self backToMainView];
-
 }
 
 // MARK: - WallofCoins API
 
 - (void)getOrderList {
     
-    //MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
-    
     NSDictionary *params = @{
-                             //@"publisherId": @WALLOFCOINS_PUBLISHER_ID
-                             };
+                            };
     
     [[APIManager sharedInstance] getOrders:nil response:^(id responseDict, NSError *error) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [hud hideAnimated:YES];
-//        });
         
         dispatch_async(dispatch_get_main_queue(), ^{
             if (error == nil) {

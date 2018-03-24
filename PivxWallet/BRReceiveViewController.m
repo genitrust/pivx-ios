@@ -521,14 +521,6 @@ presentingController:(UIViewController *)presenting sourceController:(UIViewCont
     
     [self dismissViewControllerAnimated:NO completion:^{
         [self pushToStep1];
-        
-//        NSString *token = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_AUTH_TOKEN];
-//        if (token != nil && [token isEqualToString:@"(null)"] == FALSE) {
-//            [self getOrders];
-//        }
-//        else {
-//            [self pushToStep1];
-//        }
         [sender setEnabled:YES];
     }];
 }
@@ -550,8 +542,7 @@ presentingController:(UIViewController *)presenting sourceController:(UIViewCont
 {
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     NSDictionary *params = @{
-                             //@"publisherId": @WALLOFCOINS_PUBLISHER_ID
-                             };
+                            };
     
     [[APIManager sharedInstance] getOrders:nil response:^(id responseDict, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{

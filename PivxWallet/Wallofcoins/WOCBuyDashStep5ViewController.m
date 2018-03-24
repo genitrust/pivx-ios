@@ -31,7 +31,6 @@
     [super viewDidLoad];
     
     self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for at least $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
-    
     [self getOffers];
 }
 
@@ -98,8 +97,7 @@
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     
     NSDictionary *params = @{
-                             //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID
-                             };
+                            };
     
     [[APIManager sharedInstance] getOrders:nil response:^(id responseDict, NSError *error) {
         
@@ -111,8 +109,8 @@
 
         if (error == nil) {
             
-            if ([responseDict isKindOfClass:[NSArray class]])
-            {
+            if ([responseDict isKindOfClass:[NSArray class]]) {
+                
                 NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
                 if (orders.count > 0) {
                     
@@ -150,11 +148,10 @@
     }];
 }
 
-
 // MARK: - IBAction
 
-- (IBAction)orderClicked:(id)sender
-{
+- (IBAction)orderClicked:(id)sender {
+    
     NSString *token = [self.defaults valueForKey:USER_DEFAULTS_AUTH_TOKEN];
     if (token != nil && [token isEqualToString:@"(null)"] == FALSE) {
         [self getOrders:[sender tag]];
@@ -180,13 +177,11 @@
 
 // MARK: - UITableView DataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.offers.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WOCOfferCell *cell = [tableView dequeueReusableCellWithIdentifier:@"offerCell"];
     
     NSDictionary *offerDict = self.offers[indexPath.row];
@@ -194,7 +189,7 @@
     if (self.incremented) {
         [cell.lblDollar setHidden:false];
     }
-    else{
+    else {
         [cell.lblDollar setHidden:true];
     }
     
@@ -249,7 +244,6 @@
                                else {
                                    cell.imgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
                                }
-                               
                            });
                        });
     }
@@ -287,8 +281,7 @@
 
 // MARK: - UITableView Delegate
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 125.0;
 }
 

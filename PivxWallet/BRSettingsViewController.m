@@ -37,13 +37,7 @@
 #import <arpa/inet.h>
 #import "pivxwallet-Swift.h"
 
-//WallOfCoins imports
-#import "WOCBuyDashStep1ViewController.h"
-#import "WOCBuyingInstructionsViewController.h"
-#import "WOCBuyingSummaryViewController.h"
-#import "APIManager.h"
-#import "WOCConstants.h"
-#import "MBProgressHUD.h"
+
 @interface BRSettingsViewController ()
 
 @property (nonatomic, assign) BOOL touchId;
@@ -475,16 +469,6 @@ _switch_cell:
             }
             break;
             
-//        case 3:
-//            switch (indexPath.row) {
-//                case 0:
-//                    cell = [tableView dequeueReusableCellWithIdentifier:disclosureIdent];
-//                    cell.textLabel.text = NSLocalizedString(@"buy PIVX with cash", nil);
-//                    cell.imageView.image = [UIImage imageNamed:@"woc-icon.png"];
-//                    break;
-//
-//            }
-//            break;
     }
     
     [self setBackgroundForCell:cell tableView:tableView indexPath:indexPath];
@@ -640,7 +624,6 @@ _switch_cell:
 
 - (void)showCurrencySelector
 {
-
     [BREventManager saveEvent:@"settings:show_currency_selector"];
     NSUInteger currencyCodeIndex = 0;
     BRWalletManager *manager = [BRWalletManager sharedInstance];
@@ -766,18 +749,8 @@ _deselect_switch:
             }
             
             break;
-            
-//        case 3:
-//            switch (indexPath.row) {
-//                case 0: // buy dash with cash
-//                    [self checkToken];
-//                    break;
-//            }
-//
-//            break;
     }
 }
-
 -(void)showAlertOption {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Rescan blockchain"
                                                                    message:@"The blockchain is going to be reseted.\nThe synchronization could take a while.\nAre you sure?"
@@ -807,82 +780,4 @@ error:(NSError *)error
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-//// MARK: - WallofCoins API
-//- (void)checkToken
-//{
-//    NSString *token = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_AUTH_TOKEN];
-//
-//    if (token != nil && [token isEqualToString:@"(null)"] == FALSE) {
-//        [self getOrders];
-//    }
-//    else {
-//        [self pushToStep1];
-//    }
-//}
-//
-//-(void)pushToStep1
-//{
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
-//        UINavigationController *navController = (UINavigationController*) [storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"];
-//        [navController.navigationBar setTintColor:[UIColor whiteColor]];
-//        BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
-//        appDelegate.window.rootViewController = navController;
-//    });
-//}
-//
-//
-//- (void)getOrders
-//{
-//    MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
-//    NSDictionary *params = @{
-//                             //@"publisherId": @WALLOFCOINS_PUBLISHER_ID
-//                             };
-//
-//    [[APIManager sharedInstance] getOrders:nil response:^(id responseDict, NSError *error) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [hud hideAnimated:YES];
-//        });
-//
-//        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
-//        UINavigationController *navController = (UINavigationController*) [storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"];
-//
-//        if (error == nil) {
-//            if ([responseDict isKindOfClass:[NSArray class]])
-//            {
-//                NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
-//                if (orders.count > 0) {
-//                    NSString *phoneNo = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-//                    NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
-//                    NSArray *wdArray = [orders filteredArrayUsingPredicate:wdvPredicate];
-//
-//                    if (wdArray.count > 0) {
-//                        NSDictionary *orderDict = (NSDictionary*)[wdArray objectAtIndex:0];
-//                        NSString *status = [NSString stringWithFormat:@"%@",[orderDict valueForKey:@"status"]];
-//                        if ([status isEqualToString:@"WD"]) {
-//                            WOCBuyingInstructionsViewController *myViewController = [storyboard instantiateViewControllerWithIdentifier:@"WOCBuyingInstructionsViewController"];
-//                            myViewController.phoneNo = phoneNo;
-//                            myViewController.isFromSend = YES;
-//                            myViewController.isFromOffer = NO;
-//                            myViewController.orderDict = orderDict;
-//
-//                            [navController pushViewController:myViewController animated:YES];
-//                        }
-//                    }
-//                    else {
-//
-//                        WOCBuyingSummaryViewController *myViewController = [storyboard instantiateViewControllerWithIdentifier:@"WOCBuyingSummaryViewController"];
-//                        myViewController.phoneNo = phoneNo;
-//                        myViewController.orders = orders;
-//                        myViewController.isFromSend = YES;
-//
-//                        [navController pushViewController:myViewController animated:YES];
-//                    }
-//                }
-//            }
-//        }
-//        BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
-//        appDelegate.window.rootViewController = navController;
-//    }];
-//}
 @end

@@ -88,25 +88,20 @@
                         self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
                     }
                 }
-                
                 [self.tableView reloadData];
             }
             else {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    if (error.userInfo != nil)
-                    {
-                        if (error.userInfo[@"detail"] != nil)
-                        {
+                    if (error.userInfo != nil) {
+                        if (error.userInfo[@"detail"] != nil) {
                             [[WOCAlertController sharedInstance] alertshowWithTitle:@"Error" message:error.userInfo[@"detail"]  viewController:self.navigationController.visibleViewController];
                         }
-                        else
-                        {
+                        else {
                             [[WOCAlertController sharedInstance] alertshowWithTitle:@"Error" message:error.localizedDescription viewController:self.navigationController.visibleViewController];
                         }
                     }
-                    else
-                    {
+                    else {
                         [[WOCAlertController sharedInstance] alertshowWithTitle:@"Error" message:error.localizedDescription viewController:self.navigationController.visibleViewController];
                     }
                 });
@@ -119,8 +114,7 @@
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
     
     NSDictionary *params = @{
-                             //API_BODY_PUBLISHER_ID: @WALLOFCOINS_PUBLISHER_ID
-                             };
+                            };
     
     [[APIManager sharedInstance] getOrders:nil response:^(id responseDict, NSError *error) {
         
@@ -159,7 +153,6 @@
                         [self pushViewController:myViewController animated:YES];
                     }
                     else {
-                        
                         [self backToMainView];
                     }
                 }
@@ -188,7 +181,6 @@
             }
         }
         else {
-           // [self pushToStep6:sender];
             [self pushToStep1];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [[WOCAlertController sharedInstance] alertshowWithTitle:@"Alert" message:@"Token expired." viewController:self];
@@ -202,7 +194,6 @@
 }
 
 // MARK: - IBAction
-
 - (IBAction)signInPhoneClicked:(id)sender {
     NSString *token = [self.defaults valueForKey:USER_DEFAULTS_AUTH_TOKEN];
     if (token != nil && [token isEqualToString:@"(null)"] == FALSE) {
@@ -259,7 +250,6 @@
 }
 
 // MARK: - UITableView Delegate
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 50.0;
 }

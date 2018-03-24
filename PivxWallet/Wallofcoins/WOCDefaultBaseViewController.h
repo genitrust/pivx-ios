@@ -17,7 +17,6 @@
 @interface WOCDefaultBaseViewController : UIViewController
 
 @property (strong, nonatomic) NSUserDefaults *defaults;
-//@property (strong, nonatomic) UINavigationController *navigationController;
 @property (assign) BOOL requiredBackButton;
 
 + (instancetype) sharedInstance;

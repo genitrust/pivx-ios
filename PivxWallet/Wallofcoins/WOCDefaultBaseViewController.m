@@ -29,7 +29,6 @@
     [super viewDidLoad];
     
     self.defaults = [NSUserDefaults standardUserDefaults];
-    [self setWOCNavigationController];
    
     NSLog(@"------------> You are In %@",[super class]);
     
@@ -46,25 +45,6 @@
     [self setWocDeviceCode];
 }
 
--(void)setWOCNavigationController {
-    /*
-    if ( [WOCBaseViewController sharedInstance].navigationController == nil)
-    {
-         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
-        if ([[storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"] isKindOfClass:[UINavigationController class]])
-        {
-            UINavigationController *navController = (UINavigationController*) [storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"];
-
-            [WOCBaseViewController sharedInstance].navigationController = navController;
-            self.navigationController = navController;
-        }
-    }
-    else
-    {
-        self.navigationController = [WOCBaseViewController sharedInstance].navigationController;
-    }
-     */
-}
 
 -(void)setWocDeviceCode {
     //store deviceCode in userDefault
@@ -185,8 +165,6 @@
         
         BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
         appDelegate.window.rootViewController = nav;
-        
-         [self setWOCNavigationController];
     });
 }
 

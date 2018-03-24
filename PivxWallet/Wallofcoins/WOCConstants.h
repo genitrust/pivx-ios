@@ -95,10 +95,9 @@
 
 #define CRYPTO_CURRENTCY_SMALL @"uPiv" // @"dots"
 #define CRYPTO_CURRENTCY @"PIVX"
-//#define CRYPTO_CURRENTCY @"DASH"
 
 #define ALERT_TITLE [NSString stringWithFormat:@"%@ Wallet",WOC_CURRENTCY]
 
 #define setVal(value) (value == nil)?@"":(![value isEqual:[NSNull null]])?value:@""
 
-#endif /* WOCUserDefaultsConstants_h */
+#endif
