@@ -89,9 +89,9 @@
 
 #define WOC_CURRENTCY @"PIV"
 #define WOC_CURRENTCY_SPECIAL @"ⱣIV"
-#define WOC_CURRENTCY_MINOR_SPECIAL @"mⱣiv"
+#define WOC_CURRENTCY_MINOR_SPECIAL @"µⱣiv"
 #define WOC_CURRENTCY_SYMBOL @"Ᵽ"
-#define WOC_CURRENTCY_SYMBOL_MINOR @"mⱣiv"
+#define WOC_CURRENTCY_SYMBOL_MINOR @"µⱣiv"
 
 #define CRYPTO_CURRENTCY_SMALL @"uPiv" // @"dots"
 #define CRYPTO_CURRENTCY @"PIVX"
