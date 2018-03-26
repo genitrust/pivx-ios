@@ -91,13 +91,23 @@
                             return;
                         }
                         else {
+                            [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+                            [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
                             
                             [deviceInfoDict removeObjectForKey:phoneNo];
                             [self.defaults setObject:deviceInfoDict forKey:USER_DEFAULTS_LOCAL_DEVICE_INFO];
-
-                            [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
-                            [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
                             [self.defaults synchronize];
+                            
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                UIAlertController *alert = [UIAlertController alertControllerWithTitle:ALERT_TITLE message:@"Error while login with phone number. please try to login again." preferredStyle:UIAlertControllerStyleAlert];
+                                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                                    [self loginWOC];
+                                }];
+                                
+                                [alert addAction:okAction];
+                                
+                                [self presentViewController:alert animated:YES completion:nil];
+                            });
                         }
                     }
                 }
