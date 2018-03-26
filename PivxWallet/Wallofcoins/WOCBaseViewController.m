@@ -90,6 +90,15 @@
                             [self loginWOC];
                             return;
                         }
+                        else {
+                            
+                            [deviceInfoDict removeObjectForKey:phoneNo];
+                            [self.defaults setObject:deviceInfoDict forKey:USER_DEFAULTS_LOCAL_DEVICE_INFO];
+
+                            [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+                            [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+                            [self.defaults synchronize];
+                        }
                     }
                 }
             }

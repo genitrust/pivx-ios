@@ -332,8 +332,13 @@
         }
         cell.lblCashDeposit.text = [NSString stringWithFormat:@"Cash to Deposit: $%.02f",depositAmount];
         
-        NSNumber *num = [NSNumber numberWithDouble:([totalDash doubleValue] * 1000)];
+        NSNumber *num = [NSNumber numberWithDouble:([totalDash doubleValue] * 1000000)];
         NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+        [numFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+        [numFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        //[numFormatter setAllowsFloats:YES];
+        [numFormatter setAlwaysShowsDecimalSeparator:YES];
+        //[numFormatter setDecimalSeparator:@"."];
         [numFormatter setUsesGroupingSeparator:YES];
         [numFormatter setGroupingSeparator:@","];
         [numFormatter setGroupingSize:3];

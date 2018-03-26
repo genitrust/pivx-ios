@@ -179,36 +179,37 @@
     if (self.urlObserver == nil ) {
         self.urlObserver =
         [[NSNotificationCenter defaultCenter] addObserverForName:BRURLNotification object:nil queue:nil
-                                                  usingBlock:^(NSNotification *note) {
-                                                      if (! manager.noWallet) {
-                                                          if (self.navigationController.topViewController != self) {
-                                                              [self.navigationController popToRootViewControllerAnimated:YES];
+                                                      usingBlock:^(NSNotification *note) {
+                                                          if (! manager.noWallet) {
+                                                              if (self.navigationController.topViewController != self) {
+                                                                  [self.navigationController popToRootViewControllerAnimated:YES];
+                                                              }
+                                                              
+                                                              if (self.navigationController.presentedViewController) {
+                                                                  [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+                                                              }
+                                                              
+                                                              NSURL * url = note.userInfo[@"url"];
+                                                              
+                                                              
+                                                              
+                                                              
+                                                              BRSendViewController *c = self.sendViewController;
+                                                              
+                                                              [self.pageViewController setViewControllers:(c ? @[c] : @[])
+                                                                                                direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
+                                                                                                    _url = note.userInfo[@"url"];
+                                                                                                    
+                                                                                                    if (self.didAppear && [UIApplication sharedApplication].protectedDataAvailable) {
+                                                                                                        _url = nil;
+                                                                                                        [c performSelector:@selector(handleURL:) withObject:note.userInfo[@"url"] afterDelay:0.0];
+                                                                                                    }
+                                                                                                }];
+                                                              
                                                           }
-                                                          
-                                                          if (self.navigationController.presentedViewController) {
-                                                              [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-                                                          }
-                                                          
-                                                          NSURL * url = note.userInfo[@"url"];
-                                                          
-                                                          
-                                                          
-                                                          
-                                                          BRSendViewController *c = self.sendViewController;
-                                                          
-                                                          [self.pageViewController setViewControllers:(c ? @[c] : @[])
-                                                                                            direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
-                                                                                                _url = note.userInfo[@"url"];
-                                                                                                
-                                                                                                if (self.didAppear && [UIApplication sharedApplication].protectedDataAvailable) {
-                                                                                                    _url = nil;
-                                                                                                    [c performSelector:@selector(handleURL:) withObject:note.userInfo[@"url"] afterDelay:0.0];
-                                                                                                }
-                                                                                            }];
-                                                          
-                                                      }
-                                                  }];
+                                                      }];
     }
+    
     if (self.fileObserver == nil) {
     self.fileObserver =
     [[NSNotificationCenter defaultCenter] addObserverForName:BRFileNotification object:nil queue:nil
@@ -236,6 +237,7 @@
                                                       }
                                                   }];
     }
+    
     if (self.foregroundObserver == nil) {
     self.foregroundObserver =
     [[NSNotificationCenter defaultCenter] addObserverForName:UIApplicationWillEnterForegroundNotification object:nil
@@ -839,7 +841,6 @@
         }];
     }
 }
-
 
 - (void)viewWillDisappear:(BOOL)animated
 {

@@ -193,11 +193,11 @@
         [cell.lblDollar setHidden:true];
     }
     
-    NSNumber *minorNumber = [NSNumber numberWithLongLong:[NSString stringWithFormat:@"%@",[offerDict[@"amount"][@"uPiv"] stringByReplacingOccurrencesOfString:@"," withString:@""]].longLongValue];
+    NSNumber *minorNumber = [NSNumber numberWithLongLong:[NSString stringWithFormat:@"%@",[offerDict[@"amount"][CRYPTO_CURRENTCY_SMALL] stringByReplacingOccurrencesOfString:@"," withString:@""]].longLongValue];
     NSLog(@"%@",minorNumber);
-    NSLog(@"%.2f",minorNumber.longLongValue/1000.0);
+    NSLog(@"%.2f",minorNumber.longLongValue/1000000.0);
     NSString *dashAmount = [NSString stringWithFormat:@"%@ %@",WOC_CURRENTCY_SYMBOL,setVal([[offerDict valueForKey:@"amount"] valueForKey:CRYPTO_CURRENTCY])];
-    NSString *bits = [NSString stringWithFormat:@"(%@ %.2f)",WOC_CURRENTCY_SYMBOL_MINOR,minorNumber.longLongValue/1000.0];
+    NSString *bits = [NSString stringWithFormat:@"(%@ %@)",WOC_CURRENTCY_SYMBOL_MINOR,setVal([[offerDict valueForKey:@"amount"] valueForKey:CRYPTO_CURRENTCY_SMALL])];
     NSString *dollarAmount = [NSString stringWithFormat:@"Pay $%@",setVal([[offerDict valueForKey:@"deposit"] valueForKey:@"amount"])];
     NSString *bankName = [NSString stringWithFormat:@"%@",setVal([offerDict valueForKey:@"bankName"])];
     NSString *bankAddress = [NSString stringWithFormat:@"%@",setVal([offerDict valueForKey:@"address"])];

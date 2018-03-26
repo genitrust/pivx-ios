@@ -29,7 +29,7 @@
     [super viewDidLoad];
     
     [self setShadow:self.btnGetOffers];
-    self.txtDash.text = [NSString stringWithFormat:@"to acquire %@ (%@) (1,000 %@ = 1 %@)",WOC_CURRENTCY,WOC_CURRENTCY_SYMBOL,WOC_CURRENTCY_MINOR_SPECIAL,WOC_CURRENTCY_SPECIAL];
+    self.txtDash.text = [NSString stringWithFormat:@"to acquire %@ (%@) (1,000,000 %@ = 1 %@)",WOC_CURRENTCY,WOC_CURRENTCY_SYMBOL,WOC_CURRENTCY_MINOR_SPECIAL,WOC_CURRENTCY_SPECIAL];
     self.txtDash.delegate = self;
     self.txtDollar.delegate = self;
     [self.txtDash setUserInteractionEnabled:NO];
@@ -137,10 +137,18 @@
         if (error == nil) {
             NSDictionary *dictionary = [[NSDictionary alloc] initWithDictionary:(NSDictionary*)responseDict];
             
-            WOCBuyDashStep5ViewController *myViewController = (WOCBuyDashStep5ViewController*)[self getViewController:@"WOCBuyDashStep5ViewController"];;
-            myViewController.discoveryId = [NSString stringWithFormat:@"%@",[dictionary valueForKey:@"id"]];
-            myViewController.amount = self.txtDollar.text;
-            [self pushViewController:myViewController animated:YES];
+            if ([dictionary valueForKey:@"id"] != nil)
+            {
+                WOCBuyDashStep5ViewController *myViewController = (WOCBuyDashStep5ViewController*)[self getViewController:@"WOCBuyDashStep5ViewController"];;
+                myViewController.discoveryId = [NSString stringWithFormat:@"%@",[dictionary valueForKey:@"id"]];
+                myViewController.amount = self.txtDollar.text;
+                [self pushViewController:myViewController animated:YES];
+            }
+            else
+            {
+                
+                [[WOCAlertController sharedInstance] alertshowWithTitle:ALERT_TITLE message:@"Error in getting offers. Please try after some time." viewController:self.navigationController.visibleViewController];
+            }
         }
         else {
             
