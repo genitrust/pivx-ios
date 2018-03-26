@@ -58,6 +58,8 @@
     
     if (self.orders.count == 0) {
         
+        [self reloadOrderTable];
+
         [self getOrders];
         
         if (self.hideSuccessAlert == FALSE) {
@@ -76,7 +78,7 @@
         
         NSLog(@"wdvArray count: %lu, otherArray count: %lu",(unsigned long)wdvArray.count,(unsigned long)otherArray.count);
         
-        [self.tableView reloadData];
+         [self reloadOrderTable];
     }
 }
 
@@ -161,7 +163,6 @@
 }
 
 // MARK: - API
-
 - (void)getOrders {
     
     MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
@@ -189,14 +190,27 @@
                 
                 NSLog(@"wdvArray count: %lu, otherArray count: %lu",(unsigned long)wdvArray.count,(unsigned long)otherArray.count);
             }
-            [self.tableView reloadData];
         }
         else {
             [[WOCAlertController sharedInstance] alertshowWithError:error viewController:self.navigationController.visibleViewController];
         }
+        
+        [self reloadOrderTable];
+
     }];
 }
 
+-(void)reloadOrderTable{
+    if (self.orders.count > 0) {
+        self.txtInstruction.text = @"Wall of Coins will verify your payment. This usually takes up to 10 minutes. To expedite your order, take a picture of your receipt and click here to email your receipt to Wall of Coins.";
+    }
+    else {
+        self.txtInstruction.text = [NSString stringWithFormat:@"You have no order history with %@ for iOS. To see your full order history across all devices, visit %@",CRYPTO_CURRENTCY,BASE_URL_PRODUCTION];
+    }
+    self.lblInstruction.hidden  = TRUE;
+    self.txtInstruction.hidden  = FALSE;
+    [self.tableView reloadData];
+}
 #pragma mark - UITableView DataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

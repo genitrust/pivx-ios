@@ -233,10 +233,11 @@
                 
                 if ([responseDict isKindOfClass:[NSArray class]])
                 {
+                    NSString *phoneNo = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+                    
                     NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
                     if (orders.count > 0) {
                         
-                        NSString *phoneNo = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
                         NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
                         NSArray *wdArray = [orders filteredArrayUsingPredicate:wdvPredicate];
                         
@@ -261,7 +262,12 @@
                         }
                     }
                     else {
-                        [self backToMainView];
+                        WOCBuyingSummaryViewController *myViewController = [self getViewController:@"WOCBuyingSummaryViewController"];
+                        myViewController.phoneNo = phoneNo;
+                        myViewController.orders = orders;
+                        myViewController.isFromSend = YES;
+                        myViewController.hideSuccessAlert = YES;
+                        [self pushViewController:myViewController animated:YES];
                     }
                 }
                 else {

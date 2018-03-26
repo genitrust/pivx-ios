@@ -64,7 +64,7 @@
     [self.defaults setObject:phoneNumber forKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
     [self.defaults synchronize];
     [self refereshToken];
-    [self performSelector:@selector(backToMainView) withObject:nil afterDelay:1.0];
+    [self performSelector:@selector(backToMainView) withObject:nil afterDelay:2.0];
 }
 
 // MARK: - API
