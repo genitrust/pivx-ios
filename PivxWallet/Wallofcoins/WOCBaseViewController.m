@@ -28,6 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setWocDeviceCode];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -42,6 +43,58 @@
 
 - (IBAction)signOutClicked:(id)sender {
     [self signOutWOC];
+}
+
+-(void)setWocDeviceCode {
+    //store deviceCode in userDefault
+    int launched = [self.defaults integerForKey:USER_DEFAULTS_LAUNCH_STATUS];
+    if (launched == 0) {
+        NSString *uuid = [[NSUUID UUID] UUIDString];
+        [self.defaults setValue:uuid forKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
+        [self.defaults setInteger:1 forKey:USER_DEFAULTS_LAUNCH_STATUS];
+        [self.defaults synchronize];
+    }
+}
+
+-(NSString *)wocDeviceCode {
+    NSString *deviceCode = @"";
+    
+    if ([self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE] != nil) {
+        deviceCode = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
+    }
+    return deviceCode;
+}
+
+-(void)storeDeviceInfoLocally {
+    
+    if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER] != nil) {
+        if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID] != nil) {
+            NSString * phoneNumber = [self.defaults objectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+            NSString * deviceID = [self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+            
+            NSMutableDictionary *localDeiveDict =  [NSMutableDictionary dictionaryWithCapacity:0];
+            if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] != nil) {
+                
+                localDeiveDict = [NSMutableDictionary dictionaryWithDictionary:[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO]];
+            }
+            
+            localDeiveDict[phoneNumber] = [NSString stringWithFormat:@"%@",deviceID];
+            if (localDeiveDict != nil) {
+                [self.defaults setObject:localDeiveDict forKey:USER_DEFAULTS_LOCAL_DEVICE_INFO];
+                [self.defaults synchronize];
+            }
+        }
+    }
+    
+    NSLog(@"Device info %@",[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO]);
+}
+
+-(void)clearLocalStorage
+{
+    [self.defaults removeObjectForKey:USER_DEFAULTS_AUTH_TOKEN];
+    [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+    [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+    [self.defaults synchronize];
 }
 
 -(NSString*)getDeviceIDFromPhoneNumber:(NSString*)phoneNo {
@@ -116,6 +169,10 @@
     }
 }
 
+- (void)backToMainView {
+    
+    [self storeDeviceInfoLocally];
+}
 // MARK: - API
 // Will call SignOut API then Store phone number with Device ID in Local storage and Backto Main View
 
@@ -156,7 +213,7 @@
                 //[self.defaults setValue:phoneNo forKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
                 [self.defaults synchronize];
                 
-                NSString *title = @"Error";
+                NSString *title = ALERT_TITLE;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:@"SIGN IN for the device is hidden" preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

@@ -41,29 +41,6 @@
             self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navigation_back"] style:UIBarButtonItemStylePlain target:self action:@selector(backToMainView)];
         }
     }
-    
-    [self setWocDeviceCode];
-}
-
-
--(void)setWocDeviceCode {
-    //store deviceCode in userDefault
-    int launched = [self.defaults integerForKey:USER_DEFAULTS_LAUNCH_STATUS];
-    if (launched == 0) {
-        NSString *uuid = [[NSUUID UUID] UUIDString];
-        [self.defaults setValue:uuid forKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
-        [self.defaults setInteger:1 forKey:USER_DEFAULTS_LAUNCH_STATUS];
-        [self.defaults synchronize];
-    }
-}
-
--(NSString *)wocDeviceCode {
-    NSString *deviceCode = @"";
-    
-    if ([self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE] != nil) {
-        deviceCode = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
-    }
-    return deviceCode;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -105,36 +82,17 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
--(void)storeDeviceInfoLocally {
-    
-    if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER] != nil) {
-        if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID] != nil) {
-            NSString * phoneNumber = [self.defaults objectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-            NSString * deviceID = [self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
-            
-            NSMutableDictionary *localDeiveDict =  [NSMutableDictionary dictionaryWithCapacity:0];
-            if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] != nil) {
-                
-                localDeiveDict = [NSMutableDictionary dictionaryWithDictionary:[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO]];
-            }
-            
-            localDeiveDict[phoneNumber] = [NSString stringWithFormat:@"%@",deviceID];
-            if (localDeiveDict != nil) {
-                [self.defaults setObject:localDeiveDict forKey:USER_DEFAULTS_LOCAL_DEVICE_INFO];
-                [self.defaults synchronize];
-            }
-        }
-    }
-    
-    NSLog(@"Device info %@",[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO]);
-}
-
--(void)clearLocalStorage
+-(NSString*)getCryptoPrice:(NSNumber*)number
 {
-    [self.defaults removeObjectForKey:USER_DEFAULTS_AUTH_TOKEN];
-    [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-    [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
-    [self.defaults synchronize];
+    NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
+    [numFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [numFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [numFormatter setAlwaysShowsDecimalSeparator:YES];
+    [numFormatter setUsesGroupingSeparator:YES];
+    [numFormatter setGroupingSeparator:@","];
+    [numFormatter setGroupingSize:3];
+    NSString *numberStr = [numFormatter stringFromNumber:number];
+    return numberStr;
 }
 
 - (void)pushViewControllerStr:(NSString*)viewControllerStr {
@@ -169,8 +127,6 @@
 }
 
 - (void)backToMainView {
-
-    [self storeDeviceInfoLocally];
     [self push:MAIN_VIEWCONTROLLER];
 }
 

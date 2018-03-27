@@ -233,17 +233,7 @@
     self.lblCashDeposit.text = [NSString stringWithFormat:@"Cash to Deposit: $%.02f",depositAmount];
     
     NSNumber *num = [NSNumber numberWithDouble:([totalDash doubleValue] * 1000000)];
-    NSNumberFormatter *numFormatter = [[NSNumberFormatter alloc] init];
-    [numFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
-    [numFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    //[numFormatter setAllowsFloats:YES];
-    [numFormatter setAlwaysShowsDecimalSeparator:YES];
-    //[numFormatter setDecimalSeparator:@"."];
-    [numFormatter setUsesGroupingSeparator:YES];
-    [numFormatter setGroupingSeparator:@","];
-    [numFormatter setGroupingSize:3];
-    NSString *stringNum = [numFormatter stringFromNumber:num];
-    self.lblInstructions.text = [NSString stringWithFormat:@"You are ordering: %@ %@ (%@ %@)",totalDash,WOC_CURRENTCY_SPECIAL, stringNum,WOC_CURRENTCY_SYMBOL_MINOR];
+    self.lblInstructions.text = [NSString stringWithFormat:@"You are ordering: %@ %@ (%@ %@)",totalDash,WOC_CURRENTCY_SPECIAL, [self getCryptoPrice:num],WOC_CURRENTCY_SYMBOL_MINOR];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     formatter.dateFormat = API_DATE_FORMAT;

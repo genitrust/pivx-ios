@@ -116,24 +116,29 @@
 }
 
 - (void)getDeviceId:(NSString*)phoneNo {
-    MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [[APIManager sharedInstance] getDevice:^(id responseDict, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^(void){
-            [hud hideAnimated:TRUE];
-        });
+    dispatch_async(dispatch_get_main_queue(), ^(void){
+        MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         
-        if (error == nil) {
-            if ([responseDict isKindOfClass:[NSArray class]]) {
-                NSArray *response = (NSArray*)responseDict;
-                if (response.count > 0) {
-                    NSDictionary *dictionary = [response lastObject];
-                    NSString *deviceId = [NSString stringWithFormat:@"%@",[dictionary valueForKey:@"id"]];
-                    
-                    if (deviceId.length > 0 && [deviceId isEqualToString:@"(null)"] == FALSE) {
-                        [self.defaults setValue:deviceId forKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
-                        [self.defaults synchronize];
-                        [self authorize:phoneNo deviceId:deviceId];
+        [[APIManager sharedInstance] getDevice:^(id responseDict, NSError *error) {
+            dispatch_async(dispatch_get_main_queue(), ^(void){
+                [hud hideAnimated:TRUE];
+            });
+            
+            if (error == nil) {
+                if ([responseDict isKindOfClass:[NSArray class]]) {
+                    NSArray *response = (NSArray*)responseDict;
+                    if (response.count > 0) {
+                        NSDictionary *dictionary = [response lastObject];
+                        NSString *deviceId = [NSString stringWithFormat:@"%@",[dictionary valueForKey:@"id"]];
+                        
+                        if (deviceId.length > 0 && [deviceId isEqualToString:@"(null)"] == FALSE) {
+                            [self.defaults setValue:deviceId forKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+                            [self.defaults synchronize];
+                            [self authorize:phoneNo deviceId:deviceId];
+                        }
+                    }
+                    else {
+                        [self registerDevice:phoneNo];
                     }
                 }
                 else {
@@ -142,13 +147,10 @@
             }
             else {
                 [self registerDevice:phoneNo];
+                //[[WOCAlertController sharedInstance] alertshowWithTitle:@"Error" message:error.localizedDescription viewController:self.navigationController.visibleViewController];
             }
-        }
-        else {
-            [self registerDevice:phoneNo];
-           // [[WOCAlertController sharedInstance] alertshowWithTitle:@"Error" message:error.localizedDescription viewController:self.navigationController.visibleViewController];
-        }
-    }];
+        }];
+    });
 }
 
 - (void)authorize:(NSString*)phoneNo deviceId:(NSString*)deviceId {

@@ -34,7 +34,11 @@
     self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for at least $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
      [self setShadow:self.signupBtn];
      [self setShadow:self.sighInBtn];
+}
+
+-(void)viewWillAppear:(BOOL)animated {
      [self getLocalDevices];
+    self.title = @"SignIN";
 }
 
 - (void)getLocalDevices {

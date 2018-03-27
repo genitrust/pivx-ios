@@ -47,7 +47,7 @@
     if ([dollarString length] > 0 && [dollarString intValue] != 0) {
         if ([dollarString intValue] >= 5) {
             
-            if ([dollarString intValue] <100000) {
+            if ([dollarString intValue] <10000000) {
                 if ((self.zipCode != nil && [self.zipCode length] > 0) || (self.bankId != nil && [self.bankId length] > 0)) {
                     if ([self.bankId length] > 0) {
                         [self sendUserData:dollarString zipCode:@"" bankId:self.bankId];
@@ -75,6 +75,14 @@
 
 // MARK: - API
 - (void)sendUserData:(NSString*)amount zipCode:(NSString*)zipCode bankId:(NSString*)bankId {
+    
+    if (self.txtDash != nil) {
+        [self.txtDash resignFirstResponder];
+    }
+    
+    if (self.txtDollar != nil) {
+        [self.txtDollar resignFirstResponder];
+    }
     
     BRWalletManager *manager = [BRWalletManager sharedInstance];
     NSString *cryptoAddress = manager.wallet.receiveAddress;

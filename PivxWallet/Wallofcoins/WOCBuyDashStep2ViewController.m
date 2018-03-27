@@ -32,7 +32,7 @@
 - (IBAction)nextClicked:(id)sender {
     
     [self.defaults removeObjectForKey:API_BODY_COUNTRY_CODE];
-   
+    
     [self.defaults synchronize];
     
     NSString *zipCode = [self.txtZipCode.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -41,7 +41,7 @@
         [self push:@"WOCBuyDashStep3ViewController"];
     }
     else if ([zipCode length] > 6 ) {
-         [[WOCAlertController sharedInstance] alertshowWithTitle:ALERT_TITLE message:@"Enter valid zipcode" viewController:self.navigationController.visibleViewController];
+        [[WOCAlertController sharedInstance] alertshowWithTitle:ALERT_TITLE message:@"Enter valid zipcode" viewController:self.navigationController.visibleViewController];
     }
     else {
         
