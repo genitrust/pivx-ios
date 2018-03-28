@@ -16,8 +16,8 @@
 #endif
 #define Str(str) (str != [NSNull null])?str:@""
 
-//#define IS_PRODUCTION TRUE // IF MAINNET SET DASH_TESTNET = 0
-#define IS_PRODUCTION FALSE  //  IF TESTNET SET DASH_TESTNET = 1
+#define IS_PRODUCTION TRUE // IF MAINNET SET DASH_TESTNET = 0
+//#define IS_PRODUCTION FALSE  //  IF TESTNET SET DASH_TESTNET = 1
 
 #define BASE_URL_DEVELOPMENT @"https://wallofcoins.com"
 #define BASE_URL_PRODUCTION @"https://wallofcoins.com"
@@ -97,7 +97,7 @@
 //*/
 /*
 #define WALLOFCOINS_PUBLISHER_ID "52"
-#define WOC_CURRENTCY @"DASH"
+#define WOC_CURRENTCY @"Dash"
 #define WOC_CURRENTCY_SPECIAL @"ĐASH"
 #define WOC_CURRENTCY_MINOR_SPECIAL @"đots"
 #define WOC_CURRENTCY_SYMBOL @"Đ"

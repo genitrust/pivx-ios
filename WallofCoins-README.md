@@ -213,6 +213,13 @@ incremented: true
 ```
 
 This means that the search amount (for example "$25") was not available for all offers--some offers that are available REQUIRE the end user (buyer) to deposit slightly more than $25. This is what is meant by the term ```incremented``` so buyer need to pay that incremented amount for buy dash.
+singleDeposit - gets offers directly from seller's Ads
+doubleDeposit - combine Ads from the same bankBusiness to fill amount of needed coins
+multipleBanks - combine Ads from different banks
+isExtendedSearch - True if there is no enough coins for buyers amount of cash and we try to look for Ads that can supply at least half of needed coins.
+and we try ExtendedSearch only if there is no bankBusiness in DI and buyer provide location.
+
+We display singleDeposit at first and then doubleDeposit and multipleBanks
 
 
 #### GET AUTH DETAILS

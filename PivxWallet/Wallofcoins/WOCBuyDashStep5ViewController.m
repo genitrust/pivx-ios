@@ -53,9 +53,36 @@
     
     self.offersDict = [NSMutableDictionary dictionaryWithCapacity:0];
     if (self.discoveryId != nil && [self.discoveryId length] > 0) {
+        
+         MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
+        
         [[APIManager sharedInstance] discoveryInputs:self.discoveryId response:^(id responseDict, NSError *error) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [hud hideAnimated:YES];
+            });
+            
             if (error == nil) {
+                
                 NSDictionary *responseDictionary = [[NSDictionary alloc] initWithDictionary:(NSDictionary*)responseDict];
+                
+                if ([[responseDictionary valueForKey:@"incremented"] boolValue] == TRUE) {
+                    self.incremented = TRUE;
+                    self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for at least $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
+                }
+                else {
+                    self.incremented = FALSE;
+                    self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
+                }
+                
+                if ([[responseDictionary valueForKey:@"isExtendedSearch"] boolValue] == TRUE) {
+                    self.isExtendedSearch = TRUE;
+                    
+                    self.lblInstruction.text = [NSString stringWithFormat:@"Most Convenient Options While $%@ is not available, we gathered the closest options. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
+                }
+                else {
+                    self.isExtendedSearch = FALSE;
+                }
                 
                 if ([responseDictionary valueForKey:@"singleDeposit"] != nil) {
                     
@@ -76,7 +103,15 @@
                         NSArray *offersArray = [[NSArray alloc] initWithArray:(NSArray*)[responseDictionary valueForKey:@"doubleDeposit"]];
                         NSArray *doubleOffer = [self getOffersFromDoubleDeposit:offersArray];
                         if (doubleOffer.count > 0) {
-                            self.offersDict[@"Double Deposit"] = doubleOffer;
+                            
+                            if (self.isExtendedSearch == TRUE) {
+                                NSString *key = [NSString stringWithFormat:@" Best Value options: more %@ for under $%@ cash.",WOC_CURRENTCY,self.amount];
+                               self.offersDict[key] = doubleOffer;
+                            }
+                            else {
+                                NSString *key = [NSString stringWithFormat:@" Best Value options: more %@ for $%@ cash.",WOC_CURRENTCY,self.amount];
+                                self.offersDict[key] = doubleOffer;
+                            }
                         }
                     }
                 }
@@ -88,29 +123,19 @@
                         NSArray *offersArray = [[NSArray alloc] initWithArray:(NSArray*)[responseDictionary valueForKey:@"multipleBanks"]];
                         NSArray *multipleBankOffer = [self getOffersFromDoubleDeposit:offersArray]; NSArray *doubleOffer = [self getOffersFromDoubleDeposit:offersArray];
                         if (multipleBankOffer.count > 0) {
-                            self.offersDict[@"Multiple Banks"] = multipleBankOffer;
+                            
+                            if (self.isExtendedSearch == TRUE) {
+                                NSString *key = [NSString stringWithFormat:@"Best Value options: more %@ for under $%@ cash from multiple banks.",WOC_CURRENTCY,self.amount];
+                                self.offersDict[key] = multipleBankOffer;
+                            }
+                            else {
+                                NSString *key = [NSString stringWithFormat:@"Best Value options: more %@ for $%@ cash from multiple banks.",WOC_CURRENTCY,self.amount];
+                                self.offersDict[key] = multipleBankOffer;
+                            }
                         }
                     }
                 }
                 
-                
-                if (self.offers.count > 0) {
-                    if ([[responseDictionary valueForKey:@"incremented"] boolValue] == TRUE) {
-                        self.incremented = TRUE;
-                        self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for at least $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
-                    }
-                    else {
-                        self.incremented = FALSE;
-                        self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
-                    }
-                    
-                    if ([[responseDictionary valueForKey:@"isExtendedSearch"] boolValue] == TRUE) {
-                        self.isExtendedSearch = TRUE;
-                    }
-                    else {
-                        self.isExtendedSearch = FALSE;
-                    }
-                }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                   [self.tableView reloadData];
@@ -308,10 +333,6 @@
     return self.offersDict.allKeys.count;
 }
 
--(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    NSString *key = self.offersDict.allKeys[section];
-    return key;
-}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
    
     NSString *key = self.offersDict.allKeys[section];
@@ -454,6 +475,29 @@
         }
     }
     return 125.0;
+}
+
+//-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    NSString *key = self.offersDict.allKeys[section];
+//    return key;
+//}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+
+    NSString *key = self.offersDict.allKeys[section];
+    UILabel *lblHeader = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 0.0, tableView.frame.size.width-60.0, 50.0)];
+    lblHeader.text = key;
+    lblHeader.numberOfLines = 2.0;
+    lblHeader.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:250.0/255.0 blue:250.0/255.0 alpha:1.0];
+    lblHeader.textAlignment = NSTextAlignmentCenter;
+    return lblHeader;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if (section > 0){
+        return 50.0;
+    }
+    return 20.0;
 }
 
 -(NSIndexPath*)getIndexPathfromTag:(NSInteger)tag {
