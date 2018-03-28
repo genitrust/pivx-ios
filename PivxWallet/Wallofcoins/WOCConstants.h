@@ -16,8 +16,8 @@
 #endif
 #define Str(str) (str != [NSNull null])?str:@""
 
-#define IS_PRODUCTION TRUE // IF MAINNET SET DASH_TESTNET = 0
-//#define IS_PRODUCTION FALSE  //  IF TESTNET SET DASH_TESTNET = 1
+//#define IS_PRODUCTION TRUE // IF MAINNET SET DASH_TESTNET = 0
+#define IS_PRODUCTION FALSE  //  IF TESTNET SET DASH_TESTNET = 1
 
 #define BASE_URL_DEVELOPMENT @"https://wallofcoins.com"
 #define BASE_URL_PRODUCTION @"https://wallofcoins.com"

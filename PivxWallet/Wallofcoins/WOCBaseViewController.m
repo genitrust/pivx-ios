@@ -170,7 +170,7 @@
 }
 
 - (void)backToMainView {
-    
+    [super backToMainView];
     [self storeDeviceInfoLocally];
 }
 // MARK: - API

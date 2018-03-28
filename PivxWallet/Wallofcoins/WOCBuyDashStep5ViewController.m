@@ -171,10 +171,10 @@
                                      @"currency": offerDictionary[@"totalDeposit"][@"currency"],
                                      @"amount": offerDictionary[@"totalDeposit"][@"amount"]
                                      };
-        
+        reviceOfferDict[@"id"] = offerDictionary[@"id"];
+
         if (offerDictionary[@"firstOffer"] != nil) {
             NSDictionary *firstOfferDict = offerDictionary[@"firstOffer"];
-            reviceOfferDict[@"id"] = firstOfferDict[@"id"];
             
             reviceOfferDict[@"crypto"] = firstOfferDict[@"crypto"];
             reviceOfferDict[@"amount"] = @{
@@ -205,20 +205,20 @@
                 NSDictionary *amountDict = firstOfferDict[@"amount"];
                 NSDictionary *secondAmountDict = offerDictionary[@"secondOffer"];
                 
-                NSNumber *firstOfferMinorNumber = [NSNumber numberWithLongLong:[NSString stringWithFormat:@"%@",[firstOfferDict[@"amount"][CRYPTO_CURRENTCY_SMALL] stringByReplacingOccurrencesOfString:@"," withString:@""]].longLongValue];
+                NSNumber *firstOfferMinorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[firstOfferDict[@"amount"][CRYPTO_CURRENTCY_SMALL] stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
                 
-                NSNumber *secondOfferMinorNumber = [NSNumber numberWithLongLong:[NSString stringWithFormat:@"%@",[secondOffer[@"amount"][CRYPTO_CURRENTCY_SMALL] stringByReplacingOccurrencesOfString:@"," withString:@""]].longLongValue];
+                NSNumber *secondOfferMinorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[secondOffer[@"amount"][CRYPTO_CURRENTCY_SMALL] stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
                 
-                NSNumber *totoalMinorNumber =  [NSNumber numberWithLongLong:(firstOfferMinorNumber.longLongValue + secondOfferMinorNumber.longLongValue)] ;
+                NSNumber *totoalMinorNumber =  [NSNumber numberWithFloat:(firstOfferMinorNumber.longLongValue + secondOfferMinorNumber.floatValue)] ;
                 
                 NSString *totalMinorStr = [self getCryptoPrice:totoalMinorNumber];
                 NSLog(@"totalMinorStr = %@",totalMinorStr);
                 
-                NSNumber *firstOfferMajorNumber = [NSNumber numberWithLongLong:[NSString stringWithFormat:@"%@",[firstOfferDict[@"amount"][CRYPTO_CURRENTCY] stringByReplacingOccurrencesOfString:@"," withString:@""]].longLongValue];
+                NSNumber *firstOfferMajorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[firstOfferDict[@"amount"][CRYPTO_CURRENTCY] stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
                 
-                NSNumber *secondOfferMajorNumber = [NSNumber numberWithLongLong:[NSString stringWithFormat:@"%@",[secondOffer[@"amount"][CRYPTO_CURRENTCY] stringByReplacingOccurrencesOfString:@"," withString:@""]].longLongValue];
+                NSNumber *secondOfferMajorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[secondOffer[@"amount"][CRYPTO_CURRENTCY] stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
                 
-                NSNumber *totoalMajorNumber =  [NSNumber numberWithLongLong:(firstOfferMajorNumber.longLongValue + secondOfferMajorNumber.longLongValue)] ;
+                NSNumber *totoalMajorNumber =  [NSNumber numberWithFloat:(firstOfferMajorNumber.longLongValue + secondOfferMajorNumber.floatValue)] ;
                 
                 NSString *totalMajorStr = [self getCryptoPrice:totoalMajorNumber];
                 NSLog(@"totalMajorStr = %@",totalMajorStr);
@@ -277,6 +277,7 @@
                     }
                 }
             }
+            
             WOCBuyingInstructionsViewController *myViewController = [self getViewController:@"WOCBuyingInstructionsViewController"];
             myViewController.phoneNo = phoneNo;
             myViewController.isFromSend = NO;

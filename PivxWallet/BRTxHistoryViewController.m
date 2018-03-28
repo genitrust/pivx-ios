@@ -41,6 +41,14 @@
 #import <WebKit/WebKit.h>
 #import "pivxwallet-Swift.h"
 
+//WallOfCoins
+#import "WOCBuyDashStep1ViewController.h"
+#import "WOCBuyingInstructionsViewController.h"
+#import "WOCBuyingSummaryViewController.h"
+#import "WOCConstants.h"
+#import "MBProgressHUD.h"
+#import "BRAppDelegate.h"
+#import "APIManager.h"
 #define TRANSACTION_CELL_HEIGHT 75
 
 static NSString *dateFormat(NSString *template)
@@ -637,7 +645,7 @@ static NSString *dateFormat(NSString *template)
             }
             else {
                 EmptyTableCell *tran = [tableView dequeueReusableCellWithIdentifier:self.emptyIdentifier forIndexPath:indexPath];
-                [tran configureWithTitle:@"NO TRANSACTIONS" image:@"imgTransactionEmpty"];
+                [tran configureWithTitle:@"Load up your Wallet ->" image:@"woc-icon"];
                 return tran;
                 //cell = [tableView dequeueReusableCellWithIdentifier:noTxIdent];
             }
@@ -750,7 +758,9 @@ static NSString *dateFormat(NSString *template)
                 [self performSelector:@selector(more:) withObject:tableView afterDelay:0.0];
             }
             else if (self.transactions.count > 0) [self showTx:self.transactions[indexPath.row]]; // transaction details
-
+            NSLog(@"Open WOC module Here");
+            [self loadWOCModule];
+            
             [tableView deselectRowAtIndexPath:indexPath animated:YES];
             break;
 
@@ -782,6 +792,16 @@ static NSString *dateFormat(NSString *template)
     }
 }
 
+-(void)loadWOCModule
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
+        UINavigationController *navController = (UINavigationController*) [storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"];
+        [navController.navigationBar setTintColor:[UIColor whiteColor]];
+        BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
+        appDelegate.window.rootViewController = navController;
+    });
+}
 // MARK: - UIViewControllerAnimatedTransitioning
 
 // This is used for percent driven interactive transitions, as well as for container controllers that have companion

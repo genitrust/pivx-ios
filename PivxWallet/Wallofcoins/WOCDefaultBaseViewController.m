@@ -89,6 +89,8 @@
     [numFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
     [numFormatter setAlwaysShowsDecimalSeparator:YES];
     [numFormatter setUsesGroupingSeparator:YES];
+    [numFormatter setMinimumFractionDigits:2];
+    [numFormatter setMaximumFractionDigits:2];
     [numFormatter setGroupingSeparator:@","];
     [numFormatter setGroupingSize:3];
     NSString *numberStr = [numFormatter stringFromNumber:number];
