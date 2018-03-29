@@ -266,16 +266,16 @@
                     NSArray *accountArray = [accountArr sortedArrayUsingDescriptors:@[sort]];
                     cell.lblPhone.hidden = YES;
                     if (accountArray.count > 0) {
-                        cell.lblFirstName.text = [NSString stringWithFormat:@"First Name: %@",[[accountArray objectAtIndex:0] valueForKey:@"value"]];
+                        cell.lblFirstName.text = [NSString stringWithFormat:@"First Name: %@",setVal([[accountArray objectAtIndex:0] valueForKey:@"value"])];
                     }
                     if (accountArray.count > 2) {
-                        cell.lblLastName.text = [NSString stringWithFormat:@"Last Name: %@",[[accountArray objectAtIndex:2] valueForKey:@"value"]];
+                        cell.lblLastName.text = [NSString stringWithFormat:@"Last Name: %@",setVal([[accountArray objectAtIndex:2] valueForKey:@"value"])];
                     }
                     if (accountArray.count > 3) {
-                        cell.lblBirthCountry.text = [NSString stringWithFormat:@"Country of Birth: %@",[[accountArray objectAtIndex:3] valueForKey:@"value"]];
+                        cell.lblBirthCountry.text = [NSString stringWithFormat:@"Country of Birth: %@",setVal([[accountArray objectAtIndex:3] valueForKey:@"value"])];
                     }
                     if (accountArray.count > 1) {
-                        cell.lblPickupState.text = [NSString stringWithFormat:@"Pick-up State: %@",[[accountArray objectAtIndex:1] valueForKey:@"value"]];
+                        cell.lblPickupState.text = [NSString stringWithFormat:@"Pick-up State: %@",setVal([[accountArray objectAtIndex:1] valueForKey:@"value"])];
                     }
                 }
             }

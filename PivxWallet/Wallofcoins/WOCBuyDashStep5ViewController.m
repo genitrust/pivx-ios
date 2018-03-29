@@ -105,11 +105,11 @@
                         if (doubleOffer.count > 0) {
                             
                             if (self.isExtendedSearch == TRUE) {
-                                NSString *key = [NSString stringWithFormat:@" Best Value options: more %@ for under $%@ cash.",WOC_CURRENTCY,self.amount];
+                                NSString *key = [NSString stringWithFormat:@"Best Value options: more %@ for under $%@ cash.",WOC_CURRENTCY,self.amount];
                                self.offersDict[key] = doubleOffer;
                             }
                             else {
-                                NSString *key = [NSString stringWithFormat:@" Best Value options: more %@ for $%@ cash.",WOC_CURRENTCY,self.amount];
+                                NSString *key = [NSString stringWithFormat:@"Best Value options: more %@ for $%@ cash.",WOC_CURRENTCY,self.amount];
                                 self.offersDict[key] = doubleOffer;
                             }
                         }
@@ -135,7 +135,6 @@
                         }
                     }
                 }
-                
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                   [self.tableView reloadData];
@@ -168,8 +167,8 @@
     {
         NSMutableDictionary *reviceOfferDict = [[NSMutableDictionary alloc] initWithCapacity:0];
         reviceOfferDict[@"deposit"] = @{
-                                     @"currency": offerDictionary[@"totalDeposit"][@"currency"],
-                                     @"amount": offerDictionary[@"totalDeposit"][@"amount"]
+                                     @"currency": setVal(offerDictionary[@"totalDeposit"][@"currency"]),
+                                     @"amount": setVal(offerDictionary[@"totalDeposit"][@"amount"])
                                      };
         reviceOfferDict[@"id"] = offerDictionary[@"id"];
 
@@ -178,45 +177,45 @@
             
             reviceOfferDict[@"crypto"] = firstOfferDict[@"crypto"];
             reviceOfferDict[@"amount"] = @{
-                                        @"DASH" : firstOfferDict[@"amount"][@"DASH"],
-                                        @"dots" : firstOfferDict[@"amount"][@"dots"],
-                                        @"bits" : firstOfferDict[@"amount"][@"bits"],
-                                        @"BTC" : firstOfferDict[@"amount"][@"BTC"]
+                                        @"DASH" : setVal(firstOfferDict[@"amount"][@"DASH"]),
+                                        @"dots" : setVal(firstOfferDict[@"amount"][@"dots"]),
+                                        @"bits" : setVal(firstOfferDict[@"amount"][@"bits"]),
+                                        @"BTC" : setVal(firstOfferDict[@"amount"][@"BTC"])
                                         };
-            reviceOfferDict[@"discoveryId"] = firstOfferDict[@"discoveryId"];
-            reviceOfferDict[@"distance"] =  firstOfferDict[@"distance"];
-            reviceOfferDict[@"address"] =  firstOfferDict[@"address"] ;
-            reviceOfferDict[@"state"] = firstOfferDict[@"state"] ;
-            reviceOfferDict[@"bankName"] = firstOfferDict[@"bankName"] ;
-            reviceOfferDict[@"bankLogo"] =  firstOfferDict[@"bankLogo"] ;
-            reviceOfferDict[@"bankIcon"] = firstOfferDict[@"bankIcon"] ;
-            reviceOfferDict[@"bankLocationUrl"] =  firstOfferDict[@"bankLocationUrl"];
-            reviceOfferDict[@"city"] = firstOfferDict[@"city"];
+            reviceOfferDict[@"discoveryId"] = setVal(firstOfferDict[@"discoveryId"]);
+            reviceOfferDict[@"distance"] =  setVal(firstOfferDict[@"distance"]);
+            reviceOfferDict[@"address"] =  setVal(firstOfferDict[@"address"] );
+            reviceOfferDict[@"state"] = setVal(firstOfferDict[@"state"]) ;
+            reviceOfferDict[@"bankName"] = setVal(firstOfferDict[@"bankName"]) ;
+            reviceOfferDict[@"bankLogo"] =  setVal(firstOfferDict[@"bankLogo"]) ;
+            reviceOfferDict[@"bankIcon"] = setVal(firstOfferDict[@"bankIcon"]) ;
+            reviceOfferDict[@"bankLocationUrl"] =  setVal(firstOfferDict[@"bankLocationUrl"]);
+            reviceOfferDict[@"city"] = setVal(firstOfferDict[@"city"]);
             
             
             if (offerDictionary[@"secondOffer"] != nil) {
                 NSDictionary *secondOffer = offerDictionary[@"secondOffer"];
-                if ([firstOfferDict[@"bankName"] isEqualToString:secondOffer[@"bankName"]] == FALSE) {
+                if ([setVal(firstOfferDict[@"bankName"]) isEqualToString:setVal(secondOffer[@"bankName"])] == FALSE) {
                     reviceOfferDict[@"isMultipleBank"] = @TRUE;
-                    reviceOfferDict[@"otherBankName"] = secondOffer[@"bankName"];
-                    reviceOfferDict[@"otherBankLogo"] = secondOffer[@"bankLogo"];
+                    reviceOfferDict[@"otherBankName"] = setVal(secondOffer[@"bankName"]);
+                    reviceOfferDict[@"otherBankLogo"] = setVal(secondOffer[@"bankLogo"]);
                 }
                 
                 NSDictionary *amountDict = firstOfferDict[@"amount"];
                 NSDictionary *secondAmountDict = offerDictionary[@"secondOffer"];
                 
-                NSNumber *firstOfferMinorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[firstOfferDict[@"amount"][CRYPTO_CURRENTCY_SMALL] stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
+                NSNumber *firstOfferMinorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[setVal(firstOfferDict[@"amount"][CRYPTO_CURRENTCY_SMALL]) stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
                 
-                NSNumber *secondOfferMinorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[secondOffer[@"amount"][CRYPTO_CURRENTCY_SMALL] stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
+                NSNumber *secondOfferMinorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[setVal(secondOffer[@"amount"][CRYPTO_CURRENTCY_SMALL]) stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
                 
                 NSNumber *totoalMinorNumber =  [NSNumber numberWithFloat:(firstOfferMinorNumber.longLongValue + secondOfferMinorNumber.floatValue)] ;
                 
                 NSString *totalMinorStr = [self getCryptoPrice:totoalMinorNumber];
                 NSLog(@"totalMinorStr = %@",totalMinorStr);
                 
-                NSNumber *firstOfferMajorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[firstOfferDict[@"amount"][CRYPTO_CURRENTCY] stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
+                NSNumber *firstOfferMajorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[setVal(firstOfferDict[@"amount"][CRYPTO_CURRENTCY]) stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
                 
-                NSNumber *secondOfferMajorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[secondOffer[@"amount"][CRYPTO_CURRENTCY] stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
+                NSNumber *secondOfferMajorNumber = [NSNumber numberWithFloat:[NSString stringWithFormat:@"%@",[setVal(secondOffer[@"amount"][CRYPTO_CURRENTCY]) stringByReplacingOccurrencesOfString:@"," withString:@""]].floatValue];
                 
                 NSNumber *totoalMajorNumber =  [NSNumber numberWithFloat:(firstOfferMajorNumber.longLongValue + secondOfferMajorNumber.floatValue)] ;
                 
@@ -484,14 +483,19 @@
 //}
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-
+    float height = 20.0;
+    if (section > 0) {
+        height = 50.0;
+    }
     NSString *key = self.offersDict.allKeys[section];
-    UILabel *lblHeader = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 0.0, tableView.frame.size.width-60.0, 50.0)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, tableView.frame.size.width, height)];
+    UILabel *lblHeader = [[UILabel alloc] initWithFrame:CGRectMake(10.0, 0.0, headerView.frame.size.width-20.0, height)];
     lblHeader.text = key;
     lblHeader.numberOfLines = 2.0;
     lblHeader.backgroundColor = [UIColor colorWithRed:250.0/255.0 green:250.0/255.0 blue:250.0/255.0 alpha:1.0];
     lblHeader.textAlignment = NSTextAlignmentCenter;
-    return lblHeader;
+    [headerView addSubview:lblHeader];
+    return headerView;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

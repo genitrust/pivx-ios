@@ -23,7 +23,6 @@
             <objects>
                 <navigationController storyboardIdentifier="wocNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vuo-Gb-kP9" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hck-Ou-WO9">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
