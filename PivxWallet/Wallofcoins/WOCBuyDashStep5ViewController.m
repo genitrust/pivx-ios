@@ -18,6 +18,8 @@
 #import "WOCAlertController.h"
 #import "MBProgressHUD.h"
 #import "WOCBuyDashStep1ViewController.h"
+#import "WOCAsyncImageView.h"
+
 @interface WOCBuyDashStep5ViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray *offers;
@@ -65,23 +67,23 @@
             if (error == nil) {
                 
                 NSDictionary *responseDictionary = [[NSDictionary alloc] initWithDictionary:(NSDictionary*)responseDict];
-                
-                if ([[responseDictionary valueForKey:@"incremented"] boolValue] == TRUE) {
-                    self.incremented = TRUE;
-                    self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for at least $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
-                }
-                else {
-                    self.incremented = FALSE;
-                    self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
-                }
-                
+               
                 if ([[responseDictionary valueForKey:@"isExtendedSearch"] boolValue] == TRUE) {
                     self.isExtendedSearch = TRUE;
                     
-                    self.lblInstruction.text = [NSString stringWithFormat:@"Most Convenient Options While $%@ is not available, we gathered the closest options. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
+                    self.lblInstruction.text = [NSString stringWithFormat:@"Most Convenient Options While $%@ is not available, we gathered the closest options.You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
                 }
                 else {
                     self.isExtendedSearch = FALSE;
+                    
+                    if ([[responseDictionary valueForKey:@"incremented"] boolValue] == TRUE) {
+                        self.incremented = TRUE;
+                        self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for at least $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
+                    }
+                    else {
+                        self.incremented = FALSE;
+                        self.lblInstruction.text = [NSString stringWithFormat:@"Below are offers for $%@. You must click the ORDER button before you receive instructions to pay at the Cash Payment center.",self.amount];
+                    }
                 }
                 
                 if ([responseDictionary valueForKey:@"singleDeposit"] != nil) {
@@ -341,7 +343,45 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    WOCOfferCell *cell = [tableView dequeueReusableCellWithIdentifier:@"offerCell"];
+  
+    static const NSInteger IMAGE_VIEW_TAG = 98;
+    static const NSInteger OTHER_IMAGE_VIEW_TAG = 99;
+    NSString *cellIdentifier = @"offerCell";
+    WOCOfferCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    UIView *cellView = cell.imgView.superview;
+    
+    WOCAsyncImageView *imageView = (WOCAsyncImageView *)[cellView viewWithTag:IMAGE_VIEW_TAG];
+    WOCAsyncImageView *otherImageView = (WOCAsyncImageView *)[cellView viewWithTag:OTHER_IMAGE_VIEW_TAG];
+    
+    if (imageView == nil) {
+        imageView = [[WOCAsyncImageView alloc] initWithFrame:cell.imgView.frame];
+        imageView.contentMode = UIViewContentModeScaleAspectFill;
+        imageView.clipsToBounds = YES;
+        imageView.image = [UIImage imageNamed:@"ic_account_balance_black"];
+        imageView.tag = IMAGE_VIEW_TAG;
+        [cellView addSubview:imageView];
+    }
+    
+    if (otherImageView == nil) {
+        
+        otherImageView = [[WOCAsyncImageView alloc] initWithFrame:cell.otherBankImgView.frame];
+        otherImageView.contentMode = UIViewContentModeScaleAspectFill;
+        otherImageView.clipsToBounds = YES;
+        otherImageView.image = [UIImage imageNamed:@"ic_account_balance_black"];
+        otherImageView.tag = OTHER_IMAGE_VIEW_TAG;
+        [cellView addSubview:otherImageView];
+        otherImageView.hidden = TRUE;
+    }
+    
+    cell.imgView.hidden = TRUE;
+    cell.otherBankImgView.hidden = TRUE;
+    otherImageView.hidden = TRUE;
+    imageView.hidden = FALSE;
+    
+    //get image view
+    //cancel loading previous image for cell
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
+    [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:otherImageView];
     
     NSString *key = self.offersDict.allKeys[indexPath.section];
     NSArray *offerArray = self.offersDict[key];
@@ -365,36 +405,6 @@
     NSString *otherbankLogo = [NSString stringWithFormat:@"%@",setVal([offerDict valueForKey:@"otherBankLogo"])];
 
     cell.lblLocation.font = [UIFont systemFontOfSize:12];
-    cell.otherBankImgView.hidden = TRUE;
-    if (offerDict[@"isMultipleBank"] != nil) {
-        BOOL isMultipleBank = [offerDict valueForKey:@"isMultipleBank"];
-        if (isMultipleBank) {
-            bankAddress = [offerDict valueForKey:@"otherBankName"];
-            cell.lblLocation.font = cell.lblBankName.font;
-        }
-        cell.otherBankImgView.hidden = FALSE;
-        if ([otherbankLogo length] > 0) {
-            
-            cell.otherBankImgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-                           ^{
-                               NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",otherbankLogo]];
-                               NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-                               
-                               //This is your completion handler
-                               dispatch_sync(dispatch_get_main_queue(), ^{
-                                   //If self.image is atomic (not declared with nonatomic)
-                                   // you could have set it directly above
-                                   if (imageData != nil) {
-                                       cell.otherBankImgView.image = [UIImage imageWithData:imageData];
-                                   }
-                                   else {
-                                       cell.otherBankImgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
-                                   }
-                               });
-                           });
-        }
-    }
     cell.lblDashTitle.text = dashAmount;
     cell.lblDashSubTitle.text = bits;
     cell.lblDollar.text = dollarAmount;
@@ -407,51 +417,33 @@
         [cell.btnLocation addTarget:self action:@selector(checkLocationClicked:) forControlEvents:UIControlEventTouchUpInside];
     }
     
+    if (offerDict[@"isMultipleBank"] != nil) {
+        
+        BOOL isMultipleBank = [offerDict valueForKey:@"isMultipleBank"];
+        
+        if (isMultipleBank) {
+            bankAddress = [offerDict valueForKey:@"otherBankName"];
+            cell.lblLocation.font = cell.lblBankName.font;
+        }
+    
+        
+        if ([otherbankLogo length] > 0) {
+            otherImageView.hidden = FALSE;
+            //load the image
+            otherImageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",otherbankLogo]];
+        }
+    }
+   
+    
     //bankLogo
     if ([bankLogo length] > 0) {
         
-        cell.imgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-                       ^{
-                           NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",bankLogo]];
-                           NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-                           
-                           //This is your completion handler
-                           dispatch_sync(dispatch_get_main_queue(), ^{
-                               //If self.image is atomic (not declared with nonatomic)
-                               // you could have set it directly above
-                               if (imageData != nil) {
-                                   cell.imgView.image = [UIImage imageWithData:imageData];
-                               }
-                               else {
-                                   cell.imgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
-                               }
-                           });
-                       });
+        imageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",bankLogo]];
     }
     else if ([bankIcon length] > 0) {
         
-        cell.imgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
-                       ^{
-                           NSURL *imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",bankIcon]];
-                           NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-                           
-                           //This is your completion handler
-                           dispatch_sync(dispatch_get_main_queue(), ^{
-                               //If self.image is atomic (not declared with nonatomic)
-                               // you could have set it directly above
-                               if (imageData != nil) {
-                                   cell.imgView.image = [UIImage imageWithData:imageData];
-                               }
-                               else {
-                                   cell.imgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
-                               }
-                               
-                           });
-                       });
-    }
-    else {
+        imageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",bankIcon]];
+        
         cell.imgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
     }
     

@@ -32,6 +32,7 @@
 		04052E3020594B1F00450167 /* WOCSignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04052E1820594B1E00450167 /* WOCSignInViewController.m */; };
 		04052E322059525D00450167 /* WOCMedia.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04052E312059525D00450167 /* WOCMedia.xcassets */; };
 		04052E33205A53E300450167 /* buyDash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 04052E35205A53E300450167 /* buyDash.storyboard */; };
+		0471AC98206E24230063A31C /* WOCAsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0471AC97206E24230063A31C /* WOCAsyncImageView.m */; };
 		220128D31C753C670001CAC1 /* BRSocketHelpers.c in Sources */ = {isa = PBXBuildFile; fileRef = 220128D11C753C670001CAC1 /* BRSocketHelpers.c */; };
 		2204604E1B9F61E600D07B61 /* BREventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2204604D1B9F61E600D07B61 /* BREventManager.m */; };
 		2204604F1B9F61E600D07B61 /* BREventManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2204604D1B9F61E600D07B61 /* BREventManager.m */; };
@@ -296,6 +297,8 @@
 		04176864205A96730066E396 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/buyDash.storyboard; sourceTree = "<group>"; };
 		04176865205A96890066E396 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/buyDash.strings; sourceTree = "<group>"; };
 		04176866205A96AB0066E396 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/buyDash.strings; sourceTree = "<group>"; };
+		0471AC96206E24230063A31C /* WOCAsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WOCAsyncImageView.h; sourceTree = "<group>"; };
+		0471AC97206E24230063A31C /* WOCAsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WOCAsyncImageView.m; sourceTree = "<group>"; };
 		220128D11C753C670001CAC1 /* BRSocketHelpers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = BRSocketHelpers.c; sourceTree = "<group>"; };
 		220128D21C753C670001CAC1 /* BRSocketHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BRSocketHelpers.h; sourceTree = "<group>"; };
 		2204604C1B9F61E600D07B61 /* BREventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BREventManager.h; sourceTree = "<group>"; };
@@ -726,12 +729,22 @@
 		04052E0E20594B1E00450167 /* WOCHelpers */ = {
 			isa = PBXGroup;
 			children = (
+				0471AC95206E24230063A31C /* AsyncImageView */,
 				04052E0F20594B1E00450167 /* WOCAlertController.h */,
 				04052E1020594B1E00450167 /* WOCAlertController.m */,
 				04052E1120594B1E00450167 /* WOCLocationManager.h */,
 				04052E1220594B1E00450167 /* WOCLocationManager.m */,
 			);
 			path = WOCHelpers;
+			sourceTree = "<group>";
+		};
+		0471AC95206E24230063A31C /* AsyncImageView */ = {
+			isa = PBXGroup;
+			children = (
+				0471AC96206E24230063A31C /* WOCAsyncImageView.h */,
+				0471AC97206E24230063A31C /* WOCAsyncImageView.m */,
+			);
+			path = AsyncImageView;
 			sourceTree = "<group>";
 		};
 		2B5735681FE04BEB00110745 /* PivxUtils */ = {
@@ -1711,6 +1724,7 @@
 				04052E1D20594B1F00450167 /* WOCSummaryCell.m in Sources */,
 				04052E2A20594B1F00450167 /* WOCBuyingSummaryViewController.m in Sources */,
 				752E28AC19234AE300DB5A3C /* BRPeerEntity.m in Sources */,
+				0471AC98206E24230063A31C /* WOCAsyncImageView.m in Sources */,
 				FBF2680E1E419318001A1C8B /* DSShapeshiftEntity+CoreDataClass.m in Sources */,
 				2BBE61AB1FE48AF900D06CD7 /* EmptyCell.swift in Sources */,
 				2BBE61A31FE4853B00D06CD7 /* AddressContactController.swift in Sources */,
