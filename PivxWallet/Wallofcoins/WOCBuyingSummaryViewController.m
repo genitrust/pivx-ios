@@ -253,25 +253,6 @@
         NSString *cellIdentifier = @"offerCell";
         
         WOCSummaryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"summaryCell"];
-        UIView *cellView = cell.imgView.superview;
-        
-        WOCAsyncImageView *imageView = (WOCAsyncImageView *)[cellView viewWithTag:IMAGE_VIEW_TAG];
-       
-        if (imageView == nil) {
-            imageView = [[WOCAsyncImageView alloc] initWithFrame:cell.imgView.frame];
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.clipsToBounds = YES;
-            imageView.image = [UIImage imageNamed:@"ic_account_balance_black"];
-            imageView.tag = IMAGE_VIEW_TAG;
-            [cellView addSubview:imageView];
-        }
-        
-        cell.imgView.hidden = TRUE;
-        imageView.hidden = FALSE;
-        
-        //get image view
-        //cancel loading previous image for cell
-        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
         
         NSDictionary *orderDict = [[NSDictionary alloc] init];
         
@@ -317,6 +298,25 @@
         NSString *totalDash = setVal([orderDict valueForKey:@"total"]);
         NSString *status = [NSString stringWithFormat:@"%@",setVal([orderDict valueForKey:@"status"])];
         
+        UIView *cellView = cell.imgView.superview;
+        
+        WOCAsyncImageView *imageView = (WOCAsyncImageView *)[cellView viewWithTag:IMAGE_VIEW_TAG];
+        
+        if (imageView == nil) {
+            imageView = [[WOCAsyncImageView alloc] initWithFrame:cell.imgView.frame];
+            imageView.contentMode = UIViewContentModeScaleAspectFill;
+            imageView.clipsToBounds = YES;
+            imageView.image = [UIImage imageNamed:@"ic_account_balance_black"];
+            imageView.tag = IMAGE_VIEW_TAG;
+            [cellView addSubview:imageView];
+        }
+        
+        cell.imgView.hidden = TRUE;
+        imageView.hidden = FALSE;
+        
+        //get image view
+        //cancel loading previous image for cell
+        [[AsyncImageLoader sharedLoader] cancelLoadingImagesForTarget:imageView];
         //bankLogo
         if ([bankLogo length] > 0) {
             
@@ -325,8 +325,7 @@
         else if ([bankIcon length] > 0) {
             
             imageView.imageURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@",bankIcon]];
-            
-            cell.imgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
+            //cell.imgView.image = [UIImage imageNamed:@"ic_account_balance_black"];
         }
         
         cell.lblName.text = bankName;
