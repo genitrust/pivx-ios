@@ -17,7 +17,7 @@
 @interface WOCDefaultBaseViewController : UIViewController
 
 @property (strong, nonatomic) NSUserDefaults *defaults;
-@property (assign) BOOL requiredBackButton;
+@property (assign, nonatomic) BOOL isBackButtonRequire;
 
 + (instancetype) sharedInstance;
 
@@ -27,15 +27,18 @@
 - (void)push:(NSString*)viewControllerStr ;
 - (void)clearLocalStorage;
 
-- (void)setShadow:(UIView *)view;
-
 - (id)getViewController:(NSString*)viewControllerStr;
 - (void)pushViewControllerStr:(NSString*)viewControllerStr;
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 
--(NSString*)getCryptoPrice:(NSNumber*)number;
+- (NSString*)getCryptoPrice:(NSNumber*)number;
 
-- (IBAction)backBtnClicked:(id)sender;
-- (IBAction)signOutClicked:(id)sender;
-- (IBAction)backToMainViewBtnClicked:(id)sender;
+- (IBAction)onBackButtonClick:(id)sender;
+- (IBAction)onSignOutButtonClick:(id)sender;
+- (IBAction)onBackToMainViewButtonClick:(id)sender;
+- (BOOL)isValidEmail:(NSString *)checkString;
+- (void)setShadowOnView:(UIView *)view;
+- (void)setShadowOnButton:(UIButton *)button;
+- (void)setButtonColor: (UIButton *)button;
+
 @end

@@ -46,13 +46,8 @@
 
 
 //WallOfCoins
-#import "WOCBuyDashStep1ViewController.h"
-#import "WOCBuyingInstructionsViewController.h"
-#import "WOCBuyingSummaryViewController.h"
 #import "WOCConstants.h"
-#import "MBProgressHUD.h"
 #import "BRAppDelegate.h"
-#import "APIManager.h"
 
 @interface BRReceiveViewController ()
 
@@ -515,20 +510,21 @@ presentingController:(UIViewController *)presenting sourceController:(UIViewCont
     return self;
 }
 
+// MARK: - Wall of Coin Module
 // Added New Button to Buy Dash with cash
 - (IBAction)buyPIVXWithCashAction:(id)sender {
     [sender setEnabled:NO];
     
     [self dismissViewControllerAnimated:NO completion:^{
-        [self pushToStep1];
+        [self loadWOCModule];
         [sender setEnabled:YES];
     }];
 }
 
--(void)pushToStep1
+-(void)loadWOCModule
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:WOCBuyingStoryboard bundle:nil];
         UINavigationController *navController = (UINavigationController*) [storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"];
         [navController.navigationBar setTintColor:[UIColor whiteColor]];
         BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
@@ -536,59 +532,5 @@ presentingController:(UIViewController *)presenting sourceController:(UIViewCont
     });
 }
 
-// MARK: - WallofCoins API
-
-- (void)getOrders
-{
-    MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
-    NSDictionary *params = @{
-                            };
-    
-    [[APIManager sharedInstance] getOrders:nil response:^(id responseDict, NSError *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [hud hideAnimated:YES];
-        });
-        
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
-        UINavigationController *navController = (UINavigationController*) [storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"];
-        
-        if (error == nil) {
-            if ([responseDict isKindOfClass:[NSArray class]])
-            {
-                NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
-                if (orders.count > 0) {
-                    NSString *phoneNo = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-                    NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
-                    NSArray *wdArray = [orders filteredArrayUsingPredicate:wdvPredicate];
-                    
-                    if (wdArray.count > 0) {
-                        NSDictionary *orderDict = (NSDictionary*)[wdArray objectAtIndex:0];
-                        NSString *status = [NSString stringWithFormat:@"%@",[orderDict valueForKey:@"status"]];
-                        if ([status isEqualToString:@"WD"]) {
-                            WOCBuyingInstructionsViewController *myViewController = [storyboard instantiateViewControllerWithIdentifier:@"WOCBuyingInstructionsViewController"];
-                            myViewController.phoneNo = phoneNo;
-                            myViewController.isFromSend = YES;
-                            myViewController.isFromOffer = NO;
-                            myViewController.orderDict = orderDict;
-                            
-                            [navController pushViewController:myViewController animated:YES];
-                        }
-                    }
-                    else {
-                        
-                        WOCBuyingSummaryViewController *myViewController = [storyboard instantiateViewControllerWithIdentifier:@"WOCBuyingSummaryViewController"];
-                        myViewController.phoneNo = phoneNo;
-                        myViewController.orders = orders;
-                        myViewController.isFromSend = YES;
-                        
-                        [navController pushViewController:myViewController animated:YES];
-                    }
-                }
-            }
-        }
-        BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
-        appDelegate.window.rootViewController = navController;
-    }];
-}
 
 @end

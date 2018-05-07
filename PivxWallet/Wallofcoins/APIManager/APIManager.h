@@ -6,7 +6,6 @@
 //  Copyright (c) 2018 Wallofcoins. All rights reserved.
 //
 
-#define SHOW_LOGS TRUE
 #import "WOCConstants.h"
 
 @interface APIManager : NSObject
@@ -33,4 +32,13 @@
 - (void)deleteHold:(NSString*)holdId response:(void (^)(id responseDict, NSError *error))completionBlock;
 - (void)getHold:(void (^)(id responseDict, NSError *error))completionBlock;
 
+- (void)getIncomingOrders:(NSDictionary*)params response:(void (^)(id responseDict, NSError *error))completionBlock;
+- (void)confirmDepositForIncomingOrdersId:(NSString*)orderId response:(void (^)(id responseDict, NSError *error))completionBlock;
+- (void)invalidateDepositForIncomingOrdersId:(NSString*)orderId response:(void (^)(id responseDict, NSError *error))completionBlock;
+- (void)registerUser:(NSDictionary*)params response:(void (^)(id responseDict, NSError *error))completionBlock;
+- (void)resetPassword:(NSDictionary*)params phone:(NSString*)phoneNo response:(void (^)(id responseDict, NSError *error))completionBlock;
+- (void)createAd:(NSDictionary*)params response:(void (^)(id responseDict, NSError *error))completionBlock;
+
+- (void)getAllAds:(NSDictionary*)params response:(void (^)(id responseDict, NSError *error))completionBlock;
+- (void)getDetailFromADId:(NSString*)AdvertiseId response:(void (^)(id responseDict, NSError *error))completionBlock;
 @end

@@ -27,13 +27,13 @@
 - (void)openSite:(NSURL*)url {
     if ([[UIApplication sharedApplication] canOpenURL:url]) {
         [[UIApplication sharedApplication] openURL:url options:@{} completionHandler:^(BOOL success) {
-            NSLog(@"URL opened...");
+            APILog(@"URL opened...");
         }];
     }
 }
 
 // MARK: - IBAction
-- (IBAction)signInBtnClicked:(id)sender {
+- (IBAction)onSignInButtonClick:(id)sender {
     if (self.phoneNo != nil) {
         [self openSite:[NSURL URLWithString:[NSString stringWithFormat:@"https://wallofcoins.com/signin/%@/",self.phoneNo]]];
     }

@@ -9,7 +9,11 @@
 #import "WOCBaseViewController.h"
 #import "WOCBuyingInstructionsViewController.h"
 #import "WOCBuyingSummaryViewController.h"
-#import "WOCBuyDashStep1ViewController.h"
+#import "WOCBuyingWizardHomeViewController.h"
+
+#import "WOCSellingWizardHomeViewController.h"
+#import "WOCSellingInstructionsViewController.h"
+#import "WOCSellingSummaryViewController.h"
 
 @interface WOCBaseViewController ()
 
@@ -33,7 +37,15 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.title = [NSString stringWithFormat:@"buy %@ with cash",WOC_CURRENTCY];
+    
+    NSString * storyboardName = [self.storyboard valueForKey:@"name"];
+    
+    if ([storyboardName isEqualToString:WOCBuyingStoryboard]) {
+        self.title = [NSString stringWithFormat:@"buy %@ with cash",WOCCurrency];
+    }
+    else {
+        self.title = [NSString stringWithFormat:@"sell %@ for cash",WOCCurrency];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -41,78 +53,73 @@
     self.title = @"";
 }
 
-- (IBAction)signOutClicked:(id)sender {
+- (IBAction)onSignOutButtonClick:(id)sender {
     [self signOutWOC];
 }
 
--(void)setWocDeviceCode {
+- (void)setWocDeviceCode {
     //store deviceCode in userDefault
-    int launched = [self.defaults integerForKey:USER_DEFAULTS_LAUNCH_STATUS];
+    int launched = [self.defaults integerForKey:WOCUserDefaultsLaunchStatus];
     if (launched == 0) {
         NSString *uuid = [[NSUUID UUID] UUIDString];
-        [self.defaults setValue:uuid forKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
-        [self.defaults setInteger:1 forKey:USER_DEFAULTS_LAUNCH_STATUS];
+        [self.defaults setValue:uuid forKey:WOCUserDefaultsLocalDeviceCode];
+        [self.defaults setInteger:1 forKey:WOCUserDefaultsLaunchStatus];
         [self.defaults synchronize];
     }
 }
 
--(NSString *)wocDeviceCode {
+- (NSString *)wocDeviceCode {
     NSString *deviceCode = @"";
     
-    if ([self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE] != nil) {
-        deviceCode = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
+    if ([self.defaults valueForKey:WOCUserDefaultsLocalDeviceCode] != nil) {
+        deviceCode = [self.defaults valueForKey:WOCUserDefaultsLocalDeviceCode];
     }
     return deviceCode;
 }
 
--(void)storeDeviceInfoLocally {
+- (void)storeDeviceInfoLocally {
     
-    if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER] != nil) {
-        if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID] != nil) {
-            NSString * phoneNumber = [self.defaults objectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-            NSString * deviceID = [self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+    if ([self.defaults objectForKey:WOCUserDefaultsLocalPhoneNumber] != nil) {
+        if ([self.defaults objectForKey:WOCUserDefaultsLocalDeviceId] != nil) {
+            NSString * phoneNumber = [self.defaults objectForKey:WOCUserDefaultsLocalPhoneNumber];
+            NSString * deviceID = [self.defaults objectForKey:WOCUserDefaultsLocalDeviceId];
             
             NSMutableDictionary *localDeiveDict =  [NSMutableDictionary dictionaryWithCapacity:0];
-            if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] != nil) {
-                
-                localDeiveDict = [NSMutableDictionary dictionaryWithDictionary:[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO]];
+            if ([self.defaults objectForKey:WOCUserDefaultsLocalDeviceInfo] != nil) {
+                localDeiveDict = [NSMutableDictionary dictionaryWithDictionary:[self.defaults objectForKey:WOCUserDefaultsLocalDeviceInfo]];
             }
             
             localDeiveDict[phoneNumber] = [NSString stringWithFormat:@"%@",deviceID];
             if (localDeiveDict != nil) {
-                [self.defaults setObject:localDeiveDict forKey:USER_DEFAULTS_LOCAL_DEVICE_INFO];
+                [self.defaults setObject:localDeiveDict forKey:WOCUserDefaultsLocalDeviceInfo];
                 [self.defaults synchronize];
             }
         }
     }
     
-    NSLog(@"Device info %@",[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO]);
+    APILog(@"Device info %@",[self.defaults objectForKey:WOCUserDefaultsLocalDeviceInfo]);
 }
 
--(void)clearLocalStorage
+- (void)clearLocalStorage
 {
-    [self.defaults removeObjectForKey:USER_DEFAULTS_AUTH_TOKEN];
-    [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-    [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+    [self.defaults removeObjectForKey:WOCUserDefaultsAuthToken];
+    [self.defaults removeObjectForKey:WOCUserDefaultsLocalPhoneNumber];
+    [self.defaults removeObjectForKey:WOCUserDefaultsLocalDeviceId];
     [self.defaults synchronize];
 }
 
--(NSString*)getDeviceIDFromPhoneNumber:(NSString*)phoneNo {
+- (NSString*)getDeviceIDFromPhoneNumber:(NSString*)phoneNo {
     
-    if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] != nil) {
-        
-        if ([[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] isKindOfClass:[NSDictionary class]]) {
-            NSMutableDictionary *deviceInfoDict = [NSMutableDictionary dictionaryWithDictionary:[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO]];
+    if ([self.defaults objectForKey:WOCUserDefaultsLocalDeviceInfo] != nil) {
+        if ([[self.defaults objectForKey:WOCUserDefaultsLocalDeviceInfo] isKindOfClass:[NSDictionary class]]) {
+            NSMutableDictionary *deviceInfoDict = [NSMutableDictionary dictionaryWithDictionary:[self.defaults objectForKey:WOCUserDefaultsLocalDeviceInfo]];
             if (deviceInfoDict[phoneNo] != nil) {
-                
                 NSString *deviceId = deviceInfoDict[phoneNo];
                 if (deviceId != nil) {
-                    
                     if (deviceId.length > 0) {
-                        
-                       if ([deviceId isEqualToString:@"(null)"] == FALSE) {
-                        return  deviceId;
-                       }
+                        if (![deviceId isEqualToString:@"(null)"]) {
+                            return  deviceId;
+                        }
                     }
                 }
             }
@@ -121,34 +128,30 @@
     return nil;
 }
 
--(void)refereshToken {
+- (void)refereshToken {
     
-    if ([self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] != nil) {
-        
-        if ([[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO] isKindOfClass:[NSDictionary class]]) {
-            NSMutableDictionary *deviceInfoDict = [NSMutableDictionary dictionaryWithDictionary:[self.defaults objectForKey:USER_DEFAULTS_LOCAL_DEVICE_INFO]];
-            
-            NSString *phoneNo = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+    if ([self.defaults objectForKey:WOCUserDefaultsLocalDeviceInfo] != nil) {
+        if ([[self.defaults objectForKey:WOCUserDefaultsLocalDeviceInfo] isKindOfClass:[NSDictionary class]]) {
+            NSMutableDictionary *deviceInfoDict = [NSMutableDictionary dictionaryWithDictionary:[self.defaults objectForKey:WOCUserDefaultsLocalDeviceInfo]];
+            NSString *phoneNo = [self.defaults valueForKey:WOCUserDefaultsLocalPhoneNumber];
             if (phoneNo != nil) {
                 if (deviceInfoDict[phoneNo] != nil) {
-                    
                     NSString *deviceId = deviceInfoDict[phoneNo];
                     if (deviceId != nil) {
-                        
-                        if (deviceId.length > 0 && [deviceId isEqualToString:@"(null)"] == FALSE) {
-                            [self.defaults setObject:deviceId forKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+                        if (deviceId.length > 0 && (![deviceId isEqualToString:@"(null)"])) {
+                            [self.defaults setObject:deviceId forKey:WOCUserDefaultsLocalDeviceId];
                             [self.defaults synchronize];
-                            [self.defaults setObject:deviceInfoDict forKey:USER_DEFAULTS_LOCAL_DEVICE_INFO];
+                            [self.defaults setObject:deviceInfoDict forKey:WOCUserDefaultsLocalDeviceInfo];
                             [self.defaults synchronize];
                             [self loginWOC];
                             return;
                         }
                         else {
-                            [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-                            [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+                            [self.defaults removeObjectForKey:WOCUserDefaultsLocalPhoneNumber];
+                            [self.defaults removeObjectForKey:WOCUserDefaultsLocalDeviceId];
                             
                             [deviceInfoDict removeObjectForKey:phoneNo];
-                            [self.defaults setObject:deviceInfoDict forKey:USER_DEFAULTS_LOCAL_DEVICE_INFO];
+                            [self.defaults setObject:deviceInfoDict forKey:WOCUserDefaultsLocalDeviceInfo];
                             [self.defaults synchronize];
                             
                             dispatch_async(dispatch_get_main_queue(), ^{
@@ -170,6 +173,7 @@
 }
 
 - (void)backToMainView {
+    
     [super backToMainView];
     [self storeDeviceInfoLocally];
 }
@@ -178,51 +182,50 @@
 
 - (void)loginWOC {
     
-    NSString *phoneNo = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-    NSString *deviceCode = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_CODE];
-    NSString *deviceId = [self.defaults valueForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
-    NSString *token = [self.defaults valueForKey:USER_DEFAULTS_AUTH_TOKEN];
+    NSString *phoneNo = [self.defaults valueForKey:WOCUserDefaultsLocalPhoneNumber];
+    NSString *deviceCode = [self.defaults valueForKey:WOCUserDefaultsLocalDeviceCode];
+    NSString *deviceId = [self.defaults valueForKey:WOCUserDefaultsLocalDeviceId];
+    NSString *token = [self.defaults valueForKey:WOCUserDefaultsAuthToken];
     
     NSDictionary *params = @{
-                             API_BODY_DEVICE_CODE: deviceCode
+                             WOCApiBodyDeviceCode: deviceCode
                              };
     
-    if (deviceId != nil && [deviceId isEqualToString:@"(null)"] == FALSE) {
+    if (deviceId != nil && (![deviceId isEqualToString:@"(null)"])) {
         
         params = @{
-                   API_BODY_DEVICE_CODE: deviceCode,
-                   API_BODY_DEVICE_ID: deviceId,
-                   API_BODY_JSON_PARAMETER: @"YES"
+                   WOCApiBodyDeviceCode: deviceCode,
+                   WOCApiBodyDeviceId: deviceId,
+                   WOCApiBodyJsonParameter: @"YES"
                    };
         
         [[APIManager sharedInstance] login:params phone:phoneNo response:^(id responseDict, NSError *error) {
             
             if (error == nil) {
-                
                 NSDictionary *responseDictionary = [[NSDictionary alloc] initWithDictionary:(NSDictionary*)responseDict];
-                [self.defaults setValue:[responseDictionary valueForKey:API_RESPONSE_TOKEN] forKey:USER_DEFAULTS_AUTH_TOKEN];
-                [self.defaults setValue:phoneNo forKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-                [self.defaults setValue:[NSString stringWithFormat:@"%@",[responseDictionary valueForKey:API_BODY_DEVICE_ID]] forKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
+                [self.defaults setValue:[responseDictionary valueForKey:WOCApiResponseToken] forKey:WOCUserDefaultsAuthToken];
+                [self.defaults setValue:phoneNo forKey:WOCUserDefaultsLocalPhoneNumber];
+                [self.defaults setValue:[NSString stringWithFormat:@"%@",[responseDictionary valueForKey:WOCApiBodyDeviceId]] forKey:WOCUserDefaultsLocalDeviceId];
                 [self.defaults synchronize];
                 [self storeDeviceInfoLocally];
             }
             else {
-                [self.defaults removeObjectForKey:USER_DEFAULTS_AUTH_TOKEN];
-                [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-                [self.defaults removeObjectForKey:USER_DEFAULTS_LOCAL_DEVICE_ID];
-                //[self.defaults setValue:phoneNo forKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+                [self.defaults removeObjectForKey:WOCUserDefaultsAuthToken];
+                [self.defaults removeObjectForKey:WOCUserDefaultsLocalPhoneNumber];
+                [self.defaults removeObjectForKey:WOCUserDefaultsLocalDeviceId];
+                //[self.defaults setValue:phoneNo forKey:WOCUserDefaultsLocalPhoneNumber];
                 [self.defaults synchronize];
                 
                 NSString *title = ALERT_TITLE;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:@"SIGN IN for the device is hidden" preferredStyle:UIAlertControllerStyleAlert];
                     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                         [self backToMainView];
+                        [self backToMainView];
                     }];
                     
                     [alert addAction:okAction];
                     
-                   [self presentViewController:alert animated:YES completion:nil];
+                    [self presentViewController:alert animated:YES completion:nil];
                 });
             }
         }];
@@ -231,13 +234,13 @@
 
 - (void)signOutWOC {
     
-    NSString * phoneNumber = [self.defaults objectForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
+    NSString * phoneNumber = [self.defaults objectForKey:WOCUserDefaultsLocalPhoneNumber];
     
     if (phoneNumber != nil) {
         MBProgressHUD *hud  = [MBProgressHUD showHUDAddedTo:self.navigationController.topViewController.view animated:YES];
         
         NSDictionary *params = @{
-                                };
+                                 };
         
         [[APIManager sharedInstance] signOut:nil phone:phoneNumber response:^(id responseDict, NSError *error) {
             
@@ -255,7 +258,6 @@
         }];
     }
     else {
-        
         [self backToMainView];
         [self clearLocalStorage];
     }
@@ -264,15 +266,25 @@
 - (void)pushToWOCRoot {
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
+        
+        NSString * storyboardName = [self.storyboard valueForKey:@"name"];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
         UINavigationController *navController = (UINavigationController*) [storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"];
         
-        WOCBuyDashStep1ViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"WOCBuyDashStep1ViewController"];// Or any VC with Id
-        vc.isFromSend = YES;
-        [navController.navigationBar setTintColor:[UIColor whiteColor]];
-        BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
-        appDelegate.window.rootViewController = navController;
-       
+        if ([storyboardName isEqualToString:WOCBuyingStoryboard]) {
+            WOCBuyingWizardHomeViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"WOCBuyingWizardHomeViewController"];// Or any VC with Id
+            vc.isFromSend = YES;
+            [navController.navigationBar setTintColor:[UIColor whiteColor]];
+            BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
+            appDelegate.window.rootViewController = navController;
+        }
+        else {
+            WOCSellingWizardHomeViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"WOCSellingWizardHomeViewController"];// Or any VC with Id
+            vc.isFromSend = YES;
+            [navController.navigationBar setTintColor:[UIColor whiteColor]];
+            BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
+            appDelegate.window.rootViewController = navController;
+        }
     });
 }
 
@@ -280,62 +292,106 @@
 
 - (void)getOrderList {
     
-    NSDictionary *params = @{
-                            };
+    NSString * storyboardName = [self.storyboard valueForKey:@"name"];
     
-    [[APIManager sharedInstance] getOrders:nil response:^(id responseDict, NSError *error) {
+    if ([storyboardName isEqualToString:WOCBuyingStoryboard]) {
+        [[APIManager sharedInstance] getOrders:nil response:^(id responseDict, NSError *error) {
+            [self loadOrdersWithResponse:responseDict withError:error];
+        }];
+    }
+    else {
+        [self getIncomingList];
+    }
+}
+
+- (void)getIncomingList {
+    
+    [[APIManager sharedInstance] getIncomingOrders:nil response:^(id responseDict, NSError *error) {
         
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if (error == nil) {
+        [self loadOrdersWithResponse:responseDict withError:error];
+    }];
+}
+
+- (void)loadOrdersWithResponse:(id)responseDict withError: (NSError *)error
+{
+    NSString * storyboardName = [self.storyboard valueForKey:@"name"];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (error == nil) {
+            if ([responseDict isKindOfClass:[NSArray class]]) {
+                NSString *phoneNo = [[NSUserDefaults standardUserDefaults] valueForKey:WOCUserDefaultsLocalPhoneNumber];
                 
-                if ([responseDict isKindOfClass:[NSArray class]])
-                {
-                    NSString *phoneNo = [[NSUserDefaults standardUserDefaults] valueForKey:USER_DEFAULTS_LOCAL_PHONE_NUMBER];
-                    
-                    NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
-                    if (orders.count > 0) {
-                        
-                        NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
-                        NSArray *wdArray = [orders filteredArrayUsingPredicate:wdvPredicate];
-                        
-                        if (wdArray.count > 0) {
-                            NSDictionary *orderDict = (NSDictionary*)[wdArray objectAtIndex:0];
-                            NSString *status = [NSString stringWithFormat:@"%@",[orderDict valueForKey:@"status"]];
-                            if ([status isEqualToString:@"WD"]) {
-                                WOCBuyingInstructionsViewController *myViewController = [self getViewController:@"WOCBuyingInstructionsViewController"];
-                                myViewController.phoneNo = phoneNo;
-                                myViewController.isFromSend = YES;
-                                myViewController.isFromOffer = NO;
-                                myViewController.orderDict = orderDict;
-                                [self pushViewController:myViewController animated:YES];
+                NSArray *orders = [[NSArray alloc] initWithArray:(NSArray*)responseDict];
+                if (orders.count > 0) {
+                    NSPredicate *wdvPredicate = [NSPredicate predicateWithFormat:@"status == 'WD'"];
+                    NSArray *wdArray = [orders filteredArrayUsingPredicate:wdvPredicate];
+                    if (wdArray.count > 0) {
+                        NSDictionary *orderDict = (NSDictionary*)[wdArray objectAtIndex:0];
+                        NSString *status = [NSString stringWithFormat:@"%@",[orderDict valueForKey:@"status"]];
+                        if ([status isEqualToString:@"WD"]) {
+                            if ([storyboardName isEqualToString:WOCBuyingStoryboard]) {
+                                WOCBuyingInstructionsViewController *buyingInstructionsViewController = [self getViewController:@"WOCBuyingInstructionsViewController"];
+                                buyingInstructionsViewController.phoneNo = phoneNo;
+                                buyingInstructionsViewController.isFromSend = YES;
+                                buyingInstructionsViewController.isFromOffer = NO;
+                                buyingInstructionsViewController.orderDict = orderDict;
+                                [self pushViewController:buyingInstructionsViewController animated:YES];
                             }
-                        }
-                        else {
-                            WOCBuyingSummaryViewController *myViewController = [self getViewController:@"WOCBuyingSummaryViewController"];
-                            myViewController.phoneNo = phoneNo;
-                            myViewController.orders = orders;
-                            myViewController.isFromSend = YES;
-                            [self pushViewController:myViewController animated:YES];
+                            else {
+                                WOCSellingInstructionsViewController *sellingInstructionsViewController = [self getViewController:@"WOCSellingInstructionsViewController"];
+                                sellingInstructionsViewController.phoneNo = phoneNo;
+                                sellingInstructionsViewController.isFromSend = YES;
+                                sellingInstructionsViewController.isFromOffer = NO;
+                                sellingInstructionsViewController.orderDict = orderDict;
+                                [self pushViewController:sellingInstructionsViewController animated:YES];
+                            }
                         }
                     }
                     else {
-                        WOCBuyingSummaryViewController *myViewController = [self getViewController:@"WOCBuyingSummaryViewController"];
-                        myViewController.phoneNo = phoneNo;
-                        myViewController.orders = orders;
-                        myViewController.isFromSend = YES;
-                        myViewController.hideSuccessAlert = YES;
-                        [self pushViewController:myViewController animated:YES];
+                        
+                        if ([storyboardName isEqualToString:WOCBuyingStoryboard]) {
+                            WOCBuyingSummaryViewController *buyingInstructionsViewController = [self getViewController:@"WOCBuyingSummaryViewController"];
+                            buyingInstructionsViewController.phoneNo = phoneNo;
+                            buyingInstructionsViewController.orders = orders;
+                            buyingInstructionsViewController.isFromSend = YES;
+                            [self pushViewController:buyingInstructionsViewController animated:YES];
+                        }
+                        else {
+                            WOCSellingSummaryViewController *sellingSummaryViewController = [self getViewController:@"WOCSellingSummaryViewController"];
+                            sellingSummaryViewController.phoneNo = phoneNo;
+                            sellingSummaryViewController.orders = orders;
+                            sellingSummaryViewController.isFromSend = YES;
+                            [self pushViewController:sellingSummaryViewController animated:YES];
+                        }
                     }
                 }
                 else {
-                    [self backToMainView];
+                    if ([storyboardName isEqualToString:WOCBuyingStoryboard]) {
+                        WOCBuyingSummaryViewController *buyingSummaryViewController = [self getViewController:@"WOCBuyingSummaryViewController"];
+                        buyingSummaryViewController.phoneNo = phoneNo;
+                        buyingSummaryViewController.orders = orders;
+                        buyingSummaryViewController.isFromSend = YES;
+                        buyingSummaryViewController.isHideSuccessAlert = YES;
+                        [self pushViewController:buyingSummaryViewController animated:YES];
+                    }
+                    else {
+                        WOCSellingSummaryViewController *sellingSummaryViewController = [self getViewController:@"WOCSellingSummaryViewController"];
+                        sellingSummaryViewController.phoneNo = phoneNo;
+                        sellingSummaryViewController.orders = orders;
+                        sellingSummaryViewController.isFromSend = YES;
+                        sellingSummaryViewController.isHideSuccessAlert = YES;
+                        [self pushViewController:sellingSummaryViewController animated:YES];
+                    }
                 }
             }
             else {
-                [self refereshToken];
+                [self backToMainView];
             }
-        });
-    }];
+        }
+        else {
+            [self refereshToken];
+        }
+    });
 }
 
 - (void)didReceiveMemoryWarning {
@@ -344,4 +400,3 @@
 }
 
 @end
-

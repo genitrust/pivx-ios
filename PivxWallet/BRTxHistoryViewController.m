@@ -42,13 +42,9 @@
 #import "pivxwallet-Swift.h"
 
 //WallOfCoins
-#import "WOCBuyDashStep1ViewController.h"
-#import "WOCBuyingInstructionsViewController.h"
-#import "WOCBuyingSummaryViewController.h"
 #import "WOCConstants.h"
-#import "MBProgressHUD.h"
 #import "BRAppDelegate.h"
-#import "APIManager.h"
+
 #define TRANSACTION_CELL_HEIGHT 75
 
 static NSString *dateFormat(NSString *template)
@@ -792,10 +788,11 @@ static NSString *dateFormat(NSString *template)
     }
 }
 
+// MARK: - Wall of Coin Module
 -(void)loadWOCModule
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:STORYBOARD_DASH bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:WOCBuyingStoryboard bundle:nil];
         UINavigationController *navController = (UINavigationController*) [storyboard instantiateViewControllerWithIdentifier:@"wocNavigationController"];
         [navController.navigationBar setTintColor:[UIColor whiteColor]];
         BRAppDelegate *appDelegate = (BRAppDelegate*)[[UIApplication sharedApplication] delegate];
